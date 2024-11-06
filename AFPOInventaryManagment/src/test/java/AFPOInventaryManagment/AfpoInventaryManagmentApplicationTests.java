@@ -1,0 +1,13 @@
+package AFPOInventaryManagment;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class AfpoInventaryManagmentApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
