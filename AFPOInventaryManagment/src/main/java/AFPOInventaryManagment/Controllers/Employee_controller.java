@@ -27,20 +27,14 @@ public class Employee_controller {
         return ResponseEntity.ok("Employee created successfully");
     }
 
-    @GetMapping("/api/employees")
-    public List<Employee> get_employees(){
-        return repository.findAll();
-    }
-
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @PostMapping("/api/actualizar_empleado")
+    @PutMapping("/api/actualizar_empleado")
     public ResponseEntity<String> actualizar_empleado(@RequestBody Employee employee){
-
         if (employee.getId_employee() == null || !repository.existsById(employee.getId_employee())){
             return ResponseEntity.badRequest().build();
         }
         repository.save(employee);
-        return ResponseEntity.ok("Employee created successfully");
+        return ResponseEntity.ok("Employee updated successfully");
     }
 
     @CrossOrigin(origins = "http://127.0.0.1:5500")
