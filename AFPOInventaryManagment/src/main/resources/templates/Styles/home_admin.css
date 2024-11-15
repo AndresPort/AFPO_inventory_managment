@@ -30,7 +30,7 @@ header{
     color: rgb(0, 0, 0);
 }
 
-.header__nombre_completo_text{
+.header__name_text{
     font-size: 19px;
     margin-top: 15px;
     margin-left: 40px;
@@ -72,13 +72,14 @@ main{
 
 /* nav dropdown menu */
 .nav__dropdown_menu{
-    right: -1000px;
-    top: 55px;
+    right: 0;
+    top: -100px;
     position: absolute;
+    transition: top 1s ease;
 }
 
 .dropdown_menu_active{
-    right: 0;
+    top: 55px;
 }
 
 .nav__dropdown_menu li{
@@ -99,8 +100,9 @@ main{
 
 .user_options_menu_container{
     top: 55px;
-    left: -1000px;
+    left: -250px;
     position: absolute;
+    transition: left 1s ease;
 }
 
 .active_user_options_menu_container{
@@ -110,7 +112,7 @@ main{
 .user_options_menu{
     background-color: rgb(220, 220, 220);
     width: 250px;
-    height: 92vh;
+    height: 89vh;
 }
 
 .user_options_menu li{
@@ -141,9 +143,9 @@ main{
     grid-gap: 50px;
 }
 
-.create_users_link, 
-.update_users_link,
-.search_users_link,
+.users_options, 
+.products_options_link,
+.warehouse_options_link,
 .delete_users_link{
     border-radius: 20px;
     box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.1);
@@ -155,9 +157,9 @@ main{
     text-decoration: none;
 }
 
-.create_users_link:hover, 
-.update_users_link:hover,
-.search_users_link:hover,
+.users_options:hover, 
+.products_options_link:hover,
+.warehouse_options_link:hover,
 .delete_users_link:hover{
     width: 170px;
     height: 170px;
@@ -169,16 +171,16 @@ main{
     
 }
 
-.create_users_link i, 
-.update_users_link i,
-.search_users_link i,
+.users_options i, 
+.products_options i,
+.warehouse_options i,
 .delete_users_link i{
     font-size: 50px;
     margin-bottom: 15px;
 }
 
-.update_users_link i{
-    margin-left: 50px;
+.products_options i{
+    margin-left: 15px;
 }
 
 .search_users_link i{

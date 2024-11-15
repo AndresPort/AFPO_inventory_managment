@@ -15,7 +15,7 @@ campos.second_name = document.getElementById("second_name").value;
 campos.last_name = document.getElementById("last_name").value;
 campos.second_last_name = document.getElementById("second_last_name").value;
 campos.cedula = document.getElementById("cedula").value;
-campos.phone = document.getElementById("phone_number").value;
+campos.phone_number = document.getElementById("phone_number").value;
 campos.email = document.getElementById("email").value;
 campos.role = document.getElementById("role").value;
 
@@ -27,5 +27,7 @@ const peticion = await fetch("http://localhost:8080/api/crear_empleado", {
     },
     body: JSON.stringify(campos)
 });
+
+location.href= "../home_admin.html";
 
 }

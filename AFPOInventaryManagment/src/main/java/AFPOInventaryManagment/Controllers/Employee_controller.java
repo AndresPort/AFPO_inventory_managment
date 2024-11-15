@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class Employee_controller {
@@ -38,14 +39,33 @@ public class Employee_controller {
     }
 
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @PostMapping("/api/eliminar_empleado/{id_employee}")
-    public ResponseEntity<String> eliminar_empleado( @PathVariable Long id_employee){
+    @DeleteMapping("/api/delete_user/{id_user}")
+    public ResponseEntity<String> eliminar_usuario( @PathVariable Long id_user){
 
-        if (id_employee == null || !repository.existsById(id_employee)){
+        if (id_user == null || !repository.existsById(id_user)){
             return ResponseEntity.badRequest().build();
         }
-        repository.deleteById(id_employee);
+        repository.deleteById(id_user);
         return ResponseEntity.noContent().build();
+    }
+
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @GetMapping("/api/get_users")
+    public List<Employee> Obtener_empleados(){
+        return repository.findAll();
+    }
+
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @GetMapping("/api/get_user/{id_user}")
+    public ResponseEntity<Employee> Obtener_empleado(@PathVariable long id_user){
+        Optional<Employee> opt = repository.findById(id_user);
+
+        if (opt.isEmpty()){
+           return ResponseEntity.badRequest().build();
+        }
+        else {
+            return ResponseEntity.ok(opt.get());
+        }
     }
 
 }
