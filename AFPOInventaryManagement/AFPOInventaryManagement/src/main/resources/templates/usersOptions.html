@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="Styles/usersOptions.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/f55ea41269.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Usuarios</title>
+</head>
+<body>
+    <header class="header">
+
+        <nav class="nav">
+            <i class="fa-solid fa-bars"></i>
+        </nav>
+
+        <a href="homeAdmin.html">
+            <i class="fa-solid fa-house"></i>
+        </a>
+        
+        <h4 class="header__nameText">nombre completo</h4>
+        <h4 class="header__roleText">rol</h4>
+
+        <i class="fa-solid fa-gear"></i>
+
+    </header>
+
+    <ul class="nav__dropdownMenu">
+        <li><a href="">Perfil</a></li>
+        <li><a href="">Cambiar contraseña</a></li>
+        <li><a href="index.html">Cerrar sesion</a></li>
+    </ul>
+
+    <script src="JavaScript/dropdownMenuActive.js"></script>
+
+    <div class="userOptionsMenuContainer ">
+        <ul class="userOptionsMenu">
+            <li><a href="">Incio</a></li>
+            <li><a href="">Productos</a></li>
+            <li><a href="">Bodega</a></li>                
+        </ul>
+    </div>    
+    <script src="JavaScript/usersOptionsMenu.js"></script>
+
+<!--action buttons-->
+
+    <div class="actionButtonsFrame">
+        <button onclick="" class="actionButtonsFrame__CreateUsers" id="BtnRegisterMenu"> Crear usuarios</button>
+
+        <button onclick="" class="actionButtonsFrame__SearchUser" id="BtnSearchUser"> Buscar usuarios por codigo</button>
+
+        <button onclick="" class="actionButtonsFrame__ShowUsers" id="BtnShowUsers"> Mostrar todos los usuarios</button>
+
+    </div>
+
+    <!--Table-->
+    <div class="tableFrame" id="tableFrame">
+      <table id="table">
+        <h4 class="BtncloseTable" id="BtncloseTable">X</h4>
+        <thead>
+          <tr>
+            <th colspan="12">Usuarios</th>
+          </tr>
+          <tr>
+            <th>Id</th>
+            <th>Código de usuario</th>
+            <th>Contraseña</th>
+            <th>Primer nombre</th>
+            <th>Segundo nombre</th>
+            <th>Primer apellido</th>
+            <th>Segundo apellido </th>
+            <th>Cédula</th>
+            <th>Celular</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+      <script src="JavaScript/tableUsersOptions.js"></script>
+
+
+    <!--Register user-->
+
+    <div class= "principalRegisterFrame" id="principalRegisterFrame">
+
+    <div class="formsRegisterFrame">
+        <h4 class="BtncloseRegister" id="BtncloseRegister">X</h4>
+        <h1 class="RegisterTittle">Registrar Usuario</h1>
+        <form method="POST" class="form">
+          
+            <div class="formsRegisterFrame__userCode" >
+                <input class="formsRegisterFrame__userCode-input" id="userCodeRegister" type="number" placeholder="codigo de usuario">
+            </div>
+  
+            <div class="formsRegisterFrame__password">
+                <input class="formsRegisterFrame__password-input" id="passwordRegister" type="password" placeholder="Contraseña">
+            </div>
+  
+            <div class="formsRegisterFrame__firstName" >
+                <input class="formsRegisterFrame__firstName-input" id="firstNameRegister" type="text" placeholder="Primer nombre">
+            </div>
+  
+            <div class="formsRegisterFrame__secondName" >
+                <input class="formsRegisterFrame__secondName-input" id="secondNameRegister" type="text" placeholder="Segundo nombre">
+            </div>
+  
+            <div class="formsRegisterFrame__lastName" >
+                <input class="formsRegisterFrame__lastName-input" id="lastNameRegister" type="text" placeholder="primer apellido">
+            </div>
+  
+            <div class="formsRegisterFrame__secondLastName" >
+                <input class="formsRegisterFrame__secondLastName-input" id="secondLastNameRegister" type="text" placeholder="Segundo apellido">
+            </div>
+  
+            <div class="formsRegisterFrame__cedula" >
+                <input class="formsRegisterFrame__cedula-input" id="cedulaRegister" type="text" placeholder="Cedula">
+            </div>
+  
+            <div class="formsRegisterFrame__phoneNumber" >
+                <input class="formsRegisterFrame__phoneNumber-input" id="phoneNumberRegister" type="text" placeholder="Celular">
+            </div>
+  
+            <div class="formsRegisterFrame__email" >
+                <input class="formsRegisterFrame__email-input" id="emailRegister" type="email" placeholder="Email">
+            </div>
+  
+            <div class="formsRegisterFrame__role" >
+                <input class="formsRegisterFrame__role-input" id="roleRegister" type="text" placeholder="Rol">
+            </div>
+  
+            <button onclick="" class="formsRegisterFrame__button" id="BtnRegistrar"> crear usuarios</button>
+              
+      </form>
+          
+    </div>
+
+    </div>
+      
+      <script src="JavaScript/createUsers.js"></script>
+
+    
+    
+    <!--update info user-->
+    
+
+    <div class="formsFrame" id="formFrame">
+
+      <h1 class="formsFrame__tittle">Modificar usuario</h1>  
+
+      <form method="POST" >
+
+          <div class="formsFrame__userCode" >
+              <label class="formsFrame__userCode-label">código de usuario</label>
+              <input class="formsFrame__userCode-input" id="userCode" type="text" placeholder="código de usuario">
+          </div>
+
+          <div class="formsFrame__password" >
+              <label class="formsFrame__password-label">Contraseña</label>
+              <input class="formsFrame__password-input" id="password" type="password" placeholder="contraseña">
+          </div>
+
+          <div class="formsFrame__firstName" >
+              <label class="formsFrame__firstName-label">Primer nombre</label>
+              <input class="formsFrame__firstName-input" id="firstName" type="text" placeholder="Primer nombre">
+          </div>
+
+          <div class="formsFrame__secondName" >
+              <label class="formsFrame__secondName-label">Segundo nombre</label>
+              <input class="formsFrame__secondName-input" id="secondName" type="text" placeholder="Segundo nombre">
+          </div>
+
+          <div class="formsFrame__lastName" >
+              <label class="formsFrame__lasName-label">Primer apellido</label>
+              <input class="formsFrame__lastName-input" id="lastName" type="text" plac  eholder="Primer apellido">
+          </div>
+
+          <div class="formsFrame__secondLastName" >
+              <label class="formsFrame__secondlastname-label">Segundo apellido</label>
+              <input class="formsFrame__secondlastname-input" id="secondLastName" type="text" placeholder="Segundo apellido">
+          </div>
+
+          <div class="formsFrame__cedula" >
+              <label class="formsFrame__cedula-label">Cedula</label>
+              <input class="formsFrame__cedula-input" id="cedula" type="text" placeholder="Cedula">
+          </div>
+
+          <div class="formsFrame__phoneNumber" >
+              <label class="formsFrame__phoneNumber-label">celular</label>
+              <input class="formsFrame__phoneNumber-input" id="phoneNumber" type="number" placeholder="celular">
+          </div>
+
+          <div class="formsFrame__email" >
+              <label class="formsFrame__email-label">Email</label>
+              <input class="formsFrame__email-input" id="email" type="email" placeholder="Email">
+          </div>
+
+          <div class="formsFrame__role" >
+              <label class="formsFrame__role-label">Rol</label>
+              <input class="formsFrame__role-input" id="role" type="text" placeholder="Rol">
+          </div>
+
+          <button  class="formsFrame__button" id="BtnModifyUser">Modificar usuario</button>
+      
+      </form>
+    </div>
+
+    <!--Footer-->  
+
+    <footer>
+        <h5 class="footer__copyright">Este sitio está protegido por reCAPTCHA. Se aplican los <a href="https://policies.google.com/terms">Términos del servicio</a> y la <a href="https://policies.google.com/privacy">Política de privacidad</a> de Google. ©AFPO MANAGMENT INVENTARY</h5>
+    </footer>
+    
+</body>
+</html>
