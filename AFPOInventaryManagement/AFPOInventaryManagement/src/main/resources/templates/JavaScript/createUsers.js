@@ -56,3 +56,6 @@ const peticion = await fetch("http://localhost:8080/api/createUser", {
 location.href= "../homeAdmin.html";
 
 }
+
+
+

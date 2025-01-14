@@ -3,6 +3,7 @@ package AFPOInventaryManagement.Controllers;
 import AFPOInventaryManagement.Models.User;
 import AFPOInventaryManagement.Services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,10 +61,15 @@ public class UserController {
     }
 
     //get user by userCode
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @GetMapping("/api/getUserByuserCode/{userCode}")
-    public User getUserByUserCode(@PathVariable String userCode) {
-        return services.getUserByUserCode(userCode);
+    @CrossOrigin(origins = "*")
+    @GetMapping("/api/getUserByUserCode/{userCode}")
+    public ResponseEntity<User> getUserByUserCode(@PathVariable String userCode) {
+        User user = services.getUserByUserCode(userCode);
+        if (user != null) {
+            return ResponseEntity.ok(user); // Usuario encontrado, devolver 200 OK con el usuario
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Usuario no encontrado, devolver 404
+        }
     }
 
 }
