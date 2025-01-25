@@ -145,7 +145,7 @@ main{
 }
 
 .usersOptions, 
-.productsOptionsLink,
+.rolesOptions,
 .warehouseOptionsLink,
 .deleteUsersLink{
     border-radius: 20px;
@@ -159,7 +159,7 @@ main{
 }
 
 .usersOptions:hover, 
-.productsOptionsLink:hover,
+.rolesOptions:hover,
 .warehouseOptionsLink:hover,
 .deleteUsersLink:hover{
     width: 170px;
@@ -173,23 +173,11 @@ main{
 }
 
 .usersOptions i, 
-.productsOptions i,
+.rolesOptions i,
 .warehouseOptions i,
 .deleteUsersLink i{
     font-size: 50px;
     margin-bottom: 15px;
-}
-
-.productsOptions i{
-    margin-left: 15px;
-}
-
-.searchUsersLink i{
-    margin-left: 30px;
-}
-
-.deleteUsersLink i{
-    margin-left: 40px;
 }
 
 

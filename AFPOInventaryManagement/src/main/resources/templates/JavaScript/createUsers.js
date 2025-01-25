@@ -37,7 +37,7 @@ campos.userCode = document.getElementById("userCodeRegister").value;
 campos.password = document.getElementById("passwordRegister").value;
 campos.firstName = document.getElementById("firstNameRegister").value;
 campos.secondName = document.getElementById("secondNameRegister").value;
-campos.lastName = document.getElementById("lastName").value;
+campos.lastName = document.getElementById("lastNameRegister").value;
 campos.secondLastName = document.getElementById("secondLastNameRegister").value;
 campos.cedula = document.getElementById("cedulaRegister").value;
 campos.phoneNumber = document.getElementById("phoneNumberRegister").value;
@@ -52,8 +52,6 @@ const peticion = await fetch("http://localhost:8080/api/createUser", {
     },
     body: JSON.stringify(campos)
 });
-
-location.href= "../homeAdmin.html";
 
 }
 
