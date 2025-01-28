@@ -194,8 +194,6 @@ async function updateRole(role) {
     role.rolName= newRolName;
     confirmUpdateRole(role);
 });
-    
-
 
 }
 
