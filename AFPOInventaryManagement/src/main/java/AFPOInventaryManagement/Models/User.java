@@ -36,6 +36,20 @@ public class User {
     public User() {
     }
 
+    //constructor without idUser
+    public User(String userCode, String password, Long idRole, String firstName, String secondName, String lastName, String secondLastName, String cedula, String phoneNumber, String email) {
+        this.userCode = userCode;
+        this.password = password;
+        this.idRole = idRole;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.lastName = lastName;
+        SecondLastName = secondLastName;
+        this.cedula = cedula;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
     //complete constructor
     public User(Long idUser, String userCode, String password, Long idRole, String firstName, String secondName, String lastName, String secondLastName, String cedula, String phoneNumber, String email) {
         this.idUser = idUser;
