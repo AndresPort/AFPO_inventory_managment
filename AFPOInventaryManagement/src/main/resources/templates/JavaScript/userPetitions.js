@@ -1,4 +1,4 @@
-export class userService{
+export class UserService{
 
     //constructor
     constructor(baseURL) {

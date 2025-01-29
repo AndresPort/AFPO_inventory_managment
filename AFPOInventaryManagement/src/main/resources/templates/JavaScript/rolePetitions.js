@@ -31,6 +31,30 @@ export class RoleService{
         }
     }
 
+    //get role by id
+    async getRoleById() {
+        try {
+            const response = await fetch(`${this.baseURL}/api/getRoleById`, {
+                method: 'GET',
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const role = await response.json();
+            return role;
+        } catch (error) {
+            console.error("Error fetching roles:", error);
+            throw error;
+        }
+    }
+
+
     //Create role
     async createRole(rolName){
         try {

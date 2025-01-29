@@ -48,11 +48,12 @@ header{
 .fa-gear{
   font-size: 25px;
   color: rgb(0, 0, 0);
-  margin-top: 15px;
+  margin-top: 5px;
   margin-left: auto;
   margin-right: 20px;
   cursor: pointer;
 }
+
 
 /* Body */
 
@@ -99,7 +100,6 @@ main{
   
 }
 
-
 /* userOptionsMenu */
 
 .userOptionsMenuContainer{
@@ -137,12 +137,11 @@ main{
 .actionButtonsFrame{
   display: flex;
   justify-content: space-between;
-  width: 980px;
+  width: 700px;
 }
 
 .actionButtonsFrame__CreateUsers,
-.actionButtonsFrame__SearchUser,
-.actionButtonsFrame__ShowUsers{
+.actionButtonsFrame__SearchUser{
     width: 300px;
     height: 60px;
     border-radius: 10px;
@@ -153,8 +152,7 @@ main{
   }
 
 .actionButtonsFrame__CreateUsers:hover,
-.actionButtonsFrame__SearchUser:hover,
-.actionButtonsFrame__ShowUsers:hover{
+.actionButtonsFrame__SearchUser:hover{
   width: 330px;
   height: 80px;
   position: relative;
@@ -166,28 +164,23 @@ main{
 }
 
 
-
 /* Register user form */
 
-.principalRegisterFrame{
+.formRegisterFrame{
   visibility: hidden;
-  position: relative;
-  bottom: 220px;
-
-}
-
-.formsRegisterFrame{
+  position: absolute;
+  width: 450px;
+  height: 490px;
+  top: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 50px;
   background-color: rgb(255, 255, 255);
-  width: 450px;
-  height: 480px;
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.BtncloseRegister{
+.btncloseRegister{
   position:absolute;
   top:9px;
   right: 10px;
@@ -196,18 +189,28 @@ main{
   cursor: pointer;
 }
 
-label{
+.registerUserForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+}
+
+.registerUserForm label{
   font-size: 19px;
 }
 
-input{
+.registerUserForm input,
+.formRegisterFrame__role-selectInput{
   border: none;
   border-bottom: 1px solid rgb(0, 0, 0);
   width: 300px;
   height: 30px;
 }
 
-.formsRegisterFrame__button{
+.formRegisterFrame__button{
   margin-left: 28px;
   margin-top: 20px;
   width: 250px;
@@ -221,8 +224,148 @@ input{
   transition: background-color 0.6s ;
 }
 
-.formsRegisterFrame__button:hover{
+.formRegisterFrame__button:hover{
   background-color:rgb(53, 252, 100) ;
+}
+
+
+/* Pop up user registered */
+
+.popUpUserRegistered{
+  visibility: hidden;
+  position: absolute;
+  top: 200px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 350px;
+  height: 250px;
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btnClosePopUpUserRegistered{
+  color: rgb(220, 220, 220);
+  position: absolute;
+  left: 332px;
+  top: 1px;
+  cursor: pointer;
+  padding-top: 1px;
+}
+
+.fa-circle-check{
+  font-size: 70px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.userRegisteredText{
+  font-size: 23px;
+  text-align: center;
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
+
+/* Pop up rol deleted */
+
+.popUpUserDeleted{
+  visibility: hidden;
+  position: absolute;
+  top: 200px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 350px;
+  height: 250px;
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btnClosePopUpUserDeleted{
+  color: rgb(220, 220, 220);
+  position: relative;
+  left: 160px;
+  top: -10px;
+  cursor: pointer;
+}
+
+
+.userDeletedText{
+  font-size: 23px;
+  text-align: center;
+  margin-top: 25px;
+  margin-left: 5px;
+}
+
+/* Pop up rol updated */
+
+.popUpUserUpdated{
+  visibility:hidden;
+  position: absolute;
+  top: 200px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 350px;
+  height: 250px;
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btnClosePopUpUserUpdated{
+  color: rgb(220, 220, 220);
+  position: relative;
+  left: 160px;
+  top: -10px;
+  cursor: pointer;
+}
+
+
+
+.userUpdatedText{
+  text-align: center;
+  font-size: 25px;
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
+/* Pop up rol Error */
+
+.popUpError{
+  visibility: hidden;
+  position: absolute;
+  top: 200px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 350px;
+  height: 250px;
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btnClosePopUpError{
+  color: rgb(220, 220, 220);
+  position: relative;
+  left: 160px;
+  top: -10px;
+  cursor: pointer;
+}
+
+.fa-circle-xmark{
+  margin-top: 15px;
+  font-size: 70px;
+}
+
+.errorText{
+  font-size: 25px;
+  margin-top: 25px;
+  margin-left: 5px;
 }
 
 
@@ -232,7 +375,7 @@ input{
 /* table all users */
 
 .tableFrame{
-  visibility: hidden;
+  visibility: visible;
   margin-top: 30px;
   width: 1220px;
 }
@@ -319,137 +462,52 @@ table {
 
 /* Modify user form */  
 
-#formFrame{
+.formUpdateFrame{
   visibility: hidden;
-}
-
-.formsFrame{
-  margin-top: 40px;
-  margin-bottom: 50px;
+  position: absolute;
+  width: 450px;
+  height: 490px;
+  top: 150px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btncloseUpdateFrame{
+  position:absolute;
+  top:9px;
+  right: 10px;
+  margin-top: 5px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.updateUserForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 
 }
 
-.formsFrame__tittle{
-  margin-bottom: 30px;
-  align-self: center;
-
+.updateUserForm label{
+  font-size: 19px;
 }
 
-.formsFrame__userCode-input{
-  width: 180px;
-  height: 28px;
-  border-radius: 10px;
-  font-size: 14px;
-  padding-left: 15px;
-  border: 1px solid rgb(0,0,0,0.1);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.formsFrame__password-input{
-  width: 180px;
-  height: 28px;
-  border-radius: 10px;
-  font-size: 14px;
-  padding-left: 15px;
-  border: 1px solid rgb(0,0,0,0.1);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.formsFrame__firstName-input{
-  width: 180px;
-  height: 28px;
-  border-radius: 10px;
-  font-size: 14px;
-  padding-left: 15px;
-  border: 1px solid rgb(0,0,0,0.1);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.formsFrame__secondName-input{
-  width: 180px;
-  height: 28px;
-  border-radius: 10px;
-  font-size: 14px;
-  padding-left: 15px;
-  border: 1px solid rgb(0,0,0,0.1);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.formsFrame__lastName-input{
-  width: 180px;
-  height: 28px;
-  border-radius: 10px;
-  font-size: 14px;
-  padding-left: 15px;
-  border: 1px solid rgb(0,0,0,0.1);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.formsFrame__secondLastName-input{
-  width: 180px;
-  height: 28px;
-  border-radius: 10px;
-  font-size: 14px;
-  padding-left: 15px;
-  border: 1px solid rgb(0,0,0,0.1);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.formsFrame__cedula-input{
-  width: 180px;
-  height: 28px;
-  border-radius: 10px;
-  font-size: 14px;
-  padding-left: 15px;
-  border: 1px solid rgb(0,0,0,0.1);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.formsFrame__phoneNumber-input{
-  width: 180px;
-  height: 28px;
-  border-radius: 10px;
-  font-size: 14px;
-  padding-left: 15px;
-  border: 1px solid rgb(0,0,0,0.1);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.formsFrame__email-input{
-  width: 180px;
-  height: 28px;
-  border-radius: 10px;
-  font-size: 14px;
-  padding-left: 15px;
-  border: 1px solid rgb(0,0,0,0.1);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.formsFrame__role-input{
-  width: 180px;
-  height: 28px;
-  border-radius: 10px;
-  font-size: 14px;
-  padding-left: 15px;
-  border: 1px solid rgb(0,0,0,0.1);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
+.updateUserForm input,
+.formUpdateFrame__user-selectInput{
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  width: 300px;
+  height: 30px;
 }
 
 .formsFrame__button{
   margin-top: 20px;
-  margin-left: 30px;
   width: 250px;
   height: 45px;
   border-radius: 20px;
@@ -465,15 +523,6 @@ table {
   background-color:rgb(53, 252, 100) ;
 }
 
-.formsFrame__button:active{
-  margin-bottom: 20px;
-  margin-right: 50px;
-  width: 270px;
-  height: 65px;
-  border-radius: 50px;
-  margin-bottom: 50px;
-  
-}
 
 /* Footer */
 
