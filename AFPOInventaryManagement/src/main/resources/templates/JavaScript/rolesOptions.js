@@ -217,7 +217,6 @@ async function getAllRoles() {
     const roleService = new RoleService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     const roles = await roleService.getAllRoles(); // Llamar al método de la clase
 
-    console.log(roles);
     let tableContent= "";
 
     for(let role of roles){

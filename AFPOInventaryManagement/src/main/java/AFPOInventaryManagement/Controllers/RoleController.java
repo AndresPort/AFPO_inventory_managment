@@ -42,8 +42,8 @@ public class RoleController {
     //get role by id
     @CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/api/getRoleById/{idRole}")
-    public void getRoleById(@PathVariable Long idRole) {
-        services.getRoleById(idRole);
+    public Role getRoleById(@PathVariable Long idRole) {
+        return (services.getRoleById(idRole));
     }
 
     //Update Role

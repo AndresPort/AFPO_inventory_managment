@@ -1,6 +1,10 @@
 import{UserService} from "./userPetitions.js";
 import{RoleService} from "./rolePetitions.js";
 
+window.onload = function() {
+    getAllUsers()
+};
+
 //---------------------------contenido del combobox de los roles------------------------------
 
 async function fillRoleCombobox() {
@@ -159,4 +163,58 @@ async function registerUser(){
     } else {
         showPopUpError();
     }   
+}
+
+
+
+//-----------------------------Get all Users--------------------------------
+async function getAllUsers() {
+    const userService = new UserService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    const roleService = new RoleService('http://127.0.0.1:8080');
+    const users = await userService.getAllUsers(); // Llamar al método de la clase
+
+    console.log(users);
+    let tableContent= "";
+    for(let user of users){
+        let role= await roleService.getRoleById(user.idRole);
+        let rowContent = `<tr>
+        <td>${user.idUser}</td>
+        <td>${user.userCode}</td>
+        <td>${user.password}</td>
+        <td>${role.rolName}</td>
+        <td>${user.firstName}</td>
+        <td>${user.secondName}</td>
+        <td>${user.lastName}</td>
+        <td>${user.secondLastName}</td>
+        <td>${user.cedula}</td>
+        <td>${user.phoneNumber}</td>
+        <td>${user.email}</td>
+        <td>
+            <i class="fa-solid fa-pen" data-id="${user.idUser}" data-action="update"></i>
+            <i class="fa-solid fa-trash" data-id="${user.idUser}" data-action="delete"></i>
+
+        </td>
+        </tr>`
+
+        tableContent+=rowContent;
+    }
+
+    document.querySelector("#table tbody").innerHTML = tableContent;
+
+    // Asignar eventos dinámicamente
+    document.querySelectorAll(".fa-trash").forEach((trashIcon) => {
+        trashIcon.addEventListener("click", (event) => {
+            const idUser = event.target.getAttribute("data-id");
+            deleteUser(idUser);
+        });
+    });
+
+    document.querySelectorAll(".fa-pen").forEach((editIcon) => {
+        editIcon.addEventListener("click", (event) => {
+            const idUser = event.target.getAttribute("data-id");
+            const user = user.find((r) => r.idUser === parseInt(idUser)); // Buscar el rol por id
+            updateUser(user)
+        });
+    });
+
 }
