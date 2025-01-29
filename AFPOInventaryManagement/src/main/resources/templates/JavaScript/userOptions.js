@@ -62,6 +62,65 @@ btnRegisterUser.addEventListener("click", event => {
     registerUser()
 });
 
+//----------------------------btn close update role form--------------------------------
+
+let btnCloseUpdateFrame=document.getElementById("btncloseUpdateFrame");
+
+    btnCloseUpdateFrame.addEventListener("click", event => {
+    event.preventDefault(); // Esto evita el envío automático de GET
+    closeUpdateForm();
+});
+
+
+function fillUInputUpdateForm(user){
+
+    let userCode =document.getElementById("userCodeUpdate");
+    userCode.value=user.userCode;
+
+    let password = document.getElementById("passwordUpdate")
+    password.value=user.password;
+
+    fillRoleCombobox()
+
+    document.getElementById("passwordRegister").value = user.password ;
+    
+    let firstName = document.getElementById("firstNameUpdate")
+    firstName.value=user.firstName;
+
+    let secondName = document.getElementById("secondNameUpdate")
+    secondName.value=user.secondName;
+    
+
+    let lastName = document.getElementById("lastNameUpdate")
+    lastName.value=user.lastName;
+
+
+    let secondLastName = document.getElementById("secondLastNameUpdate")
+    secondLastName.value=user.secondLastName;
+
+
+    let cedula = document.getElementById("cedulaUpdate")
+    cedula.value=user.cedula;
+
+    let phoneNumber = document.getElementById("phoneNumberUpdate")
+    phoneNumber.value=user.phoneNumber;
+
+    let email = document.getElementById("emailUpdate")
+    email.value=user.email;
+}
+
+//----------------------show and close update role form-------------------------------------------
+
+let formUpdate = document.getElementById("formUpdateFrame");
+
+function showUpdateForm(user){
+    formUpdate.style.visibility="visible";
+    fillUInputUpdateForm(user)
+}
+
+function closeUpdateForm(){
+    formUpdate.style.visibility="hidden";
+}
 
 
 //-------------------pop up user registered---------------------------------------------------
@@ -110,11 +169,11 @@ btnClosePopUpUserUpdated.addEventListener("click", event => {
 });
 
 function showPopUpUserUpdated(){
-    popUpRolUpdated.style.visibility="visible";
+    popUpUserUpdated.style.visibility="visible";
 }
 
 function closePopUpUserUpdated(){
-    popUpRolUpdated.style.visibility="hidden";
+    popUpUserUpdated.style.visibility="hidden";
 }
 
 
@@ -166,6 +225,61 @@ async function registerUser(){
 }
 
 
+//-----------------------------Update Role--------------------------------
+async function updateUser(user) {
+    const roleService = new RoleService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    showUpdateForm(user)
+
+    let btnUpdateUser= document.getElementById("btnUpdateUser");
+
+    btnUpdateUser.addEventListener("click", event => {
+    event.preventDefault(); // Esto evita el envío automático de GET
+    user.userCode = document.getElementById("userCodeUpdate").value;
+    user.password = document.getElementById("passwordUpdate").value;
+    user.idRole = document.getElementById("userUpdate").value;
+    user.firstName = document.getElementById("firstNameUpdate").value;
+    user.secondName = document.getElementById("secondNameUpdate").value;
+    user.lastName = document.getElementById("lastNameUpdate").value;
+    user.secondLastName = document.getElementById("secondLastNameUpdate").value;
+    user.cedula = document.getElementById("cedulaUpdate").value;
+    user.phoneNumber = document.getElementById("phoneNumberUpdate").value;
+    user.email = document.getElementById("emailUpdate").value;
+
+    
+    confirmUpdateUser(user);
+});
+
+}
+
+//-----------------------------Update user--------------------------------
+async function confirmUpdateUser(user){
+    const userService = new UserService('http://127.0.0.1:8080')
+    let outcome=userService.updateUser(user);
+
+    closeUpdateForm();
+    if (await outcome === true) {
+        showPopUpUserUpdated();
+    } else {
+        showPopUpError();
+    }
+    getAllUsers()
+}
+
+//-----------------------------Delete user--------------------------------
+async function deleteUser(idUser) {
+    const userService = new UserService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    let outcome = await userService.deleteUser(idUser); 
+    console.log("Resultado del servidor:", outcome);
+    
+    if (outcome === true) {
+        showPopUpUserDeleted();
+    } else {
+        showPopUpError();
+    }
+    getAllUsers()
+}
+
+
 
 //-----------------------------Get all Users--------------------------------
 async function getAllUsers() {
@@ -173,7 +287,6 @@ async function getAllUsers() {
     const roleService = new RoleService('http://127.0.0.1:8080');
     const users = await userService.getAllUsers(); // Llamar al método de la clase
 
-    console.log(users);
     let tableContent= "";
     for(let user of users){
         let role= await roleService.getRoleById(user.idRole);
@@ -212,7 +325,7 @@ async function getAllUsers() {
     document.querySelectorAll(".fa-pen").forEach((editIcon) => {
         editIcon.addEventListener("click", (event) => {
             const idUser = event.target.getAttribute("data-id");
-            const user = user.find((r) => r.idUser === parseInt(idUser)); // Buscar el rol por id
+            const user = users.find((r) => r.idUser === parseInt(idUser)); // Buscar el rol por id
             updateUser(user)
         });
     });

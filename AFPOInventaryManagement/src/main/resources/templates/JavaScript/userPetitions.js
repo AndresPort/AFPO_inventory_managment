@@ -104,7 +104,7 @@ export class UserService{
     //delete user
     async deleteUser(idUser){
         try {
-            const response = await fetch(`${this.baseURL}/api/deleteRole/${idUser}`, {
+            const response = await fetch(`${this.baseURL}/api/deleteUser/${idUser}`, {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',

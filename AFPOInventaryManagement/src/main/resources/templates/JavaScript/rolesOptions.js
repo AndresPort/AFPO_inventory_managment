@@ -49,7 +49,7 @@ let btnCloseUpdateForm=document.getElementById("btnCloseUpdate");
 
 btnCloseUpdateForm.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
-    closeUpdateForm();
+    closeDeleteForm();
 });
 
 
@@ -66,6 +66,8 @@ function showUpdateForm(role){
 function closeUpdateForm(){
     formUpdate.style.visibility="hidden";
 }
+
+
 
 
 
@@ -156,7 +158,7 @@ async function createRole(){
     let rolName = document.getElementById("rolNameCreate").value;
     let outcome = await roleService.createRole(rolName); 
     console.log("Resultado del servidor:", outcome);
-    closeForm();
+    closeCreateForm();
     
     if (outcome === true) {
         showPopUpRolCreated();
@@ -170,7 +172,6 @@ async function deleteRole(idRole) {
     const roleService = new RoleService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     let outcome = await roleService.deleteRole(idRole); 
     console.log("Resultado del servidor:", outcome);
-    closeForm();
     
     if (outcome === true) {
         showPopUpRolDeleted();
