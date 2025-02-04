@@ -222,6 +222,7 @@ async function registerUser(){
     } else {
         showPopUpError();
     }   
+    getAllUsers()
 }
 
 
@@ -262,7 +263,7 @@ async function confirmUpdateUser(user){
     } else {
         showPopUpError();
     }
-    getAllUsers()
+    getAllUsers();
 }
 
 //-----------------------------Delete user--------------------------------
@@ -276,7 +277,7 @@ async function deleteUser(idUser) {
     } else {
         showPopUpError();
     }
-    getAllUsers()
+    getAllUsers();
 }
 
 

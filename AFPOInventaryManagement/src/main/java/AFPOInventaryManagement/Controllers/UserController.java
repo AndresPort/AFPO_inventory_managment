@@ -24,8 +24,6 @@ public class UserController {
     @CrossOrigin(origins = "http://127.0.0.1:5500")
     @PostMapping("/api/createUser")
     public void createUser(@RequestBody User user){
-        System.out.println(user.toString());
-        System.out.println("hay gonorrea se mató");
         services.createUser(user);
 
         //no voy a hacer que retorne un mensaje de confirmacion de tipo ResponseEntity.ok

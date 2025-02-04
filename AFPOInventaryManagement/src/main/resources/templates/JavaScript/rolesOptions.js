@@ -165,6 +165,7 @@ async function createRole(){
     } else {
         showPopUpError();
     }   
+    getAllRoles();
 }
 
 //-----------------------------Delete Role--------------------------------
@@ -178,7 +179,7 @@ async function deleteRole(idRole) {
     } else {
         showPopUpError();
     }
-    getAllRoles()
+    getAllRoles();
 }
 
 //-----------------------------Update Role--------------------------------
@@ -209,7 +210,7 @@ async function confirmUpdateRole(role){
     } else {
         showPopUpError();
     }
-    getAllRoles()
+    getAllRoles();
 }
 
 

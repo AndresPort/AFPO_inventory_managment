@@ -22,7 +22,7 @@ public class User {
     @Column(name = "lastName")
     private String lastName;
     @Column(name = "secondLastName")
-    private String SecondLastName;
+    private String secondLastName;
     @Column(name = "cedula")
     private String cedula;
     @Column(name = "phoneNumber")
@@ -44,7 +44,7 @@ public class User {
         this.firstName = firstName;
         this.secondName = secondName;
         this.lastName = lastName;
-        SecondLastName = secondLastName;
+        this.secondLastName = secondLastName;
         this.cedula = cedula;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -59,7 +59,7 @@ public class User {
         this.firstName = firstName;
         this.secondName = secondName;
         this.lastName = lastName;
-        SecondLastName = secondLastName;
+        this.secondLastName = secondLastName;
         this.cedula = cedula;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -124,11 +124,11 @@ public class User {
     }
 
     public String getSecondLastName() {
-        return SecondLastName;
+        return this.secondLastName;
     }
 
     public void setSecondLastName(String secondLastName) {
-        SecondLastName = secondLastName;
+        this.secondLastName = secondLastName;
     }
 
     public String getCedula() {
