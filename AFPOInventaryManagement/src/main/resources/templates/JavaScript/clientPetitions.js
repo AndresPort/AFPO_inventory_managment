@@ -1,4 +1,4 @@
-export class RoleService{
+export class ClientService{
 
     //constructor
     constructor(baseURL) {
@@ -7,11 +7,11 @@ export class RoleService{
 
     //CRUD Metods
 
-    //getAllRoles
+    //getAllClients
 
-    async getAllRoles() {
+    async getAllClients() {
         try {
-            const response = await fetch(`${this.baseURL}/api/getAllRoles`, {
+            const response = await fetch(`${this.baseURL}/api/getAllClients`, {
                 method: 'GET',
                 headers: {
                     "Accept": "application/json",
@@ -23,18 +23,18 @@ export class RoleService{
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
-            const roles = await response.json();
-            return roles;
+            const clients = await response.json();
+            return clients;
         } catch (error) {
-            console.error("Error fetching roles:", error);
+            console.error("Error fetching Clients:", error);
             throw error;
         }
     }
 
-    //get role by id
-    async getRoleById(idRole) {
-        try {  
-            const response = await fetch(`${this.baseURL}/api/getRoleById/${idRole}`, {
+    //getClientById
+    async getClientById(idClient){
+        try {
+            const response = await fetch(`${this.baseURL}/api/getAllClients/${idClient}`, {
                 method: 'GET',
                 headers: {
                     "Accept": "application/json",
@@ -45,49 +45,47 @@ export class RoleService{
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            
-            const role = await response.json();
-            return role;
+            const client = await response.json();
+            return client;
         } catch (error) {
-            console.error("Error fetching roles:", error);
+            console.error("Error fetching Client:", error);
             throw error;
         }
     }
 
-
-    //Create role
-    async createRole(rolName){
+    //Create Client
+    async createClient(client){
         try {
-            const response = await fetch(`${this.baseURL}/api/createRole/${rolName}`, {
+            const response = await fetch(`${this.baseURL}/api/createClient`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
+                body: JSON.stringify(client)
             });
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            const result = await response.text();
-            console.log("Resultado del servidor:", result);
             return (true);
             
         } catch (error) {
-            console.error("Error fetching roles:", error);
+            console.error("Error fetching Clients:", error);
             throw error;
         }
     }
-    //Update role
-    async updateRole(role){
+
+    //Update Client
+    async updateClient(client){
         try {
-            const response = await fetch(`${this.baseURL}/api/updateRole`, {
+            const response = await fetch(`${this.baseURL}/api/updateClient`, {
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(role)
+                body: JSON.stringify(client)
             });
 
             if (!response.ok) {
@@ -96,16 +94,16 @@ export class RoleService{
             return (true);
             
         } catch (error) {
-            console.error("Error fetching roles:", error);
+            console.error("Error fetching Clients:", error);
             throw error;
         }
     }
 
 
-    //delete rol
-    async deleteRole(idRole){
+    //delete Client
+    async deleteClient(idClient){
         try {
-            const response = await fetch(`${this.baseURL}/api/deleteRole/${idRole}`, {
+            const response = await fetch(`${this.baseURL}/api/deleteClient/${idClient}`, {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
@@ -119,7 +117,7 @@ export class RoleService{
             return (true);
             
         } catch (error) {
-            console.error("Error fetching roles:", error);
+            console.error("Error fetching Clients:", error);
             throw error;
         }
     

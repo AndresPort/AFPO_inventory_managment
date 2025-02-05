@@ -32,7 +32,7 @@ btnShowRegisterForm.addEventListener("click", event => {
 });
 
 
-//----------------------------btn close create role form--------------------------------
+//----------------------------btn close register User form--------------------------------
 
 let btnCloseRegisterForm=document.getElementById("btncloseRegister");
 
@@ -42,7 +42,7 @@ btnCloseRegisterForm.addEventListener("click", event => {
 });
 
 
-//----------------------show and close create role form-------------------------------------------
+//----------------------show and close register user form-------------------------------------------
 
 let registerForm = document.getElementById("formRegisterFrame");
 
@@ -54,7 +54,7 @@ function closeRegisterForm(){
     registerForm.style.visibility="hidden";
 }
 
-//---------------------------btn create role---------------------------------
+//---------------------------btn register User---------------------------------
 let btnRegisterUser= document.getElementById("btnRegisterUser");
 
 btnRegisterUser.addEventListener("click", event => {
@@ -121,6 +121,46 @@ function showUpdateForm(user){
 function closeUpdateForm(){
     formUpdate.style.visibility="hidden";
 }
+
+//----------------- btn show SearchUserByUserCode frame----------------------------------
+let btnSearchUserByUserCodeFrame = document.getElementById("btnSearchUser");
+
+btnSearchUserByUserCodeFrame.addEventListener("click", event => {
+    event.preventDefault(); // Esto evita el envío automático de GET
+    showSearchUserByUserCodeFrame();
+});
+
+//----------------- btn close SearchUserByUserCode frame----------------------------------
+let btnCloseSearchUserByUserCodeFrame = document.getElementById("BtnCloseSearchUserByUserCodeForm");
+
+btnCloseSearchUserByUserCodeFrame.addEventListener("click", event => {
+    event.preventDefault(); // Esto evita el envío automático de GET
+    closeSearchUserByUserCodeFrame();
+});
+
+//----------------------show and close searchUserByUserCodeFrame form-------------------------------------------
+
+let searchUserByUserCodeFrame = document.getElementById("searchUserByUserCodeFrame");
+
+function showSearchUserByUserCodeFrame(){
+    searchUserByUserCodeFrame.style.visibility="visible";
+    
+}
+
+function closeSearchUserByUserCodeFrame(){
+    searchUserByUserCodeFrame.style.visibility="hidden";
+}
+
+//----------------------search user-------------------------------------------
+let btnSearchUserByUserCode= document.getElementById("btnSearchUserByUserCode");
+
+btnSearchUserByUserCode.addEventListener("click", event => {
+    event.preventDefault(); // Esto evita el envío automático de GET
+    let userCode= document.getElementById("formSearchByUserCodeFrameInput").value;
+
+    getUserByUserCode(userCode);
+});
+
 
 
 //-------------------pop up user registered---------------------------------------------------
@@ -330,5 +370,30 @@ async function getAllUsers() {
             updateUser(user)
         });
     });
+}
+//-----------------------------SearchUserByUserCode--------------------------------
+async function getUserByUserCode(userCode) {
+    const userService = new UserService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    const roleService = new RoleService('http://127.0.0.1:8080');
+    let user= await userService.getUserByUserCode(userCode);
+    let role= await roleService.getRoleById(user.idRole);
+    let rowContent = `<tr>
+        <td>${user.idUser}</td>
+        <td>${user.userCode}</td>
+        <td>${user.password}</td>
+        <td>${role.rolName}</td>
+        <td>${user.firstName}</td>
+        <td>${user.secondName}</td>
+        <td>${user.lastName}</td>
+        <td>${user.secondLastName}</td>
+        <td>${user.cedula}</td>
+        <td>${user.phoneNumber}</td>
+        <td>${user.email}</td>
+        <td>
+            <i class="fa-solid fa-pen" data-id="${user.idUser}" data-action="update"></i>
+            <i class="fa-solid fa-trash" data-id="${user.idUser}" data-action="delete"></i>
+        </td>
+        </tr>`
 
+    document.querySelector("#table tbody").innerHTML = rowContent;
 }
