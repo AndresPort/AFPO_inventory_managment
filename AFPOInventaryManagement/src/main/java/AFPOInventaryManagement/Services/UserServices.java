@@ -56,14 +56,13 @@ public class UserServices {
         return null;
     }
 
-
-    /*get user by userCode
+    //get user by userCode
 
     public User getUserByUserCode (String userCode){
         if(userCode != null  ){
-            Optional<User> user= repository.findByUserCode(userCode);
+            Optional<User> user= repository.findUserByUserCode(userCode);
             return user.orElse(null);
         }
         return null;
-    }*/
+    }
 }

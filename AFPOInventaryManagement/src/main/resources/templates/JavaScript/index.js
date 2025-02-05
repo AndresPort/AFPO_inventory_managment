@@ -1,3 +1,5 @@
+import{UserService} from "./userPetitions.js";
+
 let btnShowTable = document.getElementById("LogInBtn");
 
 btnShowTable.addEventListener("click", async (event) => {
@@ -12,42 +14,43 @@ btnShowTable.addEventListener("click", async (event) => {
     }
 
     try {
-        await searchUserById(userCode, password);
+        await searchUserByUserCode(userCode, password);
     } catch (error) {
         console.error("Error:", error);
         alert("No se pudo realizar la autenticación.");
     }
 });
 
-let searchUserById = async (userCode, password) => {
-    try {
-        const peticion = await fetch("http://localhost:8080/api/getUserByUserCode/" + userCode, {
-            method: "GET",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-            },
-        });
-
-        if (peticion.ok) {
-            const usuarios = await peticion.json();
-            passwordVerification(usuarios, password);
-        } else {
-            alert("Usuario no encontrado.");
-        }
-    } catch (error) {
-        console.error("Error en la solicitud:", error);
-        alert("No se pudo conectar al servidor.");
-    }
+let searchUserByUserCode = async (userCode, password) => {
+    const userService = new UserService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    let user= await userService.getUserByUserCode(userCode)
+    console.log(user);
+    passwordVerification(user,password);
 };
 
-function passwordVerification(usuarios, password) {
-        if (usuarios && password === usuarios.password) {
+function passwordVerification(user, password) {
+    if (user && password === user.password) {
+        if(user.idRole== 1){
             alert("Redirigiendo al menú principal");
-            location.href = "../UsersOptions.html";
-        } else {
-            alert("Contraseña incorrecta o usuario no encontrado.");
+            location.href = "./homeAdmin.html";
         }
+        else if(user.idRole== 2){
+            alert("Redirigiendo al menú principal");
+            location.href = "../homeSeller.html";
+        }
+        else if(user.idRole== 3){
+            alert("Redirigiendo al menú principal");
+            location.href = "../homeLogisticStaff.html";
+        }
+        else if(user.idRole== 4){
+            alert("Redirigiendo al menú principal");
+            location.href = "../homeSalePointManager.html";
+        }
+    } else {
+        alert("Contraseña incorrecta o usuario no encontrado.");
     }
+    
+
+}
     
 

@@ -54,6 +54,29 @@ export class UserService{
     }
 
 
+    //getUserByUserCode
+    async getUserByUserCode(userCode){
+        try {
+            const peticion = await fetch("http://localhost:8080/api/getUserByUserCode/" + userCode, {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                },
+            });
+    
+            if (peticion.ok) {
+                const usuario = await peticion.json();
+                return usuario;
+            } else {
+                alert("error al encontrar al usuario.");
+            }
+        } catch (error) {
+            console.error("Error en la solicitud:", error);
+            alert("No se pudo conectar al servidor.");
+        }
+    }
+
     //Create user
     async createUser(user){
         try {

@@ -52,10 +52,18 @@ public class UserController {
         return services.getAllUsers();
     }
 
+
     //get user by id
     @CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/api/getUser/{idUser}")
     public void getUserById(@PathVariable Long idUser) {
         User user = services.getUserById(idUser);
+    }
+
+    //get user by userCode
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @GetMapping("/api/getUserByUserCode/{userCode}")
+    public User getUserByUserCode(@PathVariable String userCode) {
+        return services.getUserByUserCode(userCode);
     }
 }
