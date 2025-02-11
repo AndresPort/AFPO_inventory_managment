@@ -97,7 +97,7 @@ main{
     
 }
 
-/* userOptionsMenu */
+/* slide menu*/
 
 .userOptionsMenuContainer{
     top: 55px;
@@ -129,7 +129,6 @@ main{
 }
 
 
-
 /* functions */
 
 .tittle{
@@ -141,14 +140,17 @@ main{
     display: grid;
     grid-template-columns: 150px 150px 150px 150px;
     grid-template-rows: 150px;
-    grid-gap: 50px;
+    grid-gap: 40px;
 }
 
 .usersOptions, 
 .rolesOptions,
-.warehouseOptionsLink,
-.deleteUsersLink{
+.clientOptions,
+.productOptions,
+.warehouseOptions{
     border-radius: 20px;
+    width: 150px;
+    height: 150px;
     box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -160,8 +162,9 @@ main{
 
 .usersOptions:hover, 
 .rolesOptions:hover,
-.warehouseOptionsLink:hover,
-.deleteUsersLink:hover{
+.clientOptions:hover,
+.productOptions:hover,
+.warehouseOptions:hover{
     width: 170px;
     height: 170px;
     position: relative;
@@ -174,8 +177,9 @@ main{
 
 .usersOptions i, 
 .rolesOptions i,
-.warehouseOptions i,
-.deleteUsersLink i{
+.clientOptions i,
+.productOptions i,
+.warehouseOptions i{
     font-size: 50px;
     margin-bottom: 15px;
 }

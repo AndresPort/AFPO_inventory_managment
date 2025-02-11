@@ -56,4 +56,13 @@ public class ClientServices {
         }
         return null;
     }
+
+    //get client By cedula
+    public Client getClientByCedula(String cedula){
+        if(cedula != null){
+            Optional<Client> client= repository.findClientByCedula(cedula);
+            return client.orElse(null);
+        }
+        return null;
+    }
 }

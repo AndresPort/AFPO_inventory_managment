@@ -21,8 +21,8 @@ public class Client {
     private String lastName;
     @Column (name= "secondLastName")
     private String secondLastName;
-    @Column (name= "homeDirection")
-    private String homeDirection;
+    @Column (name= "homeAdress")
+    private String homeAdress;
     //metods
 
     //void constructor
@@ -30,8 +30,8 @@ public class Client {
     }
 
     //constructor without id Client
-    public Client(String homeDirection, String secondLastName, String lastName, String secondName, String firstName, String phoneNumber, String cedula) {
-        this.homeDirection = homeDirection;
+        public Client(String homeAdress, String secondLastName, String lastName, String secondName, String firstName, String phoneNumber, String cedula) {
+        this.homeAdress = homeAdress;
         this.secondLastName = secondLastName;
         this.lastName = lastName;
         this.secondName = secondName;
@@ -42,7 +42,7 @@ public class Client {
 
     //full constructor
 
-    public Client(Long idClient, String cedula, String phoneNumber, String firstName, String secondName, String lastName, String secondLastName, String homeDirection) {
+    public Client(Long idClient, String cedula, String phoneNumber, String firstName, String secondName, String lastName, String secondLastName, String homeAdress) {
         this.idClient = idClient;
         this.cedula = cedula;
         this.phoneNumber = phoneNumber;
@@ -50,7 +50,7 @@ public class Client {
         this.secondName = secondName;
         this.lastName = lastName;
         this.secondLastName = secondLastName;
-        this.homeDirection = homeDirection;
+        this.homeAdress = homeAdress;
     }
 
     //getters and setters
@@ -111,11 +111,11 @@ public class Client {
         this.secondLastName = secondLastName;
     }
 
-    public String getHomeDirection() {
-        return homeDirection;
+    public String getHomeAdress() {
+        return homeAdress;
     }
 
-    public void setHomeDirection(String homeDirection) {
-        this.homeDirection = homeDirection;
+    public void setHomeAdress(String homeAdress) {
+        this.homeAdress = homeAdress;
     }
 }

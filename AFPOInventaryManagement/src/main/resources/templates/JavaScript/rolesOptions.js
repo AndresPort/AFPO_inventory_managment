@@ -49,7 +49,7 @@ let btnCloseUpdateForm=document.getElementById("btnCloseUpdate");
 
 btnCloseUpdateForm.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
-    closeDeleteForm();
+    closeUpdateForm();
 });
 
 
@@ -66,10 +66,6 @@ function showUpdateForm(role){
 function closeUpdateForm(){
     formUpdate.style.visibility="hidden";
 }
-
-
-
-
 
 
 //-------------------pop up rol created---------------------------------------------------

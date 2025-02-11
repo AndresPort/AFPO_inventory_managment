@@ -70,7 +70,6 @@ export class RoleService{
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const result = await response.text();
-            console.log("Resultado del servidor:", result);
             return (true);
             
         } catch (error) {

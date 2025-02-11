@@ -52,11 +52,17 @@ public class ClientController {
         return services.getAllClients();
     }
 
-    //get user by id
+    //get client by id
     @CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/api/getClient/{idClient}")
-    public void getClientById(@PathVariable Long idClient) {
-        Client client = services.getClientById(idClient);
+    public Client getClientById(@PathVariable Long idClient) {
+        return services.getClientById(idClient);
     }
 
+    //get client by cedula
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @GetMapping("/api/getClientByCedula/{cedula}")
+    public Client getClientByCedula(@PathVariable String cedula) {
+        return services.getClientByCedula(cedula);
+    }
 }

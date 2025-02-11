@@ -1,13 +1,13 @@
 package AFPOInventaryManagement.Repositories;
-import AFPOInventaryManagement.Models.Client;
+
+import AFPOInventaryManagement.Models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface ClientRepository extends JpaRepository<Client,Long> {
+public interface ProductRepository extends JpaRepository<Product,Long> {
 
-    Optional<Client> findClientByCedula(String cedula);
-
+    Optional<Product> findProductByName(String name);
 }

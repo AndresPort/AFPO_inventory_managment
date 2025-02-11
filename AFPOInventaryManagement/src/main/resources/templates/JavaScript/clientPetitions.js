@@ -31,10 +31,10 @@ export class ClientService{
         }
     }
 
-    //getClientById
-    async getClientById(idClient){
+    //getClientByCedula
+    async getClientByCedula(cedula){
         try {
-            const response = await fetch(`${this.baseURL}/api/getAllClients/${idClient}`, {
+            const response = await fetch(`${this.baseURL}/api/getClientByCedula/${cedula}`, {
                 method: 'GET',
                 headers: {
                     "Accept": "application/json",
