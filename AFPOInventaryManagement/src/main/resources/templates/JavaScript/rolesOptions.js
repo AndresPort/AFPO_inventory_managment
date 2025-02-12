@@ -4,12 +4,19 @@ window.onload = function() {
     getAllRoles()
 };
 
+//------------------clean register product form inputs----------------------------------------
+function cleanRoleFormInputs(){
+    let rolName = document.getElementById("rolNameCreate");
+    rolName.value=null;
+}
+
 //----------------- btn show create role form----------------------------------
 let btnShowCreateForm = document.getElementById("btnCreateMenu");
 
 btnShowCreateForm.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
     showCreateForm();
+    cleanRoleFormInputs()
 });
 
 
@@ -120,7 +127,7 @@ function showPopUpRolUpdated(){
 function closePopUpRolUpdated(){
     popUpRolUpdated.style.visibility="hidden";
 }
-
+ 
 
 //------------------pop up an error has ocurred-----------------------
 let popUpError=document.getElementById("popUpError");

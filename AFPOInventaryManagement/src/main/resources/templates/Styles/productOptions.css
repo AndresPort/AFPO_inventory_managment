@@ -54,6 +54,7 @@ header{
   cursor: pointer;
 }
 
+
 /* Body */
 
 html, body {
@@ -100,36 +101,35 @@ main{
 }
 
 
-
 /* slide menu*/
 
 .userOptionsMenuContainer{
-  top: 55px;
-  left: -250px;
-  position: absolute;
-  transition: left 1s ease;
+    top: 55px;
+    left: -250px;
+    position: absolute;
+    transition: left 1s ease;
 }
 
 .activeUserOptionsMenuContainer{
-  left: 0;
+    left: 0;
 }
 
 .userOptionsMenu{
-  background-color: rgb(220, 220, 220);
-  width: 250px;
-  height: 89vh;
+    background-color: rgb(220, 220, 220);
+    width: 250px;
+    height: 89vh;
 }
 
 .userOptionsMenu li{
-  list-style-type: none;
-  padding: 15px;
-  
+    list-style-type: none;
+    padding: 15px;
+    
 }
 
 .userOptionsMenu a{
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-  font-size: 22px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 22px;
 }
 
 
@@ -137,12 +137,12 @@ main{
 
 .actionButtonsFrame{
   display: flex;
-  width: 350px;
-  justify-self: center;
-  justify-content: center;
+  justify-content: space-between;
+  width: 700px;
 }
 
-.actionButtonsFrame__CreateRol{
+.actionButtonsFrame__CreateProducts,
+.actionButtonsFrame__SearchProduct{
     width: 300px;
     height: 60px;
     border-radius: 10px;
@@ -152,7 +152,8 @@ main{
     font-size: 15px;
   }
 
-.actionButtonsFrame__CreateRol:hover{
+.actionButtonsFrame__CreateProducts:hover,
+.actionButtonsFrame__SearchProduct:hover{
   width: 330px;
   height: 80px;
   position: relative;
@@ -163,44 +164,56 @@ main{
   font-size: 17px;  
 }
 
-/* create role form */
 
-.formsCreateFrame{
+/* Register product form */
+
+.formRegisterFrame{
   visibility: hidden;
   position: absolute;
-  top: 200px;
-  padding-top: 15px;
+  width: 450px;
+  height: 490px;
+  top: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 50px;
   background-color: rgb(255, 255, 255);
-  width: 350px;
-  height: 280px;
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnCloseCreate{
-  color: rgb(220, 220, 220);
-  position: relative;
-  left: 160px;
-  top: -10px;
+.btncloseRegister{
+  position:absolute;
+  top:9px;
+  right: 10px;
+  margin-top: 5px;
+  margin-right: 8px;
   cursor: pointer;
 }
 
-input{
-  border: none;
-  border-bottom: 1px solid rgb(0, 0, 0);
-  width: 250px;
-  height: 30px;
-  font-size: 20px;
-  text-align: center;
-  margin-top: 30px;
-  margin-left: 10px;
+.registerProductForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
 }
 
-.formsCreateFrame__button{
-  margin-left: 10px;
-  margin-top: 50px;
+.registerProductForm label{
+  font-size: 19px;
+}
+
+.registerProductForm input,
+.formRegisterFrame__role-selectInput{
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  width: 300px;
+  height: 30px;
+}
+
+.formRegisterFrame__button{
+  margin-left: 28px;
+  margin-top: 20px;
   width: 250px;
   height: 45px;
   border-radius: 20px;
@@ -212,21 +225,14 @@ input{
   transition: background-color 0.6s ;
 }
 
-.formsCreateFrame__button:hover{
+.formRegisterFrame__button:hover{
   background-color:rgb(53, 252, 100) ;
 }
 
-.formsCreateFrame__button:active{
-  margin-top: 45px;
-  width: 270px;
-  height: 65px;
-  border-radius: 50px;
-  
-}
 
-/* Pop up rol created */
+/* Pop up product registered */
 
-.popUpRolCreated{
+.popUpProductRegistered{
   visibility: hidden;
   position: absolute;
   top: 200px;
@@ -240,29 +246,32 @@ input{
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnClosePopUpRolCreated{
+.btnClosePopUpProductRegistered{
   color: rgb(220, 220, 220);
-  position: relative;
-  left: 160px;
-  top: -10px;
+  position: absolute;
+  left: 332px;
+  top: 1px;
   cursor: pointer;
+  padding-top: 1px;
 }
 
 .fa-circle-check{
-  margin-top: 15px;
   font-size: 70px;
+  text-align: center;
+  margin-top: 20px;
 }
 
-.rolCreatedText{
-  font-size: 25px;
-  margin-top: 25px;
+.productRegisteredText{
+  font-size: 23px;
+  text-align: center;
+  margin-top: 15px;
   margin-left: 5px;
 }
 
 
 /* Pop up rol deleted */
 
-.popUpRolDeleted{
+.popUpProductDeleted{
   visibility: hidden;
   position: absolute;
   top: 200px;
@@ -276,7 +285,7 @@ input{
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnClosePopUpRolDeleted{
+.btnClosePopUpProductDeleted{
   color: rgb(220, 220, 220);
   position: relative;
   left: 160px;
@@ -284,20 +293,17 @@ input{
   cursor: pointer;
 }
 
-.fa-circle-check{
-  margin-top: 15px;
-  font-size: 70px;
-}
 
-.rolDeletedText{
-  font-size: 25px;
+.productDeletedText{
+  font-size: 23px;
+  text-align: center;
   margin-top: 25px;
   margin-left: 5px;
 }
 
 /* Pop up rol updated */
 
-.popUpRolUpdated{
+.popUpProductUpdated{
   visibility:hidden;
   position: absolute;
   top: 200px;
@@ -307,11 +313,11 @@ input{
   align-items: center;
   background-color: rgb(255, 255, 255);
   width: 350px;
-  height: 250px;
+  height: 270px;
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnClosePopUpRolUpdated{
+.btnClosePopUpProductUpdated{
   color: rgb(220, 220, 220);
   position: relative;
   left: 160px;
@@ -319,15 +325,12 @@ input{
   cursor: pointer;
 }
 
-.fa-circle-check{
-  margin-top: 15px;
-  font-size: 70px;
-}
 
-.rolUpdatedText{
+
+.productUpdatedText{
   text-align: center;
   font-size: 25px;
-  margin-top: 25px;
+  margin-top: 15px;
   margin-left: 5px;
 }
 
@@ -366,90 +369,40 @@ input{
   margin-left: 5px;
 }
 
-/* Update Role form */  
 
-.formUpdateFrame{
-  visibility: hidden;
-  position: absolute;
-  top: 200px;
-  padding-top: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: rgb(255, 255, 255);
-  width: 350px;
-  height: 280px;
-  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
-}
-
-.btnCloseUpdate{
-  color: rgb(220, 220, 220);
-  position: relative;
-  left: 160px;
-  top: -10px;
-  cursor: pointer;
-}
-
-input{
-  border: none;
-  border-bottom: 1px solid rgb(0, 0, 0);
-  width: 250px;
-  height: 30px;
-  font-size: 20px;
-  text-align: center;
-  margin-top: 30px;
-  margin-left: 10px;
-}
-
-.formUpdateFrame__button{
-  margin-left: 10px;
-  margin-top: 50px;
-  width: 250px;
-  height: 45px;
-  border-radius: 20px;
-  border: 1px solid rgb(0,0,0,0.1);
-  background-color:rgb(0, 0,0) ;
-  color: rgb(250,250,250);
-  box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.4);
-  font-size: 20px;
-  transition: background-color 0.6s ;
-}
-
-.formUpdateFrame__button:hover{
-  background-color:rgb(53, 252, 100) ;
-}
-
-.formUpdateFrame__button:active{
-  margin-top: 45px;
-  width: 270px;
-  height: 65px;
-  border-radius: 50px;
-  
-}
+/* search product space */
 
 
-/* table all users */
+/* table all products */
 
 .tableFrame{
+  visibility: visible;
   margin-top: 30px;
   width: 1220px;
 }
 
+.tableFrame h4{
+  position: relative;
+  left: 1185px;
+  top: 70px;
+  color: rgb(43, 43, 43);
+  cursor: pointer;
+}
 
 table {
-    text-align: left;
+    text-align: center;
     line-height: 20px;
     border-collapse: separate;
     border-spacing: 0;
-    border: 2px solid #ed1c40;
+    border: 2px solid rgb(43, 43, 43);
     width: 99%;
     margin: 50px auto;
     border-radius: .25rem;
   }
   
   thead tr:first-child {
-    background: #ed1c40;
-    color: #fff;
+    background: rgb(43, 43, 43);
+    color: rgb(43, 43, 43);
     border: none;
   }
   
@@ -463,15 +416,15 @@ table {
     padding-top: 10px;
     padding-bottom:10px ;
     font-weight: 500;
-    border-right: 0.1px solid rgba(0, 0, 0,0.1) ; 
+    border-right: 0.1px solid rgb(43, 43, 43) ; 
   }
   
   thead tr:last-child th {
-    border-bottom: 3px solid #ddd;
+    border-bottom: 3px solid rgb(43, 43, 43);
   }
   
   tbody tr:hover {
-    background-color: #f2f2f2;
+    background-color: rgb(242,242,242);
     cursor: default;
   }
   
@@ -480,16 +433,16 @@ table {
   }
   
   tbody td {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgb(43, 43, 43);
   }
   
   td:last-child {
-    text-align: right;
+    text-align: center;
     padding-right: 10px;
   }
   
   .button {
-    color: #aaa;
+    color: rgb(43, 43, 43);
     cursor: pointer;
     vertical-align: middle;
     margin-top: -4px;
@@ -506,6 +459,135 @@ table {
   .fa-trash:hover {
     color: #dc2a2a;
   }
+
+
+/* Modify product form */  
+
+.formUpdateFrame{
+  visibility: hidden;
+  position: absolute;
+  width: 450px;
+  height: 490px;
+  top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btncloseUpdateFrame{
+  position:absolute;
+  top:9px;
+  right: 10px;
+  margin-top: 5px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.updateProductForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+}
+
+.updateProductForm label{
+  font-size: 19px;
+}
+
+.updateProductForm input,
+.formUpdateFrame__product-selectInput{
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  width: 300px;
+  height: 30px;
+}
+
+.formsFrame__button{
+  margin-top: 20px;
+  width: 250px;
+  height: 45px;
+  border-radius: 20px;
+  border: 1px solid rgb(0,0,0,0.1);
+  background-color:rgb(0, 0,0) ;
+  color: rgb(250,250,250);
+  box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+  transition: background-color 0.6s ;
+}
+
+.formsFrame__button:hover{
+  background-color:rgb(53, 252, 100) ;
+}
+
+/* searchProductByName form */ 
+
+.searchProductByNameFrame{
+  visibility: hidden;
+  position: absolute;
+  top: 200px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 350px;
+  height: 250px;
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.searchProductByNameForm{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.searchProductByNameTittle{
+  position:relative;
+  text-align: center;
+  top: 10px;
+}
+
+.BtnCloseSearchProductByNameForm{
+  color: rgb(220, 220, 220);
+  position: relative;
+  left: 160px;
+  top: -67px;
+  cursor: pointer;
+}
+
+.formSearchByNameFrameInput{
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  width: 300px;
+  height: 30px;
+  font-size: 20px;
+}
+
+
+.btnsearchProductByNameForm{
+  margin-top: 20px;
+  width: 250px;
+  height: 45px;
+  border-radius: 20px;
+  border: 1px solid rgb(0,0,0,0.1);
+  background-color:rgb(0, 0,0) ;
+  color: rgb(250,250,250);
+  box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+  transition: background-color 0.6s ;
+}
+
+.btnsearchProductByNameForm:hover{
+  background-color:rgb(53, 252, 100) ;
+}
 
 /* Footer */
 

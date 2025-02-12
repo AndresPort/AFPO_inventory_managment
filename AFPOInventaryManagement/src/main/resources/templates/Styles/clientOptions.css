@@ -100,35 +100,36 @@ main{
   
 }
 
-/* clientOptionsMenu */
 
-.clientOptionsMenuContainer{
-    top: 55px;
-    left: -250px;
-    position: absolute; 
-    transition: left 1s ease;
+/* slide menu*/
+
+.userOptionsMenuContainer{
+  top: 55px;
+  left: -250px;
+  position: absolute;
+  transition: left 1s ease;
 }
 
-.activeClientOptionsMenuContainer{
-    left: 0;
+.activeUserOptionsMenuContainer{
+  left: 0;
 }
 
-.clientOptionsMenu{
-    background-color: rgb(220, 220, 220);
-    width: 250px;
-    height: 89vh;
+.userOptionsMenu{
+  background-color: rgb(220, 220, 220);
+  width: 250px;
+  height: 89vh;
 }
 
-.clientOptionsMenu li{
-    list-style-type: none;
-    padding: 15px;
-    
+.userOptionsMenu li{
+  list-style-type: none;
+  padding: 15px;
+  
 }
 
-.clientOptionsMenu a{
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-size: 22px;
+.userOptionsMenu a{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 22px;
 }
 
 

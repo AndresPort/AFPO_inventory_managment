@@ -5,12 +5,39 @@ window.onload = function() {
     getAllClients()
 };
 
+//------------------clean register client form inputs----------------------------------------
+function cleanClientFormInputs(){
+    let cedula = document.getElementById("cedulaRegister")
+    cedula.value=client.cedula;
+
+    let phoneNumber = document.getElementById("phoneNumberRegister")
+    phoneNumber.value=client.phoneNumber;
+
+    let firstName = document.getElementById("firstNameRegister")
+    firstName.value=client.firstName;
+
+    let secondName = document.getElementById("secondNameRegister")
+    secondName.value=client.secondName;
+    
+
+    let lastName = document.getElementById("lastNameRegister")
+    lastName.value=client.lastName;
+
+
+    let secondLastName = document.getElementById("secondLastNameRegister")
+    secondLastName.value=client.secondLastName;
+
+    let homeAdress = document.getElementById("homeAdressRegister")
+    homeAdress.value=client.homeAdress;
+}
+
 //----------------- btn show register client form----------------------------------
 let btnShowRegisterForm = document.getElementById("btnRegisterMenu");
 
 btnShowRegisterForm.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
     showRegisterForm();
+    cleanClientFormInputs();
 });
 
 
@@ -346,5 +373,20 @@ async function getClientByClientCode(clientCode) {
         </tr>`
 
     document.querySelector("#table tbody").innerHTML = rowContent;
+
+    // Asignar eventos dinámicamente
+    document.querySelectorAll(".fa-trash").forEach((trashIcon) => {
+        trashIcon.addEventListener("click", (event) => {
+            const idClient = event.target.getAttribute("data-id");
+            deleteClient(idClient);
+        });
+    });
+
+    document.querySelectorAll(".fa-pen").forEach((editIcon) => {
+        editIcon.addEventListener("click", (event) => {
+            const idClient = event.target.getAttribute("data-id");
+            updateClient(client)
+        });
+    });
     
 }

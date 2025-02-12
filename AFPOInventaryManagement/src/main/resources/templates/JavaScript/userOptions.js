@@ -5,6 +5,39 @@ window.onload = function() {
     getAllUsers()
 };
 
+//------------------clean register product form inputs----------------------------------------
+function cleanUserFormInputs(){
+    let userCode =document.getElementById("userCodeRegister");
+    userCode.value=user.userCode;
+
+    let password = document.getElementById("passwordRegister")
+    password.value=user.password;
+    
+    let firstName = document.getElementById("firstNameRegister")
+    firstName.value=user.firstName;
+
+    let secondName = document.getElementById("secondNameRegister")
+    secondName.value=user.secondName;
+    
+
+    let lastName = document.getElementById("lastNameRegister")
+    lastName.value=user.lastName;
+
+
+    let secondLastName = document.getElementById("secondLastNameRegister")
+    secondLastName.value=user.secondLastName;
+
+
+    let cedula = document.getElementById("cedulaRegister")
+    cedula.value=user.cedula;
+
+    let phoneNumber = document.getElementById("phoneNumberRegister")
+    phoneNumber.value=user.phoneNumber;
+
+    let email = document.getElementById("emailRegister")
+    email.value=user.email;
+}
+
 //---------------------------contenido del combobox de los roles------------------------------
 
 async function fillRoleCombobox() {
@@ -28,7 +61,8 @@ let btnShowRegisterForm = document.getElementById("btnRegisterMenu");
 btnShowRegisterForm.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
     showRegisterForm();
-    fillRoleCombobox()
+    fillRoleCombobox();
+    cleanUserFormInputs();
 });
 
 
@@ -396,4 +430,19 @@ async function getUserByUserCode(userCode) {
         </tr>`
 
     document.querySelector("#table tbody").innerHTML = rowContent;
+
+    // Asignar eventos dinámicamente
+    document.querySelectorAll(".fa-trash").forEach((trashIcon) => {
+        trashIcon.addEventListener("click", (event) => {
+            const idUser = event.target.getAttribute("data-id");
+            deleteUser(idUser);
+        });
+    });
+
+    document.querySelectorAll(".fa-pen").forEach((editIcon) => {
+        editIcon.addEventListener("click", (event) => {
+            const idUser = event.target.getAttribute("data-id");
+            updateUser(user)
+        });
+    });
 }
