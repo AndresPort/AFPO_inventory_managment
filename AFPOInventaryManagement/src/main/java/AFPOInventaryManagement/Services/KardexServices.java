@@ -56,11 +56,11 @@ public class KardexServices {
         return null;
     }
 
-    //get kardex by name
+    //get kardex by category
 
-    public Kardex getKardexByType(String type){
-        if(type != null  ){
-            Optional<Kardex> kardex= repository.findKardexByType(type);
+    public Kardex getKardexByCategory(String category){
+        if(category != null  ){
+            Optional<Kardex> kardex= repository.findKardexByCategory(category);
             return kardex.orElse(null);
         }
         return null;

@@ -13,19 +13,19 @@ public class Kardex {
     private Long idProduct;
     @Column (name= "quantity")
     private int quantity;
-    @Column (name= "type")
-    private String type;
+    @Column (name= "category")
+    private String category;
 
     //metods
     //empty constructor
     public Kardex() {
     }
     //full constructor
-    public Kardex(Long idKardex, Long idProduct, int quantity, String type) {
+    public Kardex(Long idKardex, Long idProduct, int quantity, String category) {
         this.idKardex = idKardex;
         this.idProduct = idProduct;
         this.quantity = quantity;
-        this.type = type;
+        this.category = category;
     }
 
     //getter and setters
@@ -53,11 +53,11 @@ public class Kardex {
         this.quantity = quantity;
     }
 
-    public String getType() {
-        return type;
+    public String getCategory() {
+        return category;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

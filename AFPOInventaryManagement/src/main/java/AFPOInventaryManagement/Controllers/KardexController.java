@@ -39,7 +39,7 @@ public class KardexController {
     }
 
     //delete kardex
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "http://127.0.0.1:5500") 
     @DeleteMapping("/api/deleteKardex/{idKardex}")
     public void deleteKardex(@PathVariable Long idKardex) {
         services.deleteKardex(idKardex);
@@ -62,8 +62,8 @@ public class KardexController {
 
     //get kardex by name
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @GetMapping("/api/getKardexByType/{type}")
-    public Kardex getKardexByType(@PathVariable String type) {
-        return services.getKardexByType(type);
+    @GetMapping("/api/getKardexByCategory/{category}")
+    public Kardex getKardexByCategory(@PathVariable String category) {
+        return services.getKardexByCategory(category);
     }
 }

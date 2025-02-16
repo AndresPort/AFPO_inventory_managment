@@ -77,6 +77,7 @@ export class RoleService{
             throw error;
         }
     }
+
     //Update role
     async updateRole(role){
         try {

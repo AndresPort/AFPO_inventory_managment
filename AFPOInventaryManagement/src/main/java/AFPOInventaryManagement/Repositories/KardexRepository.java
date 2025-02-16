@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface KardexRepository extends JpaRepository<Kardex,Long> {
 
-    Optional<Kardex> findKardexByType(String type);
+    Optional<Kardex> findKardexByCategory(String category);
 }
