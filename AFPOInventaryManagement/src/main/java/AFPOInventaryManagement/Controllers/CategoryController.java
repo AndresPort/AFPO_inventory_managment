@@ -53,7 +53,7 @@ public class CategoryController {
 
     //get category by id
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @GetMapping("/api/getCategory/{idCategory}")
+    @GetMapping("/api/getCategoryById/{idCategory}")
     public Category getCategoryById(@PathVariable Long idCategory) {
         return services.getCategoryById(idCategory);
     }

@@ -1,26 +1,26 @@
-import{RoleService} from "./rolePetitions.js";
+import{CategoryService} from "./categoryPetitions.js";
 
 window.onload = function() {
-    getAllRoles()
+    getAllCategories()
 };
 
 //------------------clean register product form inputs----------------------------------------
-function cleanRoleFormInputs(){
-    let rolName = document.getElementById("rolNameCreate");
-    rolName.value=null;
+function cleanCategoryFormInputs(){
+    let categoryName = document.getElementById("categoryNameCreate");
+    categoryName.value=null;
 }
 
-//----------------- btn show create role form----------------------------------
+//----------------- btn show create category form----------------------------------
 let btnShowCreateForm = document.getElementById("btnCreateMenu");
 
 btnShowCreateForm.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
     showCreateForm();
-    cleanRoleFormInputs()
+    cleanCategoryFormInputs()
 });
 
 
-//----------------------------btn close create role form--------------------------------
+//----------------------------btn close create category form--------------------------------
 
 let btnCloseCreateForm=document.getElementById("btnCloseCreate");
 
@@ -30,7 +30,7 @@ btnCloseCreateForm.addEventListener("click", event => {
 });
 
 
-//----------------------show and close create role form-------------------------------------------
+//----------------------show and close create category form-------------------------------------------
 
 let formCreate = document.getElementById("formsCreateFrame");
 
@@ -42,15 +42,15 @@ function closeCreateForm(){
     formCreate.style.visibility="hidden";
 }
 
-//---------------------------Btn create role---------------------------------
-let btnCreateRole= document.getElementById("btnCreateRole");
+//---------------------------Btn create category---------------------------------
+let btnCreateCategory= document.getElementById("btnCreateCategory");
 
-btnCreateRole.addEventListener("click", event => {
+btnCreateCategory.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
-    createRole()
+    createCategory()
 });
 
-//----------------------------btn close update role form--------------------------------
+//----------------------------btn close update category form--------------------------------
 
 let btnCloseUpdateForm=document.getElementById("btnCloseUpdate");
 
@@ -60,14 +60,14 @@ btnCloseUpdateForm.addEventListener("click", event => {
 });
 
 
-//----------------------show and close update role form-------------------------------------------
+//----------------------show and close update category form-------------------------------------------
 
 let formUpdate = document.getElementById("formUpdateFrame");
-let inputRolName= document.getElementById("rolNameUpdate")
+let inputRolName= document.getElementById("categoryNameUpdate")
 
-function showUpdateForm(role){
+function showUpdateForm(category){
     formUpdate.style.visibility="visible";
-    inputRolName.value = role.rolName;
+    inputRolName.value = category.categoryName;
 }
 
 function closeUpdateForm(){
@@ -75,7 +75,7 @@ function closeUpdateForm(){
 }
 
 
-//-------------------pop up rol created---------------------------------------------------
+//-------------------pop up category created---------------------------------------------------
 let popUpRolCreated=document.getElementById("popUpRolCreated");
 
 let btnClosePopUpRolCreated = document.getElementById("btnClosePopUpRolCreated");
@@ -93,7 +93,7 @@ function closePopUpRolCreated(){
     popUpRolCreated.style.visibility="hidden";
 }
 
-//--------------------------pop up rol deleted--------------------------------------------
+//--------------------------pop up category deleted--------------------------------------------
 let popUpRolDeleted = document.getElementById("popUpRolDeleted");
 let btnClosePopUpRolDeleted = document.getElementById("btnClosePopUpRolDeleted");
 
@@ -110,7 +110,7 @@ function closePopUpRolDeleted(){
     popUpRolDeleted.style.visibility="hidden";
 }
 
-//-------------------pop up rol updated---------------------------------------------------
+//-------------------pop up category updated---------------------------------------------------
 let popUpRolUpdated=document.getElementById("popUpRolUpdated");
 
 let btnClosePopUpRolUpdated = document.getElementById("btnClosePopUpRolUpdated");
@@ -148,18 +148,19 @@ function closePopUpError(){
 
 
 
-//--------------------------pop up rol updated--------------------------------------------
+//--------------------------pop up category updated--------------------------------------------
 
 
 //----------------------------------------------------------------------
 //--------------------------Functions----------------------------------
 //----------------------------------------------------------------------
 
-//--------------------------Create Role-----------------------------------    
-async function createRole(){
-    const roleService = new RoleService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-    let rolName = document.getElementById("rolNameCreate").value;
-    let outcome = await roleService.createRole(rolName); 
+//--------------------------Create Category-----------------------------------    
+async function createCategory(){
+    const categoryService = new CategoryService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    let categoryName = document.getElementById("categoryNameCreate").value;
+    let outcome = await categoryService.createCategory(categoryName); 
+    console.log("Resultado del servidor:", outcome);
     closeCreateForm();
     
     if (outcome === true) {
@@ -167,13 +168,13 @@ async function createRole(){
     } else {
         showPopUpError();
     }   
-    getAllRoles();
+    getAllCategorys();
 }
 
-//-----------------------------Delete Role--------------------------------
-async function deleteRole(idRole) {
-    const roleService = new RoleService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-    let outcome = await roleService.deleteRole(idRole); 
+//-----------------------------Delete Category--------------------------------
+async function deleteCategory(idCategory) {
+    const categoryService = new CategoryService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    let outcome = await categoryService.deleteCategory(idCategory); 
     console.log("Resultado del servidor:", outcome);
     
     if (outcome === true) {
@@ -181,30 +182,30 @@ async function deleteRole(idRole) {
     } else {
         showPopUpError();
     }
-    getAllRoles();
+    getAllCategorys();
 }
 
-//-----------------------------Update Role--------------------------------
-async function updateRole(role) {
-    const roleService = new RoleService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-    showUpdateForm(role)
+//-----------------------------Update Category--------------------------------
+async function updateCategory(category) {
+    const categoryService = new CategoryService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    showUpdateForm(category)
 
-    let btnUpdateRole= document.getElementById("btnUpdateRole");
+    let btnUpdateCategory= document.getElementById("btnUpdateCategory");
 
-    btnUpdateRole.addEventListener("click", event => {
+    btnUpdateCategory.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
     
-    let newRolName = document.getElementById("rolNameUpdate").value;
-    role.rolName= newRolName;
-    confirmUpdateRole(role);
+    let newRolName = document.getElementById("categoryNameUpdate").value;
+    category.categoryName= newRolName;
+    confirmUpdateCategory(category);
 });
 
 }
 
-//-----------------------------Update Role--------------------------------
-async function confirmUpdateRole(role){
-    const roleService = new RoleService('http://127.0.0.1:8080')
-    let outcome=roleService.updateRole(role);
+//-----------------------------Update Category--------------------------------
+async function confirmUpdateCategory(category){
+    const categoryService = new CategoryService('http://127.0.0.1:8080')
+    let outcome=categoryService.updateCategory(category);
 
     closeUpdateForm();
     if (await outcome === true) {
@@ -212,24 +213,24 @@ async function confirmUpdateRole(role){
     } else {
         showPopUpError();
     }
-    getAllRoles();
+    getAllCategorys();
 }
 
 
-//-----------------------------Get all Roles--------------------------------
-async function getAllRoles() {
-    const roleService = new RoleService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-    const roles = await roleService.getAllRoles(); // Llamar al método de la clase
+//-----------------------------Get all Categorys--------------------------------
+async function getAllCategorys() {
+    const categoryService = new CategoryService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    const categorys = await categoryService.getAllCategorys(); // Llamar al método de la clase
 
     let tableContent= "";
 
-    for(let role of roles){
+    for(let category of categorys){
         let rowContent = `<tr>
-        <td>${role.idRole}</td>
-        <td>${role.rolName}</td>
+        <td>${category.idCategory}</td>
+        <td>${category.categoryName}</td>
         <td>
-            <i class="fa-solid fa-pen" data-id="${role.idRole}" data-action="update"></i>
-            <i class="fa-solid fa-trash" data-id="${role.idRole}" data-action="delete"></i>
+            <i class="fa-solid fa-pen" data-id="${category.idCategory}" data-action="update"></i>
+            <i class="fa-solid fa-trash" data-id="${category.idCategory}" data-action="delete"></i>
 
         </td>
         </tr>`
@@ -242,16 +243,16 @@ async function getAllRoles() {
     // Asignar eventos dinámicamente
     document.querySelectorAll(".fa-trash").forEach((trashIcon) => {
         trashIcon.addEventListener("click", (event) => {
-            const idRole = event.target.getAttribute("data-id");
-            deleteRole(idRole);
+            const idCategory = event.target.getAttribute("data-id");
+            deleteCategory(idCategory);
         });
     });
 
     document.querySelectorAll(".fa-pen").forEach((editIcon) => {
         editIcon.addEventListener("click", (event) => {
-            const idRole = event.target.getAttribute("data-id");
-            const role = roles.find((r) => r.idRole === parseInt(idRole)); // Buscar el rol por id
-            updateRole(role)
+            const idCategory = event.target.getAttribute("data-id");
+            const category = categorys.find((r) => r.idCategory === parseInt(idCategory)); // Buscar el category por id
+            updateCategory(category)
         });
     });
 

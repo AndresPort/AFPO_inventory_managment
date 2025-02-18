@@ -148,6 +148,7 @@ main{
 .clientOptions,
 .productOptions,
 .kardexOptions,
+.categoryOptions,
 .warehouseOptions{
     border-radius: 20px;
     width: 150px;
@@ -166,6 +167,7 @@ main{
 .clientOptions:hover,
 .productOptions:hover,
 .kardexOptions:hover,
+.categoryOptions:hover,
 .warehouseOptions:hover{
     width: 170px;
     height: 170px;
@@ -182,6 +184,7 @@ main{
 .clientOptions i,
 .productOptions i,
 .kardexOptions i,
+.categoryOptions i,
 .warehouseOptions i{
     font-size: 50px;
     margin-bottom: 15px;

@@ -1,4 +1,4 @@
-export class RoleService{
+export class CategoryService{
 
     //constructor
     constructor(baseURL) {
@@ -7,11 +7,11 @@ export class RoleService{
 
     //CRUD Metods
 
-    //getAllRoles
+    //getAllCategories
 
-    async getAllRoles() {
+    async getAllCategories() {
         try {
-            const response = await fetch(`${this.baseURL}/api/getAllRoles`, {
+            const response = await fetch(`${this.baseURL}/api/getAllCategories`, {
                 method: 'GET',
                 headers: {
                     "Accept": "application/json",
@@ -23,18 +23,18 @@ export class RoleService{
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
-            const roles = await response.json();
-            return roles;
+            const categorys = await response.json();
+            return categorys;
         } catch (error) {
-            console.error("Error fetching roles:", error);
+            console.error("Error fetching categorys:", error);
             throw error;
         }
     }
 
-    //get role by id
-    async getRoleById(idRole) {
+    //get category by id
+    async getCategoryById(idCategory) {
         try {  
-            const response = await fetch(`${this.baseURL}/api/getRoleById/${idRole}`, {
+            const response = await fetch(`${this.baseURL}/api/getCategoryById/${idCategory}`, {
                 method: 'GET',
                 headers: {
                     "Accept": "application/json",
@@ -46,19 +46,19 @@ export class RoleService{
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             
-            const role = await response.json();
-            return role;
+            const category = await response.json();
+            return category;
         } catch (error) {
-            console.error("Error fetching roles:", error);
+            console.error("Error fetching categorys:", error);
             throw error;
         }
     }
 
 
-    //Create role
-    async createRole(rolName){
+    //Create category
+    async createCategory(categoryName){
         try {
-            const response = await fetch(`${this.baseURL}/api/createRole/${rolName}`, {
+            const response = await fetch(`${this.baseURL}/api/createCategory/${categoryName}`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -69,24 +69,25 @@ export class RoleService{
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
+            const result = await response.text();
             return (true);
             
         } catch (error) {
-            console.error("Error fetching roles:", error);
+            console.error("Error fetching categorys:", error);
             throw error;
         }
     }
 
-    //Update role
-    async updateRole(role){
+    //Update category
+    async updateCategory(category){
         try {
-            const response = await fetch(`${this.baseURL}/api/updateRole`, {
+            const response = await fetch(`${this.baseURL}/api/updateCategory`, {
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(role)
+                body: JSON.stringify(category)
             });
 
             if (!response.ok) {
@@ -95,16 +96,16 @@ export class RoleService{
             return (true);
             
         } catch (error) {
-            console.error("Error fetching roles:", error);
+            console.error("Error fetching categorys:", error);
             throw error;
         }
     }
 
 
-    //delete rol
-    async deleteRole(idRole){
+    //delete category
+    async deleteCategory(idCategory){
         try {
-            const response = await fetch(`${this.baseURL}/api/deleteRole/${idRole}`, {
+            const response = await fetch(`${this.baseURL}/api/deleteCategory/${idCategory}`, {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
@@ -118,7 +119,7 @@ export class RoleService{
             return (true);
             
         } catch (error) {
-            console.error("Error fetching roles:", error);
+            console.error("Error fetching categorys:", error);
             throw error;
         }
     

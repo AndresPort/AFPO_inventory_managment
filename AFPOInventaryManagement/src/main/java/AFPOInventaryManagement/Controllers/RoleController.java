@@ -11,7 +11,6 @@ import java.util.List;
 @RestController
 public class RoleController {
     //atributes
-    private Role rol = new Role();
     @Autowired
     private RoleServices services;
 
@@ -26,10 +25,10 @@ public class RoleController {
     //Create Role
     @CrossOrigin(origins = "http://127.0.0.1:5500")
     @PostMapping("/api/createRole/{rolName}")
-    public ResponseEntity<String> createRole(@PathVariable String rolName){
-        this.rol.setRolName(rolName);
-        services.createRole(this.rol);
-        return ResponseEntity.ok("Role created successfully");
+    public void createRole(@PathVariable String rolName){
+        Role role = new Role();  // Se crea una nueva instancia
+        role.setRolName(rolName);
+        services.createRole(role);
     }
 
     //get all roles

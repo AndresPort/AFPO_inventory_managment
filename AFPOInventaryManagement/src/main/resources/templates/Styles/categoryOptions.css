@@ -99,6 +99,8 @@ main{
   
 }
 
+
+
 /* slide menu*/
 
 .userOptionsMenuContainer{
@@ -140,7 +142,7 @@ main{
   justify-content: center;
 }
 
-.actionButtonsFrame__CreateRol{
+.actionButtonsFrame__createCategory{
     width: 300px;
     height: 60px;
     border-radius: 10px;
@@ -150,7 +152,7 @@ main{
     font-size: 15px;
   }
 
-.actionButtonsFrame__CreateRol:hover{
+.actionButtonsFrame__createCategory:hover{
   width: 330px;
   height: 80px;
   position: relative;
@@ -161,7 +163,7 @@ main{
   font-size: 17px;  
 }
 
-/* create role form */
+/* create category form */
 
 .formsCreateFrame{
   visibility: hidden;
@@ -224,7 +226,7 @@ input{
 
 /* Pop up rol created */
 
-.popUpRolCreated{
+.popUpCategoryCreated{
   visibility: hidden;
   position: absolute;
   top: 200px;
@@ -238,7 +240,7 @@ input{
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnClosePopUpRolCreated{
+.btnClosePopUpCategoryCreated{
   color: rgb(220, 220, 220);
   position: relative;
   left: 160px;
@@ -251,16 +253,16 @@ input{
   font-size: 70px;
 }
 
-.rolCreatedText{
+.categoryCreatedText{
   font-size: 25px;
   margin-top: 25px;
   margin-left: 5px;
 }
 
 
-/* Pop up rol deleted */
+/* Pop up category deleted */
 
-.popUpRolDeleted{
+.popUpCategoryDeleted{
   visibility: hidden;
   position: absolute;
   top: 200px;
@@ -274,7 +276,7 @@ input{
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnClosePopUpRolDeleted{
+.btnClosePopUpCategoryDeleted{
   color: rgb(220, 220, 220);
   position: relative;
   left: 160px;
@@ -287,15 +289,15 @@ input{
   font-size: 70px;
 }
 
-.rolDeletedText{
+.categoryDeletedText{
   font-size: 25px;
   margin-top: 25px;
   margin-left: 5px;
 }
 
-/* Pop up rol updated */
+/* Pop up category updated */
 
-.popUpRolUpdated{
+.popUpCategoryUpdated{
   visibility:hidden;
   position: absolute;
   top: 200px;
@@ -309,7 +311,7 @@ input{
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnClosePopUpRolUpdated{
+.btnClosePopUpCategoryUpdated{
   color: rgb(220, 220, 220);
   position: relative;
   left: 160px;
@@ -322,14 +324,14 @@ input{
   font-size: 70px;
 }
 
-.rolUpdatedText{
+.categoryUpdatedText{
   text-align: center;
   font-size: 25px;
   margin-top: 25px;
   margin-left: 5px;
 }
 
-/* Pop up rol Error */
+/* Pop up category Error */
 
 .popUpError{
   visibility: hidden;
@@ -364,7 +366,7 @@ input{
   margin-left: 5px;
 }
 
-/* Update Role form */  
+/* Update Category form */  
 
 .formUpdateFrame{
   visibility: hidden;
@@ -378,6 +380,10 @@ input{
   width: 350px;
   height: 280px;
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.updateTittle{
+    font-size: 29px;
 }
 
 .btnCloseUpdate{
