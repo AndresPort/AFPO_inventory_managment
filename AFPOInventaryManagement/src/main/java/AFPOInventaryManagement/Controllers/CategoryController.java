@@ -21,8 +21,10 @@ public class CategoryController {
 
     //create category
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @PostMapping("/api/createCategory")
-    public void createCategory(@RequestBody Category category){
+    @PostMapping("/api/createCategory/{categoryName}")
+    public void createCategory(@PathVariable String categoryName){
+        Category category = new Category();
+        category.setCategoryName(categoryName);
         services.createCategory(category);
 
         //no voy a hacer que retorne un mensaje de confirmacion de tipo ResponseEntity.ok

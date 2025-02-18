@@ -63,11 +63,11 @@ btnCloseUpdateForm.addEventListener("click", event => {
 //----------------------show and close update category form-------------------------------------------
 
 let formUpdate = document.getElementById("formUpdateFrame");
-let inputRolName= document.getElementById("categoryNameUpdate")
+let inputCategoryName= document.getElementById("categoryNameUpdate")
 
 function showUpdateForm(category){
     formUpdate.style.visibility="visible";
-    inputRolName.value = category.categoryName;
+    inputCategoryName.value = category.categoryName;
 }
 
 function closeUpdateForm(){
@@ -76,56 +76,56 @@ function closeUpdateForm(){
 
 
 //-------------------pop up category created---------------------------------------------------
-let popUpRolCreated=document.getElementById("popUpRolCreated");
+let popUpCategoryCreated=document.getElementById("popUpCategoryCreated");
 
-let btnClosePopUpRolCreated = document.getElementById("btnClosePopUpRolCreated");
+let btnClosePopUpCategoryCreated = document.getElementById("btnClosePopUpCategoryCreated");
 
-btnClosePopUpRolCreated.addEventListener("click", event => {
+btnClosePopUpCategoryCreated.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
-    closePopUpRolCreated()
+    closePopUpCategoryCreated()
 });
 
-function showPopUpRolCreated(){
-    popUpRolCreated.style.visibility="visible";
+function showPopUpCategoryCreated(){
+    popUpCategoryCreated.style.visibility="visible";
 }
 
-function closePopUpRolCreated(){
-    popUpRolCreated.style.visibility="hidden";
+function closePopUpCategoryCreated(){
+    popUpCategoryCreated.style.visibility="hidden";
 }
 
 //--------------------------pop up category deleted--------------------------------------------
-let popUpRolDeleted = document.getElementById("popUpRolDeleted");
-let btnClosePopUpRolDeleted = document.getElementById("btnClosePopUpRolDeleted");
+let popUpCategoryDeleted = document.getElementById("popUpCategoryDeleted");
+let btnClosePopUpCategoryDeleted = document.getElementById("btnClosePopUpCategoryDeleted");
 
-btnClosePopUpRolDeleted.addEventListener("click", event => {
+btnClosePopUpCategoryDeleted.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
-    closePopUpRolDeleted()
+    closePopUpCategoryDeleted()
 });
 
-function showPopUpRolDeleted(){
-    popUpRolDeleted.style.visibility="visible";
+function showPopUpCategoryDeleted(){
+    popUpCategoryDeleted.style.visibility="visible";
 }
 
-function closePopUpRolDeleted(){
-    popUpRolDeleted.style.visibility="hidden";
+function closePopUpCategoryDeleted(){
+    popUpCategoryDeleted.style.visibility="hidden";
 }
 
 //-------------------pop up category updated---------------------------------------------------
-let popUpRolUpdated=document.getElementById("popUpRolUpdated");
+let popUpCategoryUpdated=document.getElementById("popUpCategoryUpdated");
 
-let btnClosePopUpRolUpdated = document.getElementById("btnClosePopUpRolUpdated");
+let btnClosePopUpCategoryUpdated = document.getElementById("btnClosePopUpCategoryUpdated");
 
-btnClosePopUpRolUpdated.addEventListener("click", event => {
+btnClosePopUpCategoryUpdated.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
-    closePopUpRolUpdated()
+    closePopUpCategoryUpdated()
 });
 
-function showPopUpRolUpdated(){
-    popUpRolUpdated.style.visibility="visible";
+function showPopUpCategoryUpdated(){
+    popUpCategoryUpdated.style.visibility="visible";
 }
 
-function closePopUpRolUpdated(){
-    popUpRolUpdated.style.visibility="hidden";
+function closePopUpCategoryUpdated(){
+    popUpCategoryUpdated.style.visibility="hidden";
 }
  
 
@@ -160,29 +160,27 @@ async function createCategory(){
     const categoryService = new CategoryService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     let categoryName = document.getElementById("categoryNameCreate").value;
     let outcome = await categoryService.createCategory(categoryName); 
-    console.log("Resultado del servidor:", outcome);
     closeCreateForm();
     
     if (outcome === true) {
-        showPopUpRolCreated();
+        showPopUpCategoryCreated();
     } else {
         showPopUpError();
     }   
-    getAllCategorys();
+    getAllCategories();
 }
 
 //-----------------------------Delete Category--------------------------------
 async function deleteCategory(idCategory) {
     const categoryService = new CategoryService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     let outcome = await categoryService.deleteCategory(idCategory); 
-    console.log("Resultado del servidor:", outcome);
     
     if (outcome === true) {
-        showPopUpRolDeleted();
+        showPopUpCategoryDeleted();
     } else {
         showPopUpError();
     }
-    getAllCategorys();
+    getAllCategories();
 }
 
 //-----------------------------Update Category--------------------------------
@@ -195,8 +193,8 @@ async function updateCategory(category) {
     btnUpdateCategory.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
     
-    let newRolName = document.getElementById("categoryNameUpdate").value;
-    category.categoryName= newRolName;
+    let newCategoryName = document.getElementById("categoryNameUpdate").value;
+    category.categoryName= newCategoryName;
     confirmUpdateCategory(category);
 });
 
@@ -209,22 +207,22 @@ async function confirmUpdateCategory(category){
 
     closeUpdateForm();
     if (await outcome === true) {
-        showPopUpRolUpdated();
+        showPopUpCategoryUpdated();
     } else {
         showPopUpError();
     }
-    getAllCategorys();
+    getAllCategories();
 }
 
 
-//-----------------------------Get all Categorys--------------------------------
-async function getAllCategorys() {
+//-----------------------------Get all Categories--------------------------------
+async function getAllCategories() {
     const categoryService = new CategoryService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-    const categorys = await categoryService.getAllCategorys(); // Llamar al método de la clase
+    const categories = await categoryService.getAllCategories(); // Llamar al método de la clase
 
     let tableContent= "";
 
-    for(let category of categorys){
+    for(let category of categories){
         let rowContent = `<tr>
         <td>${category.idCategory}</td>
         <td>${category.categoryName}</td>
@@ -251,7 +249,7 @@ async function getAllCategorys() {
     document.querySelectorAll(".fa-pen").forEach((editIcon) => {
         editIcon.addEventListener("click", (event) => {
             const idCategory = event.target.getAttribute("data-id");
-            const category = categorys.find((r) => r.idCategory === parseInt(idCategory)); // Buscar el category por id
+            const category = categories.find((r) => r.idCategory === parseInt(idCategory)); // Buscar el category por id entre las categorias de la tabla
             updateCategory(category)
         });
     });

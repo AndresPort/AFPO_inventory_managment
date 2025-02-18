@@ -31,29 +31,6 @@ export class CategoryService{
         }
     }
 
-    //get category by id
-    async getCategoryById(idCategory) {
-        try {  
-            const response = await fetch(`${this.baseURL}/api/getCategoryById/${idCategory}`, {
-                method: 'GET',
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            
-            const category = await response.json();
-            return category;
-        } catch (error) {
-            console.error("Error fetching categorys:", error);
-            throw error;
-        }
-    }
-
 
     //Create category
     async createCategory(categoryName){
@@ -69,7 +46,6 @@ export class CategoryService{
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            const result = await response.text();
             return (true);
             
         } catch (error) {
