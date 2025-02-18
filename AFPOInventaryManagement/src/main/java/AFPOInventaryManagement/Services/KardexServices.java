@@ -5,6 +5,7 @@ import AFPOInventaryManagement.Repositories.KardexRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,13 +57,13 @@ public class KardexServices {
         return null;
     }
 
-    //get kardex by category
+    //get kardex by IdCategory
 
-    public Kardex getKardexByCategory(String category){
-        if(category != null  ){
-            Optional<Kardex> kardex= repository.findKardexByCategory(category);
-            return kardex.orElse(null);
+    public List<Kardex> getKardexByCategory(Long idCategory){
+        if(idCategory != null  ){
+            List<Kardex> kardexList= repository.findKardexByIdCategory(idCategory);
+            return kardexList.isEmpty() ? Collections.emptyList() : kardexList;
         }
-        return null;
+        return Collections.emptyList();
     }
 }

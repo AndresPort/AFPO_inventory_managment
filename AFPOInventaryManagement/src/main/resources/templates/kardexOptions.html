@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="Styles/kardexOptions.css">
-    <meta quantity="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/f55ea41269.js" crossorigin="anonymous"></script>
@@ -22,7 +22,7 @@
             <i class="fa-solid fa-house"></i>
         </a>
         
-        <h4 class="header__quantityText">nombre completo</h4>
+        <h4 class="header__nameText">nombre completo</h4>
         <h4 class="header__roleText">rol</h4>
 
         <i class="fa-solid fa-gear"></i>
@@ -39,27 +39,27 @@
 
     <script src="JavaScript/dropdownMenuActive.js"></script>
 
-<!-------------------------kardex options menu container--------------------------->
+<!--userOptionsMenuContainer-->
 
-    <div class="userOptionsMenuContainer">
+    <div class="userOptionsMenuContainer ">
         <ul class="userOptionsMenu">
             <li><a href="">Incio</a></li>
-            <li><a href="">Kardexos</a></li>
+            <li><a href="">Productos</a></li>
             <li><a href="">Bodega</a></li>                
         </ul>
     </div>    
-
     <script src="JavaScript/usersOptionsMenu.js"></script>
+ 
 
 
 <!-------------------------action buttons--------------------------->
 
     <div class="actionButtonsFrame">
-        <button onclick="" class="actionButtonsFrame__CreateKardex" id="btnRegisterMenu"> Crear kardex</button>
+        <button onclick="" class="actionButtonsFrame__CreateKardex" id="btnCreateKardex"> Crear Kardex</button>
 
-        <button onclick="" class="actionButtonsFrame__SearchKardex" id="btnSearchKardexByCategory"> Buscar kardex por categoría</button>
+        <button onclick="" class="actionButtonsFrame__SearchKardexByProduct" id="btnSearchKardexByProduct"> Buscar kardex por Producto</button>
 
-        <button onclick="" class="actionButtonsFrame__SearchKardex" id="btnSearchKardexByProduct"> Buscar kardex por kardexo</button>
+        <button onclick="" class="actionButtonsFrame__SearchKardexByCategory" id="btnSearchKardexByCategory"> Buscar kardex por categoría</button>
 
     </div>
 
@@ -69,15 +69,14 @@
         <h4 class="btncloseTable" id="btncloseTable">X</h4>
         <thead>
           <tr>
-            <th colspan="6">Kardex</th>
+            <th colspan="5">Kardex</th>
           </tr>
           <tr>
             <th>Id</th>
-            <th>kardexo</th>
-            <th>cantidad</th>
-            <th>cantidad</th>
-            <th>tipo</th>
-            <th>acciones</th>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -85,21 +84,29 @@
       </table>
     </div>
       
+
+
      <!----------------------------Register Kardex--------------------------------->
 
     <div class="formRegisterFrame" id="formRegisterFrame">
         <h4 class="btncloseRegister" id="btncloseRegister">X</h4>
         <h1 class="RegisterTittle">Registrar Kardex</h1>
         <form method="POST" class="registerKardexForm">
-          
-            <select class="formRegisterFrame__kardex-selectInput" id="kardexRegister">
+            
+            <h4 class="productRegisterTitle">Producto</h4>
+            <select class="formRegisterFrame__product-selectInput" id="productRegister">
             </select>
-            <input class="formRegisterFrame__quantity-input" id="quantityRegister" type="text" placeholder="cantidad">
-            <input class="formRegisterFrame__category-input" id="categoryRegister" type="text" placeholder="categoría">
-            <input class="formRegisterFrame__price-input" id="priceRegister" type="text" placeholder="Precio">
+
+            <h4 class="categoryRegisterTitle">Categoría</h4>
+            <select class="formRegisterFrame__category-selectInput" id="categoryRegister">
+            </select>
+            
+            <input class="formRegisterFrame__quantity-input" id="quantityRegister" type="number" placeholder="Cantidad del porducto">
+            
             <button onclick="" class="formRegisterFrame__button" id="btnRegisterKardex"> Registrar Kardex</button>
       </form>
     </div>
+
 
     
     <!--pop up kardex registered succesfully-->
@@ -107,7 +114,7 @@
     <div class="popUpKardexRegistered" id="popUpKardexRegistered">
         <h4 class="btnClosePopUpKardexRegistered" id="btnClosePopUpKardexRegistered">X</h4>
         <i class="fa-solid fa-circle-check"></i>
-        <h4 class="kardexRegisteredText">El kardex se ha registrado <br> satisfactoriamente</h4>
+        <h4 class="kardexRegisteredText">El Kardex se ha registrado <br> satisfactoriamente</h4>
     </div>
 
     <!--pop up an error has ocurred-->
@@ -125,12 +132,17 @@
         <h1 class="UpdateTittle">Modificar kardex</h1>
         <form method="POST" class="updateKardexForm">
 
-            <select class="formUpdateFrame__kardex-selectInput" id="kardexUpdate">
+            <h4 class="productUpdateTitle">Producto</h4>
+            <select class="formUpdateFrame__product-selectInput" id="productUpdate">
             </select>
-            <input class="formUpdateFrame__quantity-input" id="quantityUpdate" type="text" placeholder="Cantidad">
-            <input class="formUpdateFrame__category-input" id="categoryUpdate" type="text" placeholder="Categoría">
-            <input class="formUpdateFrame__price-input" id="priceUpdate" type="text" placeholder="Precio"> 
-            <button  class="formsFrame__button" id="btnUpdateKardex">Modificar kardex</button>
+
+            <h4 class="categoryUpdateTitle">Categoría</h4>
+            <select class="formUpdateFrame__category-selectInput" id="categoryUpdate">
+            </select>
+
+            <input class="formUpdateFrame__quantity-input" id="quantityUpdate" type="number" placeholder="Cantidad de producto">
+            
+            <button  class="formsFrame__button" id="btnUpdateKardex">Modificar Kardex</button>
       </form>
     </div>
               
@@ -139,7 +151,7 @@
     <div class="popUpKardexUpdated" id="popUpKardexUpdated">
         <h4 class="btnClosePopUpKardexUpdated" id="btnClosePopUpKardexUpdated">X</h4>
         <i class="fa-solid fa-circle-check"></i>
-        <h4 class="kardexUpdatedText">El kardex se ha actualizado <br>satisfactoriamente</h4>
+        <h4 class="kardexUpdatedText">El Kardex se ha actualizado <br>satisfactoriamente</h4>
     </div>
 
     <!--------------------------delete kardex--------------------------------->
@@ -149,33 +161,37 @@
     <div class="popUpKardexDeleted" id="popUpKardexDeleted">
         <h4 class="btnClosePopUpKardexDeleted" id="btnClosePopUpKardexDeleted">X</h4>
         <i class="fa-solid fa-circle-check"></i>
-        <h4 class="kardexDeletedText">El kardex se ha eliminado <br> satisfactoriamente</h4>
+        <h4 class="kardexDeletedText">El Kardex se ha eliminado <br> satisfactoriamente</h4>
     </div>
 
-    <!--------------------------searchKardexByProduct--------------------------------->
+    <!--------------------------searchKardexByIdProduct--------------------------------->
 
-    <div class="searchKardexByProductFrame" id="searchKardexByProductFrame">
-        <h2 class="searchKardexByProductTittle">Buscar kardex por producto</h2>
-        <h4 class="BtnCloseSearchKardexByProductForm" id="BtnCloseSearchKardexByProductForm">X</h4>
-        <form class="searchKardexByProductForm" id="searchKardexByProductForm" method="POST">
-            <input class="formSearchByProductFrameInput" id="formSearchByProductFrameInput" type="text" placeholder="nombre del kardexo">
-            <button class="btnsearchKardexByProductForm" id="btnSearchKardexByProduct">Buscar kardex</button>
+    <div class="searchKardexByIdProductFrame" id="searchKardexByIdProductFrame">
+        <h2 class="searchKardexByIdProductTittle">Buscar kardex por producto</h2>
+        <h4 class="BtnCloseSearchKardexByIdProductForm" id="BtnCloseSearchKardexByIdProductForm">X</h4>
+        <form class="searchKardexByIdProductForm" id="searchKardexByIdProductForm" method="POST">
+            <select class="formSearchKardexByIdProductFrameSelect" id="formSearchKardexByIdProductFrameSelect">
+            </select>
+            <button class="btnSearchKardexByIdProductForm" id="btnSearchKardexByIdProduct">Buscar kardex</button>
         </form>
     </div>
 
-    
-    <!--------------------------searchKardexByCategory--------------------------------->
 
-    <div class="searchKardexByCategoryFrame" id="searchKardexByCategoryFrame">
-        <h2 class="searchKardexByCategoryTittle">Buscar kardex por su nombre</h2>
-        <h4 class="BtnCloseSearchKardexByCategoryForm" id="BtnCloseSearchKardexByCategoryForm">X</h4>
-        <form class="searchKardexByCategoryForm" id="searchKardexByCategoryForm" method="POST">
-            <input class="formSearchByCategoryFrameInput" id="formSearchByCategoryFrameInput" type="text" placeholder="nombre del kardexo">
-            <button class="btnsearchKardexByCategoryForm" id="btnSearchKardexByCategory">Buscar kardex</button>
+    <!--------------------------searchKardexByIdCategory--------------------------------->
+
+    <div class="searchKardexByIdCategoryFrame" id="searchKardexByIdCategoryFrame">
+        <h2 class="searchKardexByIdCategoryTittle">Buscar kardex por Categoría</h2>
+        <h4 class="BtnCloseSearchKardexByIdCategoryForm" id="BtnCloseSearchKardexByIdCategoryForm">X</h4>
+        <form class="searchKardexByIdCategoryForm" id="searchKardexByIdCategoryForm" method="POST">
+            <select class="formSearchKardexByIdCategoryFrameSelect" id="formSearchKardexByIdCategoryFrameSelect">
+            </select>
+            <button class="btnSearchKardexByIdCategoryForm" id="btnSearchKardexByIdCategory">Buscar kardex</button>
         </form>
     </div>
+
 
     <!-----------------------------Scripts----------------------------------> 
+    <script type="module" src="JavaScript/categoryPetitions.js"></script>
     <script type="module" src="JavaScript/kardexPetitions.js"></script>
     <script type="module" src="JavaScript/kardexOptions.js"></script>
 

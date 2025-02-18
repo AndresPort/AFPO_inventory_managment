@@ -433,29 +433,36 @@ input{
   
 }
 
-
-/* table all users */
+/* table all products */
 
 .tableFrame{
+  visibility: visible;
   margin-top: 30px;
   width: 1220px;
 }
 
+.tableFrame h4{
+  position: relative;
+  left: 1185px;
+  top: 70px;
+  color: rgb(43, 43, 43);
+  cursor: pointer;
+}
 
 table {
-    text-align: left;
+    text-align: center;
     line-height: 20px;
     border-collapse: separate;
     border-spacing: 0;
-    border: 2px solid #ed1c40;
+    border: 2px solid rgb(43, 43, 43);
     width: 99%;
     margin: 50px auto;
     border-radius: .25rem;
   }
   
   thead tr:first-child {
-    background: #ed1c40;
-    color: #fff;
+    background: rgb(43, 43, 43);
+    color: rgb(43, 43, 43);
     border: none;
   }
   
@@ -469,15 +476,15 @@ table {
     padding-top: 10px;
     padding-bottom:10px ;
     font-weight: 500;
-    border-right: 0.1px solid rgba(0, 0, 0,0.1) ; 
+    border-right: 0.1px solid rgb(43, 43, 43) ; 
   }
   
   thead tr:last-child th {
-    border-bottom: 3px solid #ddd;
+    border-bottom: 3px solid rgb(43, 43, 43);
   }
   
   tbody tr:hover {
-    background-color: #f2f2f2;
+    background-color: rgb(242,242,242);
     cursor: default;
   }
   
@@ -486,16 +493,16 @@ table {
   }
   
   tbody td {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgb(43, 43, 43);
   }
   
   td:last-child {
-    text-align: right;
+    text-align: center;
     padding-right: 10px;
   }
   
   .button {
-    color: #aaa;
+    color: rgb(43, 43, 43);
     cursor: pointer;
     vertical-align: middle;
     margin-top: -4px;
@@ -512,6 +519,7 @@ table {
   .fa-trash:hover {
     color: #dc2a2a;
   }
+
 
 /* Footer */
 

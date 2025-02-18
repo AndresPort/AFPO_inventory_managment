@@ -11,24 +11,37 @@ public class Kardex {
     private Long idKardex;
     @Column(name= "idProduct")
     private Long idProduct;
+    @Column (name= "idCategory")
+    private Long idCategory;
     @Column (name= "quantity")
     private int quantity;
-    @Column (name= "category")
-    private String category;
+
 
     //metods
     //empty constructor
     public Kardex() {
     }
-    //full constructor
-    public Kardex(Long idKardex, Long idProduct, int quantity, String category) {
-        this.idKardex = idKardex;
+
+    //constructor withotut idKardex
+
+
+    public Kardex(Long idProduct, Long idCategory, int quantity) {
         this.idProduct = idProduct;
+        this.idCategory = idCategory;
         this.quantity = quantity;
-        this.category = category;
     }
 
+    //full constructor
+    public Kardex(Long idKardex, Long idProduct, Long idCategory, int quantity) {
+        this.idKardex = idKardex;
+        this.idProduct = idProduct;
+        this.idCategory = idCategory;
+        this.quantity = quantity;
+    }
+
+
     //getter and setters
+
     public Long getIdKardex() {
         return idKardex;
     }
@@ -45,19 +58,19 @@ public class Kardex {
         this.idProduct = idProduct;
     }
 
+    public Long getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(Long idCategory) {
+        this.idCategory = idCategory;
+    }
+
     public int getQuantity() {
         return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 }
