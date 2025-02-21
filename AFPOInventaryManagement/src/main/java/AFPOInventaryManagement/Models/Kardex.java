@@ -23,8 +23,6 @@ public class Kardex {
     }
 
     //constructor withotut idKardex
-
-
     public Kardex(Long idProduct, Long idCategory, int quantity) {
         this.idProduct = idProduct;
         this.idCategory = idCategory;

@@ -57,6 +57,16 @@ public class KardexServices {
         return null;
     }
 
+    //get kardex by IdProduct
+
+    public Kardex getKardexByProduct(Long idProduct){
+        if(idProduct != null && repository.existsById(idProduct) ){
+
+            return repository.findKardexByIdProduct(idProduct);
+        }
+        return null;
+    }
+
     //get kardex by IdCategory
 
     public List<Kardex> getKardexByCategory(Long idCategory){

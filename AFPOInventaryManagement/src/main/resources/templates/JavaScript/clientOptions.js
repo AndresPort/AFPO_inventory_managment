@@ -8,28 +8,30 @@ window.onload = function() {
 //------------------clean register client form inputs----------------------------------------
 function cleanClientFormInputs(){
     let cedula = document.getElementById("cedulaRegister")
-    cedula.value=client.cedula;
+    cedula.value=null;
 
     let phoneNumber = document.getElementById("phoneNumberRegister")
-    phoneNumber.value=client.phoneNumber;
+    phoneNumber.value=null;
 
     let firstName = document.getElementById("firstNameRegister")
-    firstName.value=client.firstName;
+    firstName.value=null;
 
     let secondName = document.getElementById("secondNameRegister")
-    secondName.value=client.secondName;
+    secondName.value=null;
     
 
     let lastName = document.getElementById("lastNameRegister")
-    lastName.value=client.lastName;
+    lastName.value=null;
 
 
     let secondLastName = document.getElementById("secondLastNameRegister")
-    secondLastName.value=client.secondLastName;
+    secondLastName.value=null;
 
     let homeAdress = document.getElementById("homeAdressRegister")
-    homeAdress.value=client.homeAdress;
+    homeAdress.value=null;
 }
+
+ 
 
 //----------------- btn show register client form----------------------------------
 let btnShowRegisterForm = document.getElementById("btnRegisterMenu");
@@ -120,43 +122,50 @@ function closeUpdateForm(){
     formUpdate.style.visibility="hidden";
 }
 
-//----------------- btn show SearchClientByClientCode frame----------------------------------
-let btnSearchClientByClientCodeFrame = document.getElementById("btnSearchClient");
+//------------------clean SearchClientByCedula form inputs----------------------------------------
 
-btnSearchClientByClientCodeFrame.addEventListener("click", event => {
+function cleanSearchClientByCedulaInput(){
+    let cedula = document.getElementById("formSearchByCedulaFrameInput")
+    cedula.value=null;
+}
+//----------------- btn show SearchClientByCedula frame----------------------------------
+let btnSearchClientByCedulaFrame = document.getElementById("btnSearchClient");
+
+btnSearchClientByCedulaFrame.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
-    showSearchClientByClientCodeFrame();
+    showSearchClientByCedulaFrame();
+    cleanSearchClientByCedulaInput();
 });
 
-//----------------- btn close SearchClientByClientCode frame----------------------------------
-let btnCloseSearchClientByClientCodeFrame = document.getElementById("BtnCloseSearchClientByClientCodeForm");
+//----------------- btn close SearchClientByCedula frame----------------------------------
+let btnCloseSearchClientByCedulaFrame = document.getElementById("BtnCloseSearchClientByCedulaForm");
 
-btnCloseSearchClientByClientCodeFrame.addEventListener("click", event => {
+btnCloseSearchClientByCedulaFrame.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
-    closeSearchClientByClientCodeFrame();
+    closeSearchClientByCedulaFrame();
 });
 
-//----------------------show and close searchClientByClientCodeFrame form-------------------------------------------
+//----------------------show and close searchClientByCedulaFrame form-------------------------------------------
 
-let searchClientByClientCodeFrame = document.getElementById("searchClientByClientCodeFrame");
+let searchClientByCedulaFrame = document.getElementById("searchClientByCedulaFrame");
 
-function showSearchClientByClientCodeFrame(){
-    searchClientByClientCodeFrame.style.visibility="visible";
+function showSearchClientByCedulaFrame(){
+    searchClientByCedulaFrame.style.visibility="visible";
     
 }
 
-function closeSearchClientByClientCodeFrame(){
-    searchClientByClientCodeFrame.style.visibility="hidden";
+function closeSearchClientByCedulaFrame(){
+    searchClientByCedulaFrame.style.visibility="hidden";
 }
 
 //----------------------search client-------------------------------------------
-let btnSearchClientByClientCode= document.getElementById("btnSearchClientByClientCode");
+let btnSearchClientByCedula= document.getElementById("btnSearchClientByCedula");
 
-btnSearchClientByClientCode.addEventListener("click", event => {
+btnSearchClientByCedula.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
-    let clientCode= document.getElementById("formSearchByClientCodeFrameInput").value;
+    let clientCode= document.getElementById("formSearchByCedulaFrameInput").value;
 
-    getClientByClientCode(clientCode);
+    getClientByCedula(clientCode);
 });
 
 
@@ -247,7 +256,7 @@ async function registerClient(){
     client.secondName = document.getElementById("secondNameRegister").value;
     client.lastName = document.getElementById("lastNameRegister").value;
     client.secondLastName = document.getElementById("secondLastNameRegister").value;
-    client.homeAdress = document.getElementById("homeAdress").value;
+    client.homeAdress = document.getElementById("homeAdressRegister").value;
     let outcome = await clientService.createClient(client); 
     
     closeRegisterForm();
@@ -353,8 +362,8 @@ async function getAllClients() {
         });
     });
 }
-//-----------------------------SearchClientByClientCode--------------------------------
-async function getClientByClientCode(clientCode) {
+//-----------------------------SearchClientByCedula--------------------------------
+async function getClientByCedula(clientCode) {
     const clientService = new ClientService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     let client= await clientService.getClientByCedula(clientCode);
     let rowContent = `<tr>

@@ -53,9 +53,9 @@ public class ProductController {
 
     //get product by id
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @GetMapping("/api/getProduct/{idProduct}")
-    public void getProductById(@PathVariable Long idProduct) {
-        Product product = services.getProductById(idProduct);
+    @GetMapping("/api/getProductById/{idProduct}")
+    public Product getProductById(@PathVariable Long idProduct) {
+        return services.getProductById(idProduct);
     }
 
     //get product by name

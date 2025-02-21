@@ -53,6 +53,30 @@ export class ProductService{
         }
     }
 
+    //getProductById
+    async getProductById(idProduct){
+
+        try {
+            const response = await fetch(`${this.baseURL}/api/getProductById/${idProduct}`, {
+                method: 'GET',
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const product = await response.json();
+            return product;
+            
+        } catch (error) {
+            console.error("Error fetching Product:", error);
+            throw error;
+        }
+    }
+
     //Create Product
     async createProduct(product){
         try {

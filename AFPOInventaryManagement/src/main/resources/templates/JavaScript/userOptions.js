@@ -8,34 +8,34 @@ window.onload = function() {
 //------------------clean register product form inputs----------------------------------------
 function cleanUserFormInputs(){
     let userCode =document.getElementById("userCodeRegister");
-    userCode.value=user.userCode;
+    userCode.value=null;
 
     let password = document.getElementById("passwordRegister")
-    password.value=user.password;
+    password.value=null;
     
     let firstName = document.getElementById("firstNameRegister")
-    firstName.value=user.firstName;
+    firstName.value=null;
 
     let secondName = document.getElementById("secondNameRegister")
-    secondName.value=user.secondName;
+    secondName.value=null;
     
 
     let lastName = document.getElementById("lastNameRegister")
-    lastName.value=user.lastName;
+    lastName.value=null;
 
 
     let secondLastName = document.getElementById("secondLastNameRegister")
-    secondLastName.value=user.secondLastName;
+    secondLastName.value=null;
 
 
     let cedula = document.getElementById("cedulaRegister")
-    cedula.value=user.cedula;
+    cedula.value=null;
 
     let phoneNumber = document.getElementById("phoneNumberRegister")
-    phoneNumber.value=user.phoneNumber;
+    phoneNumber.value=null;
 
     let email = document.getElementById("emailRegister")
-    email.value=user.email;
+    email.value=null;
 }
 
 //---------------------------contenido del combobox de los roles------------------------------
@@ -105,6 +105,8 @@ let btnCloseUpdateFrame=document.getElementById("btncloseUpdateFrame");
     closeUpdateForm();
 });
 
+//----------------------------Fill input update form--------------------------------
+
 
 function fillUInputUpdateForm(user){
 
@@ -157,7 +159,7 @@ function closeUpdateForm(){
 }
 
 //----------------- btn show SearchUserByUserCode frame----------------------------------
-let btnSearchUserByUserCodeFrame = document.getElementById("btnSearchUser");
+let btnSearchUserByUserCodeFrame = document.getElementById("btnSearchUserByUserCode");
 
 btnSearchUserByUserCodeFrame.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
@@ -186,7 +188,7 @@ function closeSearchUserByUserCodeFrame(){
 }
 
 //----------------------search user-------------------------------------------
-let btnSearchUserByUserCode= document.getElementById("btnSearchUserByUserCode");
+let btnSearchUserByUserCode= document.getElementById("btnSearchUser");
 
 btnSearchUserByUserCode.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET

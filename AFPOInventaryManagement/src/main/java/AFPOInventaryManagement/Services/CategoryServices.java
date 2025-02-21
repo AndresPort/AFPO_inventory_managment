@@ -53,4 +53,12 @@ public class CategoryServices {
         }
         return null;
     }
+
+    //get category by categoryname
+    public List<Category> getCategoryByCategoryName(String categoryName){
+        if(categoryName != null){
+            return repository.findCategoryByCategoryName(categoryName);
+        }
+        return null;
+    }
 }

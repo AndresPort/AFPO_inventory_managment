@@ -10,4 +10,6 @@ import java.util.List;
 public interface KardexRepository extends JpaRepository<Kardex,Long> {
 
     List<Kardex> findKardexByIdCategory(Long idCategory);
+
+    Kardex findKardexByIdProduct(Long idProduct);
 }

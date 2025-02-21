@@ -60,6 +60,13 @@ public class KardexController {
         Kardex kardex = services.getKardexById(idKardex);
     }
 
+    //get kardex by idProduct
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @GetMapping("/api/getKardexByIdProduct/{idProduct}")
+    public Kardex getKardexByIdProduct(@PathVariable Long idProduct) {
+        return services.getKardexByProduct(idProduct);
+    }
+
     //get kardex by idCategory
     @CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/api/getKardexByIdCategory/{idCategory}")
