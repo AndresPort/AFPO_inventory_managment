@@ -24,10 +24,8 @@ public class RoleServices {
     }
 
     //create role
-    public ResponseEntity<String> createRole(Role role){
+    public void createRole(Role role){
         repository.save(role);
-        return ResponseEntity.ok("Role created successfully");
-
     }
 
     //update role

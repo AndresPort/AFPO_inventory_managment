@@ -23,15 +23,8 @@ public class Warehouse {
     public Warehouse() {
     }
 
-    // constructor without idKardex
-    public Warehouse(Long idWarehouse, String name, String contactNumber, String adress) {
-        this.idWarehouse = idWarehouse;
-        this.name = name;
-        this.contactNumber = contactNumber;
-        this.adress = adress;
-    }
-
     //full constructor
+
     public Warehouse(Long idWarehouse, Long idKardex, String name, String contactNumber, String adress) {
         this.idWarehouse = idWarehouse;
         this.idKardex = idKardex;
@@ -39,6 +32,7 @@ public class Warehouse {
         this.contactNumber = contactNumber;
         this.adress = adress;
     }
+
 
     //getters and setters
 
