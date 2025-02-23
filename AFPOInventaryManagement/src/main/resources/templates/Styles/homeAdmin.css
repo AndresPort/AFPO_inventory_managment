@@ -13,44 +13,46 @@ header{
     display: flex;
     border-bottom: 1px solid rgb(220, 220, 220);
     z-index: 1;
-}
-
-.fa-bars{
-    margin-top: 15px;
-    margin-left: 30px;
+    padding: 10px;
+    margin-bottom: 50px;
+  }
+  
+  .fa-bars{
+    margin-top: 5px;
+    margin-left: 20px;
     margin-right: 20px;
     font-size: 24px;
     color: rgb(0, 0, 0);
     cursor: pointer; 
-}
-
-.fa-house{
+  }
+  
+  .fa-house{
     font-size: 24px;
-    margin-top: 15px;
+    margin-top: 5px;
     margin-left: 30px;
     color: rgb(0, 0, 0);
-}
-
-.header__nameText{
+  }
+  
+  .header__nameText{
     font-size: 19px;
-    margin-top: 15px;
+    margin-top: 5px;
     margin-left: 40px;
-}
-
-.header__rolText{
+  }
+  
+  .header__rolText{
     font-size: 19px;
-    margin-top: 15px;
+    margin-top: 5px;
     margin-left: 45px;
-}
-
-.fa-gear{
+  }
+  
+  .fa-gear{
     font-size: 25px;
     color: rgb(0, 0, 0);
-    margin-top: 15px;
+    margin-top: 5px;
     margin-left: auto;
     margin-right: 20px;
     cursor: pointer;
-}
+  }
 
 /* Body */
 
@@ -133,7 +135,7 @@ main{
 
 .tittle{
     margin-top: 60px;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
 }
 
 .options{
@@ -141,6 +143,7 @@ main{
     grid-template-columns: 150px 150px 150px 150px;
     grid-template-rows: 150px;
     grid-gap: 40px;
+    padding-bottom: 60px;
 }
 
 .usersOptions, 
@@ -149,7 +152,9 @@ main{
 .productOptions,
 .kardexOptions,
 .categoryOptions,
-.warehouseOptions{
+.warehouseOptions,
+.warehouseMovementOptions,
+.salePointOptions{
     border-radius: 20px;
     width: 150px;
     height: 150px;
@@ -168,7 +173,9 @@ main{
 .productOptions:hover,
 .kardexOptions:hover,
 .categoryOptions:hover,
-.warehouseOptions:hover{
+.warehouseOptions:hover,
+.warehouseMovementOptions:hover,
+.salePointOptions:hover{
     width: 170px;
     height: 170px;
     position: relative;
@@ -185,9 +192,23 @@ main{
 .productOptions i,
 .kardexOptions i,
 .categoryOptions i,
-.warehouseOptions i{
+.warehouseOptions i,
+.warehouseMovementOptions i,
+.salePointOptions i{
     font-size: 50px;
     margin-bottom: 15px;
+}
+
+.usersOptions h5, 
+.rolesOptions h5,
+.clientOptions h5,
+.productOptions h5,
+.kardexOptions h5,
+.categoryOptions h5,
+.warehouseOptions h5,
+.warehouseMovementOptions h5,
+.salePointOptions h5{
+    text-align: center;
 }
 
 
