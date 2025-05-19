@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="Styles/PaymentMethodOptions.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/f55ea41269.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Metodos de pago</title>
+</head>
+<body>
+    <header class="header">
+
+        <nav class="nav">
+            <i class="fa-solid fa-bars"></i>
+        </nav>
+
+        <a href="homeAdmin.html">
+            <i class="fa-solid fa-house"></i>
+        </a>
+        
+        <h4 class="header__nameText">nombre completo</h4>
+        <h4 class="header__roleText">rol</h4>
+
+        <i class="fa-solid fa-gear"></i>
+
+    </header>
+
+    <!--dropdownMenu-->
+
+    <ul class="nav__dropdownMenu">
+        <li><a href="">Perfil</a></li>
+        <li><a href="">Cambiar contraseña</a></li>
+        <li><a href="index.html">Cerrar sesion</a></li>
+    </ul>
+
+    <script src="JavaScript/dropdownMenuActive.js"></script>
+
+    <!--userOptionsMenuContainer-->
+
+    <div class="userOptionsMenuContainer ">
+        <ul class="userOptionsMenu">
+            <li><a href="">Incio</a></li>
+            <li><a href="">Productos</a></li>
+            <li><a href="">Bodega</a></li>                
+        </ul>
+    </div>    
+    <script src="JavaScript/usersOptionsMenu.js"></script>
+
+<!--action buttons-->
+
+    <div class="actionButtonsFrame">
+        <button onclick="" class="actionButtonsFrame__CreatePaymentMethod" id="btnCreateMenu"> Crear un metodo de pago</button>
+
+    </div>
+
+    <!--Table-->
+    <div class="tableFrame" id="tableFrame">
+      <table id="table">
+        <thead>
+          <tr>
+            <th colspan="3">métodos de pago</th>
+          </tr>
+          <tr>
+            <th>Id</th>
+            <th>método</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+      </table>
+    </div>
+    
+    <!----------------------------Create PaymentMethod--------------------------------->
+
+    <!--Create paymentMethod form-->
+    <div class="formsCreateFrame" id="formsCreateFrame" >
+        <h4 class="btnCloseCreate" id="btnCloseCreate">X</h4>
+        <h1 class="createTittle">Crear Método de pago</h1>
+        <form method="POST" class="form">
+          
+            <div class="formsCreateFrame__inputs" >
+                <input class="formsCreateFrame__methodName-input" id="methodNameCreate" type="text" placeholder="nombre del método">
+            </div>
+              
+            <button onclick="" class="formsCreateFrame__button" id="btnCreatePaymentMethod"> crear un método de pago </button>
+      </form>
+    </div>
+    
+    <!--pop up PaymentMethod created succesfully-->
+
+    <div class="popUpPaymentMethodCreated" id="popUpPaymentMethodCreated">
+        <h4 class="btnClosePopUpPaymentMethodCreated" id="btnClosePopUpPaymentMethodCreated">X</h4>
+        <i class="fa-solid fa-circle-check"></i>
+        <h4 class="paymentMethodCreatedText">El método de pago se ha creado <br> satisfactoriamente</h4>
+    </div>
+
+    <!--pop up an error has ocurred-->
+
+    <div class="popUpError" id="popUpError">
+        <h4 class="btnClosePopUpError" id="btnClosePopUpError">X</h4>
+        <i class="fa-solid fa-circle-xmark"></i>
+        <h4 class="errorText">Ha ocurrido un error</h4>
+    </div>
+
+    <!--------------------------update PaymentMethod--------------------------------->
+
+    <div class="formUpdateFrame" id="formUpdateFrame">
+        <h4 class="btnCloseUpdate" id="btnCloseUpdate">X</h4>
+        <h1 class="updateTittle">modificar Método de pago</h1>
+        <form method="POST" class="form">
+          
+            <div class="formUpdateFrame__inputs" >
+                <input class="formUpdateFrame__methodName-input" id="methodNameUpdate" type="text" placeholder="nombre del método">
+            </div>
+              
+            <button onclick="" class="formUpdateFrame__button" id="btnUpdatePaymentMethod"> Modificar Método de pago </button>
+      </form>
+          
+    </div>
+
+    <!--pop up PaymentMethod updated succesfully-->
+
+    <div class="popUpPaymentMethodUpdated" id="popUpPaymentMethodUpdated">
+        <h4 class="btnClosePopUpPaymentMethodUpdated" id="btnClosePopUpPaymentMethodUpdated">X</h4>
+        <i class="fa-solid fa-circle-check"></i>
+        <h4 class="paymentMethodUpdatedText">El método de pago se ha actualizado <br>satisfactoriamente</h4>
+    </div>
+
+
+
+<!--------------------------delete paymentMethod--------------------------------->
+
+    <!--pop up paymentMethod deleted succesfully-->
+
+    <div class="popUpPaymentMethodDeleted" id="popUpPaymentMethodDeleted">
+        <h4 class="btnClosePopUpPaymentMethodDeleted" id="btnClosePopUpPaymentMethodDeleted">X</h4>
+        <i class="fa-solid fa-circle-check"></i>
+        <h4 class="paymentMethodDeletedText">El método de pago se ha eliminado <br> satisfactoriamente</h4>
+    </div>
+
+    <!--Footer-->  
+
+    <footer>
+        <h5 class="footer__copyright">Este sitio está protegido por reCAPTCHA. Se aplican los <a href="https://policies.google.com/terms">Términos del servicio</a> y la <a href="https://policies.google.com/privacy">Política de privacidad</a> de Google. ©AFPO MANAGMENT INVENTARY</h5>
+    </footer>
+
+    <script type="module" src="JavaScript/PaymentMethodPetitions.js"></script>
+    <script type="module" src="JavaScript/paymentMethodOptions.js"></script>
+</body>
+</html>

@@ -22,13 +22,12 @@ public class PaymentMethodController {
 
     //create paymentMethod
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @PostMapping("/api/createPaymentMethod")
-    public void createPaymentMethod(@RequestBody PaymentMethod paymentMethod){
+        @PostMapping("/api/createPaymentMethod/{methodName}")
+    public void createPaymentMethod(@PathVariable String methodName){
+        System.out.println(methodName);
+        PaymentMethod paymentMethod = new PaymentMethod();  // Se crea una nueva instancia
+        paymentMethod.setMethodName(methodName);
         services.createPaymentMethod(paymentMethod);
-
-        //no voy a hacer que retorne un mensaje de confirmacion de tipo ResponseEntity.ok
-        //porque igualmente por el manejo de exepciones del front end puedo saber si el
-        // funcionamiento es correcto o no
     }
 
     //update paymentMethod
@@ -47,9 +46,9 @@ public class PaymentMethodController {
 
     // get all paymentMethod
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @GetMapping("/api/getAllPaymentMethod")
-    public List<PaymentMethod> getAllPaymentMethod(){
-        return services.getAllPaymentMethod();
+    @GetMapping("/api/getAllPaymentMethods")
+    public List<PaymentMethod> getAllPaymentMethods(){
+        return services.getAllPaymentMethods();
     }
 
 

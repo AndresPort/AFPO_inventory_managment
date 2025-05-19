@@ -43,7 +43,7 @@ public class PaymentMethodServices {
 
     // get all paymentMethod
 
-    public List<PaymentMethod> getAllPaymentMethod(){
+    public List<PaymentMethod> getAllPaymentMethods(){
         return repository.findAll();
     }
 
