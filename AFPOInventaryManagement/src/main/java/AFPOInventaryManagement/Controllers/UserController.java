@@ -55,7 +55,7 @@ public class UserController {
 
     //get user by id
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @GetMapping("/api/getUser/{idUser}")
+    @GetMapping("/api/getUserById/{idUser}")
     public User getUserById(@PathVariable Long idUser) {
         return services.getUserById(idUser);
     }

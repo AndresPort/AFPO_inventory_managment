@@ -9,7 +9,7 @@ public class SalePoint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSalePoint;
-    @Column(name = "idUserr")
+    @Column(name = "idUser")
     private Long idUser;
     @Column(name = "adress")
     private String adress;

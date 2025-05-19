@@ -1,4 +1,4 @@
-export class UserService{
+export class SalePointService{
 
     //constructor
     constructor(baseURL) {
@@ -7,11 +7,11 @@ export class UserService{
 
     //CRUD Metods
 
-    //getAllUsers
+    //getAllSalePoints
 
-    async getAllUsers() {
+    async getAllSalePoints() {
         try {
-            const response = await fetch(`${this.baseURL}/api/getAllUsers`, {
+            const response = await fetch(`${this.baseURL}/api/getAllSalePoints`, {
                 method: 'GET',
                 headers: {
                     "Accept": "application/json",
@@ -23,18 +23,18 @@ export class UserService{
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
-            const users = await response.json();
-            return users;
+            const products = await response.json();
+            return products;
         } catch (error) {
-            console.error("Error fetching users:", error);
+            console.error("Error fetching SalePoint:", error);
             throw error;
         }
     }
 
-    //getUserById
-    async getUserById(idUser){
+    //getSalePointByName
+    async getSalePointByIdUser(idUser){
         try {
-            const response = await fetch(`${this.baseURL}/api/getUserById/${idUser}`, {
+            const response = await fetch(`${this.baseURL}/api/getSalePointByIdUser/${idUser}`, {
                 method: 'GET',
                 headers: {
                     "Accept": "application/json",
@@ -45,48 +45,24 @@ export class UserService{
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            const user = await response.json();
-            return user;
+            const product = await response.json();
+            return product;
         } catch (error) {
-            console.error("Error fetching user:", error);
+            console.error("Error fetching SalePoint:", error);
             throw error;
         }
     }
 
-
-    //getUserByUserCode
-    async getUserByUserCode(userCode){
+    //Create SalePoint
+    async createSalePoint(salePoint){
         try {
-            const peticion = await fetch("http://localhost:8080/api/getUserByUserCode/" + userCode, {
-                method: "GET",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json",
-                },
-            });
-    
-            if (peticion.ok) {
-                const usuario = await peticion.json();
-                return usuario;
-            } else {
-                alert("error al encontrar al usuario.");
-            }
-        } catch (error) {
-            console.error("Error en la solicitud:", error);
-            alert("No se pudo conectar al servidor.");
-        }
-    }
-
-    //Create user
-    async createUser(user){
-        try {
-            const response = await fetch(`${this.baseURL}/api/createUser`, {
+            const response = await fetch(`${this.baseURL}/api/createSalePoint`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(user)
+                body: JSON.stringify(salePoint)
             });
 
             if (!response.ok) {
@@ -95,21 +71,21 @@ export class UserService{
             return (true);
             
         } catch (error) {
-            console.error("Error fetching users:", error);
+            console.error("Error fetching SalePoint:", error);
             throw error;
         }
     }
 
-    //Update user
-    async updateUser(user){
+    //Update SalePoint
+    async updateSalePoint(salePoint){
         try {
-            const response = await fetch(`${this.baseURL}/api/updateUser`, {
+            const response = await fetch(`${this.baseURL}/api/updateSalePoint`, {
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(user)
+                body: JSON.stringify(salePoint)
             });
 
             if (!response.ok) {
@@ -118,16 +94,16 @@ export class UserService{
             return (true);
             
         } catch (error) {
-            console.error("Error fetching users:", error);
+            console.error("Error fetching SalePoint:", error);
             throw error;
         }
     }
 
 
-    //delete user
-    async deleteUser(idUser){
+    //delete Product
+    async deleteSalePoint(idSalePoint){
         try {
-            const response = await fetch(`${this.baseURL}/api/deleteUser/${idUser}`, {
+            const response = await fetch(`${this.baseURL}/api/deleteSalePoint/${idSalePoint}`, {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
@@ -141,7 +117,7 @@ export class UserService{
             return (true);
             
         } catch (error) {
-            console.error("Error fetching users:", error);
+            console.error("Error fetching SalePoint:", error);
             throw error;
         }
     
