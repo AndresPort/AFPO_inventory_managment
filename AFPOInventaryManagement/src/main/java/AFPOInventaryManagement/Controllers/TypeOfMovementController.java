@@ -1,6 +1,5 @@
 package AFPOInventaryManagement.Controllers;
 
-
 import AFPOInventaryManagement.Models.TypeOfMovement;
 import AFPOInventaryManagement.Services.TypeOfMovementServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +21,11 @@ public class TypeOfMovementController {
 
     //create typeOfMovement
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @PostMapping("/api/createTypeOfMovement")
-    public void createTypeOfMovement(@RequestBody TypeOfMovement typeOfMovement){
-        services.createTypeOfMovement(typeOfMovement);
-
-        //no voy a hacer que retorne un mensaje de confirmacion de tipo ResponseEntity.ok
-        //porque igualmente por el manejo de exepciones del front end puedo saber si el
-        // funcionamiento es correcto o no
+    @PostMapping("/api/createTypeOfMovement/{ovementName}")
+    public void createTypeOfMovement(@PathVariable String ovementName){
+        TypeOfMovement paymentMethod = new TypeOfMovement();  // Se crea una nueva instancia
+        paymentMethod.setMovementName(ovementName);
+        services.createTypeOfMovement(paymentMethod);
     }
 
     //update typeOfMovement
@@ -47,15 +44,15 @@ public class TypeOfMovementController {
 
     // get all typeOfMovement
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @GetMapping("/api/getAllTypeOfMovement")
-    public List<TypeOfMovement> getAllTypeOfMovement(){
-        return services.getAllTypeOfMovement();
+    @GetMapping("/api/getAllTypeOfMovements")
+    public List<TypeOfMovement> getAllTypeOfMovements(){
+        return services.getAllTypeOfMovements();
     }
 
 
     //get typeOfMovement by id
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @GetMapping("/api/getTypeOfMovement/{idTypeOfMovement}")
+    @GetMapping("/api/getTypeOfMovementById/{idTypeOfMovement}")
     public void getTypeOfMovementById(@PathVariable Long idTypeOfMovement) {
         TypeOfMovement typeOfMovement = services.getTypeOfMovementById(idTypeOfMovement);
     }

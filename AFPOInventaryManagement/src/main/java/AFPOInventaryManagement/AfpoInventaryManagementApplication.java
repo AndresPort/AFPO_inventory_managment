@@ -9,5 +9,4 @@ public class AfpoInventaryManagementApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AfpoInventaryManagementApplication.class, args);
 	}
-
 }

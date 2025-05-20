@@ -44,7 +44,7 @@ public class TypeOfMovementServices {
 
     // get all typeOfMovement
 
-    public List<TypeOfMovement> getAllTypeOfMovement(){
+    public List<TypeOfMovement> getAllTypeOfMovements(){
         return repository.findAll();
     }
 

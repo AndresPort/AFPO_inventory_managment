@@ -402,7 +402,7 @@ table {
   
   thead tr:first-child {
     background: rgb(43, 43, 43);
-    color: rgb(43, 43, 43);
+    color: rgb(255,255,255);
     border: none;
   }
   
