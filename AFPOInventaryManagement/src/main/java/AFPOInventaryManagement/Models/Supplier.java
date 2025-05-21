@@ -18,7 +18,7 @@ public class Supplier {
     @Column(name = "adress")
     private String adress;
     @Column(name = "points")
-    private int points;
+    private Long points;
     //metods
 
     //empty constructor
@@ -26,7 +26,7 @@ public class Supplier {
     }
 
     //full constructor
-    public Supplier(Long idSupplier, String nit, String name, String contactNumber, String adress, int points) {
+    public Supplier(Long idSupplier, String nit, String name, String contactNumber, String adress, Long points) {
         this.idSupplier = idSupplier;
         this.nit = nit;
         this.name = name;
@@ -76,11 +76,11 @@ public class Supplier {
         this.adress = adress;
     }
 
-    public int getPoints() {
+    public Long getPoints() {
         return points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(Long points) {
         this.points = points;
     }
 }
