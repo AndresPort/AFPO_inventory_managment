@@ -1,0 +1,531 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Montserrat";
+}
+
+/* header */
+
+header{
+  width: 100%;
+  height: 55px;
+  background-color:rgb(250, 250, 250);
+  display: flex;
+  border-bottom: 1px solid rgb(220, 220, 220);
+  z-index: 1;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+.fa-bars{
+  margin-top: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 24px;
+  color: rgb(0, 0, 0);
+  cursor: pointer; 
+}
+
+.fa-house{
+  font-size: 24px;
+  margin-top: 5px;
+  margin-left: 30px;
+  color: rgb(0, 0, 0);
+}
+
+.header__nameText{
+  font-size: 19px;
+  margin-top: 5px;
+  margin-left: 40px;
+}
+
+.header__roleText{
+  font-size: 19px;
+  margin-top: 5px;
+  margin-left: 45px;
+}
+
+.fa-gear{
+  font-size: 25px;
+  color: rgb(0, 0, 0);
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+
+/* Body */
+
+html, body {
+    height: 100%;
+}
+
+body{
+    background-color: rgb(250,250,250);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main{
+    flex: 1;
+}
+
+/* nav dropdown menu */
+.nav__dropdownMenu{
+  right: 0;
+  top: -100px;
+  position: absolute;
+  transition: top 1s ease;
+}
+
+.dropdownMenuActive{
+  top: 55px;
+}
+
+.nav__dropdownMenu li{
+  background-color: rgb(100, 100, 200, 0.2);
+  list-style-type: none;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.nav__dropdownMenu a{
+  text-decoration: none;
+  font-size:13px ;
+  color: rgb(0, 0, 0);
+  
+}
+
+/* slide menu*/
+
+.userOptionsMenuContainer{
+  top: 55px;
+  left: -250px;
+  position: absolute;
+  transition: left 1s ease;
+}
+
+.activeUserOptionsMenuContainer{
+  left: 0;
+}
+
+.userOptionsMenu{
+  background-color: rgb(220, 220, 220);
+  width: 250px;
+  height: 89vh;
+}
+
+.userOptionsMenu li{
+  list-style-type: none;
+  padding: 15px;
+  
+}
+
+.userOptionsMenu a{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 22px;
+}
+
+
+/* actions Buttons */
+
+.actionButtonsFrame{
+  display: flex;
+  justify-content:center;
+  width: 700px;
+}
+
+.actionButtonsFrame__RegisterWarehouse
+{
+    width: 300px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: rgb(250, 250, 250);
+    box-shadow: 0px 0px 50px 1px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgb(0,0,0,0.2);
+    font-size: 15px;
+  }
+
+.actionButtonsFrame__RegisterWarehouse:hover
+{
+  width: 330px;
+  height: 80px;
+  position: relative;
+  bottom: 10px;
+  right: 10px;
+  background-color:rgb(255, 255, 255);
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+  font-size: 17px;  
+}
+
+
+/* Register user form */
+
+.formRegisterFrame{
+  visibility: hidden;
+  position: absolute;
+  width: 450px;
+  height: 490px;
+  top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btncloseRegister{
+  position:absolute;
+  top:9px;
+  right: 10px;
+  margin-top: 5px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.registerWarehouseForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+}
+
+.registerWarehouseForm input
+{
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  width: 300px;
+  height: 30px;
+}
+
+.formRegisterFrame__button{
+  margin-left: 28px;
+  margin-top: 20px;
+  width: 250px;
+  height: 45px;
+  border-radius: 20px;
+  border: 1px solid rgb(0,0,0,0.1);
+  background-color:rgb(0, 0,0) ;
+  color: rgb(250,250,250);
+  box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+  transition: background-color 0.6s ;
+}
+
+.formRegisterFrame__button:hover{
+  background-color:rgb(53, 252, 100) ;
+}
+
+
+/* Pop up warehouse registered */
+
+.popUpWarehouseRegistered{
+  visibility: hidden;
+  position: absolute;
+  top: 200px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 350px;
+  height: 250px;
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btnClosePopUpWarehouseRegistered{
+  color: rgb(220, 220, 220);
+  position: absolute;
+  left: 332px;
+  top: 1px;
+  cursor: pointer;
+  padding-top: 1px;
+}
+
+.fa-circle-check{
+  font-size: 70px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.warehouseRegisteredText{
+  font-size: 23px;
+  text-align: center;
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
+
+/* Pop up warehouse deleted */
+
+.popUpWarehouseDeleted{
+  visibility: hidden;
+  position: absolute;
+  top: 200px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 350px;
+  height: 250px;
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btnClosePopUpWarehouseDeleted{
+  color: rgb(220, 220, 220);
+  position: relative;
+  left: 160px;
+  top: -10px;
+  cursor: pointer;
+}
+
+
+.warehouseDeletedText{
+  font-size: 23px;
+  text-align: center;
+  margin-top: 25px;
+  margin-left: 5px;
+}
+
+/* Pop up warehouse updated */
+
+.popUpWarehouseUpdated{
+  visibility:hidden;
+  position: absolute;
+  top: 200px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 350px;
+  height: 270px;
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btnClosePopUpWarehouseUpdated{
+  color: rgb(220, 220, 220);
+  position: relative;
+  left: 160px;
+  top: -10px;
+  cursor: pointer;
+}
+
+.warehouseUpdatedText{
+  text-align: center;
+  font-size: 25px;
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
+/* Pop up rol Error */
+
+.popUpError{
+  visibility: hidden;
+  position: absolute;
+  top: 200px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 350px;
+  height: 250px;
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btnClosePopUpError{
+  color: rgb(220, 220, 220);
+  position: relative;
+  left: 160px;
+  top: -10px;
+  cursor: pointer;
+}
+
+.fa-circle-xmark{
+  margin-top: 15px;
+  font-size: 70px;
+}
+
+.errorText{
+  font-size: 25px;
+  margin-top: 25px;
+  margin-left: 5px;
+}
+
+
+/* search user space */
+
+
+/* table all products */
+
+.tableFrame{
+  visibility: visible;
+  margin-top: 30px;
+  width: 1220px;
+}
+
+.tableFrame h4{
+  position: relative;
+  left: 1185px;
+  top: 70px;
+  color: rgb(43, 43, 43);
+  cursor: pointer;
+}
+
+table {
+    text-align: center;
+    line-height: 20px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 2px solid rgb(43, 43, 43);
+    width: 99%;
+    margin: 50px auto;
+    border-radius: .25rem;
+  }
+  
+  thead tr:first-child {
+    background: rgb(43, 43, 43);
+    color: rgb(255, 255, 255);
+    border: none;
+  }
+  
+  th:first-child,
+  td:first-child {
+    padding: 0 15px 0 20px;
+  }
+  
+  th {
+    font-size: 15px;
+    padding-top: 10px;
+    padding-bottom:10px ;
+    font-weight: 500;
+    border-right: 0.1px solid rgb(43, 43, 43) ; 
+  }
+  
+  thead tr:last-child th {
+    border-bottom: 3px solid rgb(43, 43, 43);
+  }
+  
+  tbody tr:hover {
+    background-color: rgb(242,242,242);
+    cursor: default;
+  }
+  
+  tbody tr:last-child td {
+    border: none;
+  }
+  
+  tbody td {
+    border-bottom: 1px solid rgb(43, 43, 43);
+  }
+  
+  td:last-child {
+    text-align: center;
+    padding-right: 10px;
+  }
+  
+  .button {
+    color: rgb(43, 43, 43);
+    cursor: pointer;
+    vertical-align: middle;
+    margin-top: -4px;
+  }
+  
+  .fa-pen{
+    margin-right: 25px;
+  }
+
+  .fa-pen:hover {
+    color: #0a79df;
+  }
+  
+  .fa-trash:hover {
+    color: #dc2a2a;
+  }
+
+
+
+/* Modify user form */  
+
+.formUpdateFrame{
+  visibility: visible;
+  position: absolute;
+  width: 450px;
+  height: 490px;
+  top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btncloseUpdateFrame{
+  position:absolute;
+  top:9px;
+  right: 10px;
+  margin-top: 5px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.updateWarehouseForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+}
+
+.updateWarehouseForm label{
+  font-size: 19px;
+}
+
+.updateWarehouseForm input,
+.formUpdateFrame__user-selectInput{
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  width: 300px;
+  height: 30px;
+}
+
+.formsFrame__button{
+  margin-top: 20px;
+  width: 250px;
+  height: 45px;
+  border-radius: 20px;
+  border: 1px solid rgb(0,0,0,0.1);
+  background-color:rgb(0, 0,0) ;
+  color: rgb(250,250,250);
+  box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+  transition: background-color 0.6s ;
+}
+
+.formsFrame__button:hover{
+  background-color:rgb(53, 252, 100) ;
+}
+
+/* Footer */
+
+footer{
+    margin-top: auto;
+    margin-bottom: 10px;
+    z-index: 10;
+}
+
+.footer__copyright a{
+    color: rgb(0, 0, 0);
+}

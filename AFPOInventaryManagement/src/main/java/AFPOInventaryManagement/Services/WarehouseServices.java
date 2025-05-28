@@ -46,14 +46,6 @@ public class WarehouseServices {
     }
 
 
-    //get warehouse by name
-    public Warehouse getWarehouseByName (String name){
-        if(name != null  ){
-            Optional<Warehouse> warehouse= repository.findWarehouseByName(name);
-            return warehouse.orElse(null);
-        }
-        return null;
-    }
 
     
     
