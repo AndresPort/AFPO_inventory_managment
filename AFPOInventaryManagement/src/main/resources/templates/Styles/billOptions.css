@@ -1,15 +1,15 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    font-family: "Montserrat";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Montserrat";
 }
 
 /* header */
 
-header{
+header {
   width: 100%;
   height: 55px;
-  background-color:rgb(250, 250, 250);
+  background-color: rgb(250, 250, 250);
   display: flex;
   border-bottom: 1px solid rgb(220, 220, 220);
   z-index: 1;
@@ -17,35 +17,35 @@ header{
   margin-bottom: 50px;
 }
 
-.fa-bars{
+.fa-bars {
   margin-top: 5px;
   margin-left: 20px;
   margin-right: 20px;
   font-size: 24px;
   color: rgb(0, 0, 0);
-  cursor: pointer; 
+  cursor: pointer;
 }
 
-.fa-house{
+.fa-house {
   font-size: 24px;
   margin-top: 5px;
   margin-left: 30px;
   color: rgb(0, 0, 0);
 }
 
-.header__nameText{
+.header__nameText {
   font-size: 19px;
   margin-top: 5px;
   margin-left: 40px;
 }
 
-.header__roleText{
+.header__roleText {
   font-size: 19px;
   margin-top: 5px;
   margin-left: 45px;
 }
 
-.fa-gear{
+.fa-gear {
   font-size: 25px;
   color: rgb(0, 0, 0);
   margin-top: 5px;
@@ -56,87 +56,347 @@ header{
 
 /* Body */
 
-html, body {
-    height: 100%;
+body {
+  background-color: rgb(250, 250, 250);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-body{
-    background-color: rgb(250,250,250);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-main{
-    flex: 1;
+main {
+  flex: 1;
 }
 
 /* nav dropdown menu */
-.nav__dropdownMenu{
+.nav__dropdownMenu {
   right: 0;
   top: -100px;
   position: absolute;
   transition: top 1s ease;
 }
 
-.dropdownMenuActive{
+.dropdownMenuActive {
   top: 55px;
 }
 
-.nav__dropdownMenu li{
+.nav__dropdownMenu li {
   background-color: rgb(100, 100, 200, 0.2);
   list-style-type: none;
   padding: 2px;
   border-radius: 2px;
 }
 
-.nav__dropdownMenu a{
+.nav__dropdownMenu a {
   text-decoration: none;
-  font-size:13px ;
+  font-size: 13px;
   color: rgb(0, 0, 0);
-  
 }
 
 /* slide menu*/
 
-.userOptionsMenuContainer{
+.userOptionsMenuContainer {
   top: 55px;
   left: -250px;
   position: absolute;
   transition: left 1s ease;
 }
 
-.activeUserOptionsMenuContainer{
+.activeUserOptionsMenuContainer {
   left: 0;
 }
 
-.userOptionsMenu{
+.userOptionsMenu {
   background-color: rgb(220, 220, 220);
   width: 250px;
   height: 89vh;
 }
 
-.userOptionsMenu li{
+.userOptionsMenu li {
   list-style-type: none;
   padding: 15px;
-  
 }
 
-.userOptionsMenu a{
+.userOptionsMenu a {
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: rgb(151, 151, 151);
   font-size: 22px;
 }
 
+.line {
+  width: 810px;
+  height: 1px;
+  background-color: rgb(190, 190, 190);
+  margin-top: 10px;
+}
+/* Bill */
 
-footer{
-    margin-top: auto;
-    margin-bottom: 10px;
-    z-index: 10;
+.billContainer {
+  width: 60%;
+  height: 100%;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 70px;
+  background-color: rgb(250, 250, 250);
+  box-shadow: 0px 0px 50px 1px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgb(0, 0, 0, 0.2);
 }
 
-.footer__copyright a{
-    color: rgb(0, 0, 0);
+.principalTittle {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+
+/* corporative information*/
+
+.corporativeInformationContainer {
+  width: 95%;
+  height: 30px;
+  display: flex;
+  justify-self: center;
+  gap: 180px;
+}
+
+.nITNumber,
+.salePointNumber,
+.contactNumber {
+  font-size: 17px;
+}
+
+/* bill title */
+
+.billTitle {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* information container */
+
+.billInformationContainer {
+  width: 90%;
+  height: 100px;
+  display: flex;
+  justify-self: center;
+  margin-top: 40px;
+}
+
+.sellerText {
+  font-size: 16px;
+}
+
+.sellerNameInput {
+  width: 220px;
+  height: 20px;
+  margin-left: 5px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.ccClient {
+  position: relative;
+  top: 60px;
+  right: 310px;
+  font-size: 16px;
+}
+
+.cedulaClientInput {
+  width: 200px;
+  height: 20px;
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  position: relative;
+  top: 60px;
+  right: 305px;
+  text-align: center;
+}
+
+.typeOfMovementText {
+  font-size: 16px;
+  position: absolute;
+  left: 700px;
+}
+
+.ComboBoxTypeOfMovement {
+  width: 150px;
+  height: 20px;
+  position: absolute;
+  left: 875px;
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.paymentMethodText {
+  font-size: 16px;
+  position: absolute;
+  left: 730px;
+  top: 400px;
+}
+
+.ComboBoxPaymentMethod {
+  width: 150px;
+  height: 20px;
+  position: absolute;
+  left: 875px;
+  top: 400px;
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+/* add products button */
+
+.addProductToBill {
+  width: 500px;
+  height: 60px;
+  border-radius: 30px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border: 1px solid rgb(0, 0, 0, 0.1);
+  background-color: rgb(0, 0, 0);
+  color: rgb(250, 250, 250);
+  box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+  transition: background-color 0.6s;
+}
+
+.addProductToBill:hover {
+  background-color: rgb(53, 252, 100);
+}
+
+/* table all products */
+
+.tableFrame {
+  visibility: visible;
+  width: 900px;
+  margin-top: -20px;
+}
+
+.tableFrame h4 {
+  position: relative;
+  left: 1185px;
+  top: 70px;
+  color: rgb(43, 43, 43);
+  cursor: pointer;
+}
+
+table {
+  text-align: center;
+  line-height: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid rgb(43, 43, 43);
+  width: 80%;
+  margin: 40px auto;
+  border-radius: 0.25rem;
+}
+
+thead tr:first-child {
+  background: rgb(43, 43, 43);
+  color: rgb(43, 43, 43);
+  border: none;
+}
+
+th:first-child,
+td:first-child {
+  padding: 0 15px 0 20px;
+}
+
+th {
+  font-size: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 500;
+  border-right: 0.1px solid rgb(43, 43, 43);
+}
+
+thead tr:last-child th {
+  border-bottom: 3px solid rgb(43, 43, 43);
+}
+
+tbody tr:hover {
+  background-color: rgb(242, 242, 242);
+  cursor: default;
+}
+
+tbody tr:last-child td {
+  border: none;
+}
+
+tbody td {
+  border-bottom: 1px solid rgb(43, 43, 43);
+}
+
+td:last-child {
+  text-align: center;
+  padding-right: 10px;
+}
+
+/* prices section */
+
+.pricesSection {
+    margin-top: 20px;
+  margin-left: 400px;
+  width: 50%;
+  height: 100px;
+}
+
+.partialPrice {
+  font-size: 20px;
+}
+
+.partialPriceInput {
+  position: relative;
+  bottom: 24px;
+  left: 135px;
+  width: 180px;
+  height: 25px;
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  text-align: center;
+}
+
+.totalPriceInput {
+  position: relative;
+  bottom: 24px;
+  left: 135px;
+  width: 180px;
+  height: 25px;
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  text-align: center;
+}
+
+.btnSaveBill {
+  width: 500px;
+  height: 60px;
+  border-radius: 30px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  border: 1px solid rgb(0, 0, 0, 0.1);
+  background-color: rgb(0, 0, 0);
+  color: rgb(250, 250, 250);
+  box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+  transition: background-color 0.6s;
+}
+
+.btnSaveBill:hover {
+  background-color: rgb(53, 252, 100);
+}
+
+/* footer */
+footer {
+  margin-top: auto;
+  margin-bottom: 10px;
+  z-index: 10;
+}
+
+.footer__copyright a {
+  color: rgb(0, 0, 0);
 }

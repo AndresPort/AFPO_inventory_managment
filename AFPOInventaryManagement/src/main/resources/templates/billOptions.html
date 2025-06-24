@@ -45,20 +45,81 @@
         <ul class="userOptionsMenu">
             <li><a href="">Incio</a></li>
             <li><a href="">Productos</a></li>
-            <li><a href="">Bodega</a></li>                
+            <li><a href="">Bodega</a></li>
         </ul>
-    </div>    
+    </div>
     <script src="JavaScript/usersOptionsMenu.js"></script>
 
-        
+<!-------------------------bill body --------------------------->
 
-    <!--Footer-->  
+<div class="billContainer">
+    <h1 class="principalTittle">AFPO Inventary Management</h1>
+    <div class="corporativeInformationContainer">
+        <h3 class="nITNumber" id="nITNumber">NIT: XXX.XXX</h3>
+        <h3 class="salePointNumber" id="salePointNumber">Punto de venta #</h3>
+        <h3 class="contactNumber" id="contactNumber">Teléfono: </h3>
+    </div>
+    <div class="line"></div>
+    <h2 class="billTitle">Factura</h2>
+    <div class="billInformationContainer">
+        <h3 class="sellerText">Vendedor:</h3>
+        <input type="text" class="sellerNameInput" id="sellerNameInput" placeholder="Nombre de usuario">
+
+
+        <h3 class="ccClient" id="ccClient">C.C.Cliente: </h3>
+        <input type="text" class="cedulaClientInput" id="cedulaClientInput" placeholder="0000000000">
+        
+        <h3 class="typeOfMovementText">Tipo de movimiento: </h3>
+        <select class="ComboBoxTypeOfMovement" id="ComboBoxTypeOfMovement">
+        </select>
+
+        <h3 class="paymentMethodText">Método de pago: </h3>
+        <select class="ComboBoxPaymentMethod" id="ComboBoxPaymentMethod">
+        </select>
+    </div>
+
+    <button onclick="" class="addProductToBill" id="addProductToBill">Agregar Producto a la cuenta</button>
+
+    <!------------------------Table---------------------------->
+
+    <div class="line"></div>
+    <div class="tableFrame" id="tableFrame">
+      <table id="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <tr>
+            <th>Id</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="line"></div>
+    <div class="pricesSection">
+        <h3 class="partialPrice" >Precio neto: </h3>
+        <input type="text" class="partialPriceInput" id="partialPriceInput" placeholder="8725032">
+
+        <h3 class="totalPrice">C.C. Ciente: </h3>
+        <input type="text" class="totalPriceInput" id="totalPriceInput" placeholder="8723022">
+    </div>
+
+    <button onclick="" class="btnSaveBill" id="btnSaveBill">Realizar la venta</button>
+</div>
+
+<!------------------------------------Footer-------------------------------------->  
 
     <footer>
         <h5 class="footer__copyright">Este sitio está protegido por reCAPTCHA. Se aplican los <a href="https://policies.google.com/terms">Términos del servicio</a> y la <a href="https://policies.google.com/privacy">Política de privacidad</a> de Google. ©AFPO MANAGMENT INVENTARY</h5>
     </footer>
 
-    <script type="module" src="JavaScript/rolePetitions.js"></script>
-    <script type="module" src="JavaScript/rolesOptions.js"></script>
+    <script type="module" src="JavaScript/billPetitions.js"></script>
+    <script type="module" src="JavaScript/billOptions.js"></script>
 </body>
 </html>
