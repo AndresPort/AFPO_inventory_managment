@@ -36,7 +36,7 @@ function passwordVerification(user, password) {
         }
         else if(user.idRole== 2){
             alert("Redirigiendo al menú principal");
-            location.href = "../homeSeller.html";
+            location.href = "../billOptions.html";
         }
         else if(user.idRole== 3){
             alert("Redirigiendo al menú principal");

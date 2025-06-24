@@ -13,6 +13,7 @@ window.onload = function() {
     fillTypeOfMovementCombobox()
     fillPaymentMethodCombobox()
     fillProductCombobox()
+    fillClientsCombobox()
 };
 
 //------------------llenar los datos de la empresa----------------------------------------
@@ -51,6 +52,20 @@ async function fillTypeOfMovementCombobox() {
         comboboxContent+=optionContent;
     }
     document.querySelector("#ComboBoxTypeOfMovement").innerHTML=comboboxContent;
+}
+
+//---------------------------contenido del combobox de los usuarios------------------------------
+
+async function fillClientsCombobox() {
+    const clientService = new ClientService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    const clients= await clientService.getAllClients(); // Llamar al método de la clase
+    let comboboxContent= "";
+
+    for(let client of clients){
+        let optionContent= `<option value=${client.cedula}>${client.firstName} ${client.lastName}</option>`
+        comboboxContent+=optionContent;
+    }
+    document.querySelector("#ComboBoxCedulaClient").innerHTML=comboboxContent;
 }
 
 //---------------------------contenido del combobox de los metodos de pago------------------------------
