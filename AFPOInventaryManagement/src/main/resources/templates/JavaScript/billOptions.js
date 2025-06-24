@@ -19,15 +19,15 @@ window.onload = function() {
 async function fillCorporativeInformation() {
     const salePointService = new SalePointService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     const salePoint= await salePointService.getSalePointByIdUser(1); // Llamar al método de la clase
-
-    let adress= salePoint.adress;
+    console.log(salePoint);
+    let address= salePoint.address;
     let salePointNumber= salePoint.idSalePoint;
-    let phoneNumber= salePoint.phoneNumber;
+    let contactNumber= salePoint.contactNumber;
 
     
-    document.querySelector("#adress").textContent+=adress;
+    document.querySelector("#address").textContent+=address;
     document.querySelector("#salePointNumber").textContent+=salePointNumber;
-    document.querySelector("#contactNumber").textContent+=phoneNumber;
+    document.querySelector("#contactNumber").textContent+=contactNumber;
 }
 
 
@@ -65,26 +65,28 @@ async function fillPaymentMethodCombobox() {
         let optionContent= `<option value=${paymentMethod.idPaymentMethod}>${paymentMethod.methodName}</option>`
         comboboxContent+=optionContent;
     }
-    document.querySelector("#paymentMethodRegister").innerHTML=comboboxContent;
+    document.querySelector("#ComboBoxPaymentMethod").innerHTML=comboboxContent;
 
 }
 
 //------------------llenar el nombre del vendedor----------------------------------------
 async function fillSellerName() {
     const userService = new UserService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-    const user= await userService.getUserById(2); // Llamar al método de la clase
+    const user= await userService.getUserById(1); // Llamar al método de la clase
 
     const roleService = new RoleService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     const role= await roleService.getRoleById(user.idRole); // Llamar al método de la clase
 
     let sellerName= user.firstName + " " + user.lastName;
-    let roleName= role.roleName;
+   
+    let roleName= role.rolName;
+    console.log(roleName);
     
 
     
     document.getElementById("sellerNameInput").value=sellerName;
-    document.querySelector("#header__nameText").innerHTML=sellerName;
-    document.querySelector("#header__roleText").innerHTML=roleName;
+    document.querySelector("#header__nameText").textContent=sellerName;
+    document.querySelector("#header__roleText").textContent=roleName;
 }
 
 
@@ -106,7 +108,7 @@ async function fillProductCombobox() {
 
 
 //----------------- btn show addProductToBill form----------------------------------
-let btnShowRegisterForm = document.getElementById("addProductToBill");
+let btnShowRegisterForm = document.getElementById("btnShowAddProductToBillForm");
 
 btnShowRegisterForm.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
@@ -139,13 +141,14 @@ function closeRegisterForm(){
 }
 
 //---------------------------btn add ProductToBill ---------------------------------
-let btnAddProduct = document.getElementById("addProductToBill");
+let btnAddProduct = document.getElementById("btnAddProductToBill");
 
 btnAddProduct.addEventListener("click", async event => {
     event.preventDefault();
     const quantity = parseInt(document.getElementById("quantity-input").value);
     const idProduct = document.getElementById("productNameCombobox").value;
     await addProductToBillRow(quantity, idProduct);
+    calculatePartialAndTotalPrice(false)
 });
 
 
@@ -199,7 +202,7 @@ function closePopUpBillRegistered(){
 
 
 //--------------------------- calculate partial and total Price ---------------------------------
-async function calculatePartialAndTotalPrice(){
+async function calculatePartialAndTotalPrice(button){
 
     const filas = document.querySelectorAll("#table tbody tr");
     let suma = 0;
@@ -210,13 +213,16 @@ async function calculatePartialAndTotalPrice(){
         suma += precio;
     });
 
-    let total = (suma * 1.19).toFixed(2);
+    let total = (suma * 1.19).toFixed(0);
 
     // Mostrar el subtotal en el input
-    document.getElementById("partialPriceInput").value = suma.toFixed(2);
+    document.getElementById("partialPriceInput").value = suma.toFixed(0);
     document.getElementById("totalPriceInput").value = total;
 
-    return parseFloat(total); // Retornar el total calculado:
+    if (button == true) {
+        return parseFloat(total); // Retornar el total calculado:
+    }
+    
 }
 
 //---------------------------btn registerBill ---------------------------------
@@ -234,24 +240,26 @@ btnRegisterBill.addEventListener("click", event => {
 //--------------------------Register Bill-----------------------------------    
 async function registerBill(){
     const billService = new BillService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-    let cliendCedula= document.getElementById("cedulaClientInput").value;
-    let idTypeOfMovement= document.getElementById("ComboBoxTypeOfMovement").value;
-    let idPaymentMethod= document.getElementById("ComboBoxPaymentMethod").value;
+    let clientCedula= document.getElementById("cedulaClientInput").value;
+    let idTypeOfMovement= parseInt(document.getElementById("ComboBoxTypeOfMovement").value,10);
+    let idPaymentMethod= parseInt(document.getElementById("ComboBoxPaymentMethod").value,10);
 
     const clientService = new ClientService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-    const client= await clientService.getClientByCedula(cliendCedula); // Llamar al método de la clase
+    const client= await clientService.getClientByCedula(clientCedula); // Llamar al método de la clase
 
     const salePointService = new SalePointService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     const salePoint= await salePointService.getSalePointByIdUser(1); // Llamar al método de la clase
-
+    
     let bill= {};
     bill.idClient = client.idClient;
+    
     bill.idSalePoint = salePoint.idSalePoint;
     bill.idTypeOfMovement = idTypeOfMovement;
-    bill.idWarehouseDetails = 0;
+    bill.idWarehouseDetails = 1;
     bill.idPaymentMethod = idPaymentMethod;
-    bill.totalPrice = await calculatePartialAndTotalPrice();
+    bill.totalPrice = await calculatePartialAndTotalPrice(true);
     
+    console.log(bill);
     let outcome = await billService.createBill(bill); 
     
     closeRegisterForm();

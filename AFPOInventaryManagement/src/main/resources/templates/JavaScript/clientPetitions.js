@@ -33,6 +33,7 @@ export class ClientService{
 
     //getClientByCedula
     async getClientByCedula(cedula){
+        console.log("Fetching client by cedula:", cedula);
         try {
             const response = await fetch(`${this.baseURL}/api/getClientByCedula/${cedula}`, {
                 method: 'GET',

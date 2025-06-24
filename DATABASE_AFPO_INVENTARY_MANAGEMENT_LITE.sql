@@ -36,7 +36,7 @@ firstName VARCHAR(25) NOT NULL,
 secondName VARCHAR(25),
 lastName VARCHAR(25) NOT NULL,
 secondLastName VARCHAR(25),
-homeDirection VARCHAR(125) NOT NULL
+homeAdress VARCHAR(125) NOT NULL
 )
 
 -- ---------------------------------------TABLA PRODUCT
@@ -82,7 +82,7 @@ create table warehouseDetails(
 idWarehouseDetails INT AUTO_INCREMENT PRIMARY KEY,
 idKardex INT NOT NULL,
 idWarehouse INT NOT NULL,
-FOREIGN KEY(idWrehouse) REFERENCES warehouse(idWarehouse) ON DELETE CASCADE ON UPDATE CASCADE
+FOREIGN KEY(idWarehouse) REFERENCES warehouse(idWarehouse) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY(idKardex) REFERENCES kardex(idKardex) ON DELETE CASCADE ON UPDATE CASCADE
 )
 
@@ -90,7 +90,7 @@ FOREIGN KEY(idKardex) REFERENCES kardex(idKardex) ON DELETE CASCADE ON UPDATE CA
 
 create table salePoint(
 idSalePoint INT AUTO_INCREMENT PRIMARY KEY,
-idUser INT NOT NULL,
+idUser INT unique NOT NULL,
 address VARCHAR(125) NOT NULL UNIQUE,
 contactNumber VARCHAR(20)NOT NULL UNIQUE,
 FOREIGN KEY(IdUser) REFERENCES user(idUser) ON DELETE CASCADE ON UPDATE CASCADE

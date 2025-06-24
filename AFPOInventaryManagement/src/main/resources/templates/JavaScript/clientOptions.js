@@ -257,8 +257,10 @@ async function registerClient(){
     client.lastName = document.getElementById("lastNameRegister").value;
     client.secondLastName = document.getElementById("secondLastNameRegister").value;
     client.homeAdress = document.getElementById("homeAdressRegister").value;
-    let outcome = await clientService.createClient(client); 
     
+    console.log("Datos del cliente a registrar:", client);
+    let outcome = await clientService.createClient(client); 
+
     closeRegisterForm();
     if (outcome === true) {
         showPopUpClientRegistered();

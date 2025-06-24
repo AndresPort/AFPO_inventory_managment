@@ -92,8 +92,8 @@ async function fillUInputUpdateForm(salePoint){
     let name =  `<option value=${user.idUser}>${user.firstName} ${user.secondName} ${user.lastName} </option>`
    document.querySelector("#nameUpdateInput").innerHTML=name;
 
-    let adress = document.getElementById("adressUpdate")
-    adress.value=salePoint.adress;
+    let address = document.getElementById("addressUpdate")
+    address.value=salePoint.address;
 
     let contactNumber = document.getElementById("contactNumberUpdate")
     contactNumber.value=salePoint.contactNumber;
@@ -233,7 +233,7 @@ async function registerSalePoint(){
     let salePoint= {};
     salePoint.idUser = document.getElementById("nameRegisterInput").value;
     console.log("idUser", salePoint.idUser);
-    salePoint.adress = document.getElementById("adressRegister").value;
+    salePoint.address = document.getElementById("addressRegister").value;
     salePoint.contactNumber = document.getElementById("contactNumberRegister").value;
     console.log("Resultado del servidor:", salePoint);
     let outcome = await salePointService.createSalePoint(salePoint); 
@@ -257,7 +257,7 @@ async function updateSalePoint(salePoint) {
     btnUpdateSalePoint.addEventListener("click", event => {
     event.preventDefault(); // Esto evita el envío automático de GET
     salePoint.idUser = document.getElementById("nameUpdateInput").value;
-    salePoint.adress = document.getElementById("adressUpdate").value;
+    salePoint.address = document.getElementById("addressUpdate").value;
     salePoint.contactNumber = document.getElementById("contactNumberUpdate").value;
     confirmUpdateSalePoint(salePoint);
 });
@@ -309,7 +309,7 @@ async function getAllSalePoints() {
         let rowContent = `<tr>
         <td>${salePoint.idSalePoint}</td>
         <td>${user.firstName} ${user.secondName} ${user.lastName}</td>
-        <td>${salePoint.adress}</td>
+        <td>${salePoint.address}</td>
         <td>${salePoint.contactNumber}</td>
         <td>
             <i class="fa-solid fa-pen" data-id="${salePoint.idSalePoint}" data-action="update"></i>

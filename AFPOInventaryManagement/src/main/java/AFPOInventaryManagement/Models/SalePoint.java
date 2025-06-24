@@ -11,8 +11,8 @@ public class SalePoint {
     private Long idSalePoint;
     @Column(name = "idUser")
     private Long idUser;
-    @Column(name = "adress")
-    private String adress;
+    @Column(name = "address")
+    private String address;
     @Column(name = "contactNumber")
     private String contactNumber;
 
@@ -23,17 +23,17 @@ public class SalePoint {
     }
 
     //constructor without idSalePoint
-    public SalePoint(Long idUser, String adress, String contactNumber) {
+    public SalePoint(Long idUser, String address, String contactNumber) {
         this.idUser = idUser;
-        this.adress = adress;
+        this.address = address;
         this.contactNumber = contactNumber;
     }
 
     //full constructor
-    public SalePoint(Long idSalePoint, Long idUser, String adress, String contactNumber) {
+    public SalePoint(Long idSalePoint, Long idUser, String address, String contactNumber) {
         this.idSalePoint = idSalePoint;
         this.idUser = idUser;
-        this.adress = adress;
+        this.address = address;
         this.contactNumber = contactNumber;
     }
 
@@ -55,12 +55,12 @@ public class SalePoint {
         this.idUser = idUser;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getContactNumber() {

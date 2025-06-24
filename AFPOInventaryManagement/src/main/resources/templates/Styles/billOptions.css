@@ -159,13 +159,13 @@ main {
   height: 30px;
   display: flex;
   justify-self: center;
-  gap: 180px;
+  gap: 150px;
 }
 
-.nITNumber,
+.address,
 .salePointNumber,
 .contactNumber {
-  font-size: 17px;
+  font-size: 15px;
 }
 
 /* bill title */
@@ -251,7 +251,7 @@ main {
 
 /* add products button */
 
-.addProductToBill {
+.btnShowAddProductToBillForm {
   width: 500px;
   height: 60px;
   border-radius: 30px;
@@ -265,7 +265,7 @@ main {
   transition: background-color 0.6s;
 }
 
-.addProductToBill:hover {
+.btnShowAddProductToBillForm:hover {
   background-color: rgb(53, 252, 100);
 }
 
