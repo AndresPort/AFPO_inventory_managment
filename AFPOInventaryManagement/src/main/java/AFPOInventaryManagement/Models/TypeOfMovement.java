@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class TypeOfMovement {
     //atributes
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTypeOfMovement;
     @Column(name = "movementName")
     private String movementName;

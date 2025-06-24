@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class BillDetails {
     //atributes
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idBillDetails;
     @Column(name = "idBill")
     private Long idBill;

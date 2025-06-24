@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class PaymentMethod{
     //atributes
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPaymentMethod;
     @Column(name = "methodName")
     private String methodName;
