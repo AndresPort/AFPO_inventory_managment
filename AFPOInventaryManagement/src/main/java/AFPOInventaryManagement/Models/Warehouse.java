@@ -9,8 +9,6 @@ public class Warehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idWarehouse;
-    @Column(name = "idKardex")
-    private Long idKardex;
     @Column(name = "name")
     private String name;
     @Column(name = "contactNumber")
@@ -25,9 +23,8 @@ public class Warehouse {
 
     //full constructor
 
-    public Warehouse(Long idWarehouse, Long idKardex, String name, String contactNumber, String adress) {
+    public Warehouse(Long idWarehouse, String name, String contactNumber, String adress) {
         this.idWarehouse = idWarehouse;
-        this.idKardex = idKardex;
         this.name = name;
         this.contactNumber = contactNumber;
         this.adress = adress;
@@ -42,14 +39,6 @@ public class Warehouse {
 
     public void setIdWarehouse(Long idWarehouse) {
         this.idWarehouse = idWarehouse;
-    }
-
-    public Long getIdKardex() {
-        return idKardex;
-    }
-
-    public void setIdKardex(Long idKardex) {
-        this.idKardex = idKardex;
     }
 
     public String getName() {

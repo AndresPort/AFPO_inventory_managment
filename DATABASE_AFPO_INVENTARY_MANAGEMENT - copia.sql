@@ -49,6 +49,13 @@ price DECIMAL(10,2) NOT NULL,
 brand VARCHAR(100) NOT NULL
 )
 
+-- ---------------------------------------TABLA CATEGORY
+
+create table category(
+idCategory INT AUTO_INCREMENT PRIMARY KEY,
+categoryName VARCHAR(60) NOT NULL UNIQUE,
+)
+
 -- ---------------------------------------TABLA KARDEX
 
 create table kardex(

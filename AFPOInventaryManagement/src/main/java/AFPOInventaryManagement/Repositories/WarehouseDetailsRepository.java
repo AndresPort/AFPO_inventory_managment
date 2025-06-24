@@ -1,13 +1,10 @@
 package AFPOInventaryManagement.Repositories;
-
-import AFPOInventaryManagement.Models.Supplier;
+import AFPOInventaryManagement.Models.WarehouseDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface SupplierRepository extends JpaRepository<Supplier,Long> {
-
-    Optional<Supplier> findSupplierByName(String name);
+public interface WarehouseDetailsRepository extends JpaRepository<WarehouseDetails,Long> {
 }

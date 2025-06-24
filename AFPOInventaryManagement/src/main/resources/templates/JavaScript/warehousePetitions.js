@@ -11,7 +11,7 @@ export class WarehouseService{
 
     async getAllWarehouse() {
         try {
-            const response = await fetch(`${this.baseURL}/api/getAllWarehouse`, {
+            const response = await fetch(`${this.baseURL}/api/getAllWarehouses`, {
                 method: 'GET',
                 headers: {
                     "Accept": "application/json",

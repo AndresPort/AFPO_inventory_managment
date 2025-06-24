@@ -458,7 +458,7 @@ table {
 /* Modify user form */  
 
 .formUpdateFrame{
-  visibility: visible;
+  visibility: hidden;
   position: absolute;
   width: 450px;
   height: 490px;
