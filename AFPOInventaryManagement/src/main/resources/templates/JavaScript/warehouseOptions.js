@@ -12,8 +12,8 @@ function cleanUserFormInputs(){
     let contactNumber = document.getElementById("contactNumberRegister")
     contactNumber.value=null;
     
-    let adress = document.getElementById("adressRegister")
-    adress.value=null;
+    let address = document.getElementById("addressRegister")
+    address.value=null;
 
 }
 
@@ -78,8 +78,8 @@ function fillUInputUpdateForm(warehouse){
     let contactNumber = document.getElementById("contactNumberUpdate")
     contactNumber.value=warehouse.contactNumber;
 
-    let adress = document.getElementById("adressUpdate")
-    adress.value=warehouse.adress;
+    let address = document.getElementById("addressUpdate")
+    address.value=warehouse.address;
 
     
 }
@@ -178,7 +178,7 @@ async function registerWarehouse(){
     let warehouse= {};
     warehouse.name = document.getElementById("nameRegister").value;
     warehouse.contactNumber = document.getElementById("contactNumberRegister").value;
-    warehouse.adress = parseInt(document.getElementById("adressRegister").value);
+    warehouse.address = document.getElementById("addressRegister").value;
     
     let outcome = await warehouseService.createWarehouse(warehouse); 
     
@@ -203,7 +203,7 @@ async function updateWarehouse(warehouse) {
     event.preventDefault(); // Esto evita el envío automático de GET
     warehouse.name = document.getElementById("nameUpdate").value;
     warehouse.contactNumber = document.getElementById("contactNumberUpdate").value;
-    warehouse.adress = document.getElementById("adressUpdate").value;
+    warehouse.address = document.getElementById("addressUpdate").value;
     
 
     
@@ -253,7 +253,7 @@ async function getAllWarehouse() {
         <td>${Warehouse.idWarehouse}</td>
         <td>${Warehouse.name}</td>
         <td>${Warehouse.contactNumber}</td>
-        <td>${Warehouse.adress}</td>
+        <td>${Warehouse.address}</td>
         <td>
             <i class="fa-solid fa-pen" data-id="${Warehouse.idWarehouse}" data-action="update"></i>
             <i class="fa-solid fa-trash" data-id="${Warehouse.idWarehouse}" data-action="delete"></i>

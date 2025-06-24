@@ -13,8 +13,8 @@ public class Warehouse {
     private String name;
     @Column(name = "contactNumber")
     private String contactNumber;
-    @Column(name = "adress")
-    private String adress;
+    @Column(name = "address")
+    private String address;
 
     //metods
     //empty constructor
@@ -23,11 +23,11 @@ public class Warehouse {
 
     //full constructor
 
-    public Warehouse(Long idWarehouse, String name, String contactNumber, String adress) {
+    public Warehouse(Long idWarehouse, String name, String contactNumber, String address) {
         this.idWarehouse = idWarehouse;
         this.name = name;
         this.contactNumber = contactNumber;
-        this.adress = adress;
+        this.address = address;
     }
 
 
@@ -57,11 +57,11 @@ public class Warehouse {
         this.contactNumber = contactNumber;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

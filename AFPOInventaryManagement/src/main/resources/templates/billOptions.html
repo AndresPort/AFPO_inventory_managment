@@ -55,7 +55,7 @@
 <div class="billContainer">
     <h1 class="principalTittle">AFPO Inventary Management</h1>
     <div class="corporativeInformationContainer">
-        <h3 class="nITNumber" id="nITNumber">NIT: XXX.XXX</h3>
+        <h3 class="adress" id="adress">Dirección:</h3>
         <h3 class="salePointNumber" id="salePointNumber">Punto de venta #</h3>
         <h3 class="contactNumber" id="contactNumber">Teléfono: </h3>
     </div>
@@ -87,10 +87,9 @@
       <table id="table">
         <thead>
           <tr>
-            <th colspan="4"></th>
+            <th colspan="3"></th>
           </tr>
           <tr>
-            <th>Id</th>
             <th>Producto</th>
             <th>Cantidad</th>
             <th>Precio</th>
@@ -106,11 +105,35 @@
         <h3 class="partialPrice" >Precio neto: </h3>
         <input type="text" class="partialPriceInput" id="partialPriceInput" placeholder="8725032">
 
-        <h3 class="totalPrice">C.C. Ciente: </h3>
+        <h3 class="totalPrice">Precio Total</h3>
         <input type="text" class="totalPriceInput" id="totalPriceInput" placeholder="8723022">
     </div>
 
     <button onclick="" class="btnSaveBill" id="btnSaveBill">Realizar la venta</button>
+
+<!----------------------------------Add Product Form--------------------------------->
+    <div class="formRegisterFrame" id="formRegisterFrame">
+        <h4 class="btncloseRegister" id="btncloseRegister">X</h4>
+        <h1 class="RegisterTittle">Agregar producto a la factura</h1>
+        <form method="POST" class="addProductToBillForm">
+          
+            
+            <select class="productNameCombobox" id="productNameCombobox">
+            </select>
+            <input class="quantity-input" id="quantity-input" type="number" placeholder="Cantidad del producto">
+        
+            <button onclick="" class="btnAddProductToBill" id="btnAddProductToBill"> Agregar</button>
+      </form>
+    </div>
+
+     <!--pop up product added succesfully-->
+
+    <div class="popUpBillRegistered" id="popUpBillRegistered">
+        <h4 class="btnClosePopUpBillRegistered" id="btnClosePopUpBillRegistered">X</h4>
+        <i class="fa-solid fa-circle-check"></i>
+        <h4 class="userRegisteredText">La Factura se ha registrado <br> satisfactoriamente</h4>
+    </div>
+
 </div>
 
 <!------------------------------------Footer-------------------------------------->  

@@ -81,6 +81,8 @@ address VARCHAR(125) NOT NULL
 create table warehouseDetails(
 idWarehouseDetails INT AUTO_INCREMENT PRIMARY KEY,
 idKardex INT NOT NULL,
+idWarehouse INT NOT NULL,
+FOREIGN KEY(idWrehouse) REFERENCES warehouse(idWarehouse) ON DELETE CASCADE ON UPDATE CASCADE
 FOREIGN KEY(idKardex) REFERENCES kardex(idKardex) ON DELETE CASCADE ON UPDATE CASCADE
 )
 
