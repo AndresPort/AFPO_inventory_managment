@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="Styles/warehouseOptions.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/f55ea41269.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Detalle Bodega</title>
+</head>
+<body>
+    <header class="header">
+
+        <nav class="nav">
+            <i class="fa-solid fa-bars"></i>
+        </nav>
+
+        <a href="homeAdmin.html">
+            <i class="fa-solid fa-house"></i>
+        </a>
+        
+        <h4 class="header__nameText">nombre completo</h4>
+        <h4 class="header__roleText">rol</h4>
+    
+        <i class="fa-solid fa-gear"></i>
+
+    </header>
+
+<!-------------------------dropdown menu--------------------------->
+
+    <ul class="nav__dropdownMenu">
+        <li><a href="">Perfil</a></li>
+        <li><a href="">Cambiar contraseña</a></li>
+        <li><a href="index.html">Cerrar sesion</a></li>
+    </ul>
+
+    <script src="JavaScript/dropdownMenuActive.js"></script>
+
+<!-------------------------slide options menu --------------------------->
+
+    <div class="userOptionsMenuContainer ">
+        <ul class="userOptionsMenu">
+            <li><a href="">Incio</a></li>
+            <li><a href="">Productos</a></li>
+            <li><a href="">Bodega</a></li>                
+        </ul>
+    </div>    
+    <script src="JavaScript/usersOptionsMenu.js"></script>
+    
+<!-------------------------action buttons--------------------------->
+
+    <div class="actionButtonsFrame">
+        <button onclick="" class="actionButtonsFrame__RegisterWarehouseDetails" id="btnRegisterMenu"> Registrar Detalle</button>
+
+        <button onclick="" class="actionButtonsFrame__ListWarehouse" id="btnRegisterMenu"> Listar por Bodegas</button>
+
+        <button onclick="" class="actionButtonsFrame__ListProducts" id="btnRegisterMenu"> Listar por Productos</button>
+    </div>
+
+    <!------------------------Table---------------------------->
+    <div class="tableFrame" id="tableFrame">
+      <table id="table">
+        <h4 class="btncloseTable" id="btncloseTable">X</h4>
+        <thead>
+          <tr>
+            <th colspan="5">Detalle Bodega</th>
+          </tr>
+          <tr>
+            <th>Id</th>
+            <th>Nombre de Bodega</th>
+            <th>Nombre del Producto</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+      
+
+
+     <!----------------------------Register warehouse--------------------------------->
+
+    <div class="formRegisterFrame" id="formRegisterFrame">
+        <h4 class="btncloseRegister" id="btncloseRegister">X</h4>
+        <h1 class="RegisterTittle">Registrar Bodega</h1>
+        <form method="POST" class="registerWarehouseForm">
+          
+            <input class="formRegisterFrame__name-input" id="nameRegister" type="text" placeholder="Nombre">
+            <input class="formRegisterFrame__contactNumber-input" id="contactNumberRegister" type="text" placeholder="Número de contacto">
+            <input class="formRegisterFrame__adress-input" id="adressRegister" type="text" placeholder="Dirección">
+            <button onclick="" class="formRegisterFrame__button" id="btnRegisterWarehouse"> Registrar Bodega</button>
+      </form>
+    </div>
+
+
+    
+    <!--pop up warehouse registered succesfully-->
+
+    <div class="popUpWarehouseRegistered" id="popUpWarehouseRegistered">
+        <h4 class="btnClosePopUpWarehouseRegistered" id="btnClosePopUpWarehouseRegistered">X</h4>
+        <i class="fa-solid fa-circle-check"></i>
+        <h4 class="warehouseRegisteredText">La bodega se ha registrado <br> satisfactoriamente</h4>
+    </div>
+
+    <!--pop up an error has ocurred-->
+
+    <div class="popUpError" id="popUpError">
+        <h4 class="btnClosePopUpError" id="btnClosePopUpError">X</h4>
+        <i class="fa-solid fa-circle-xmark"></i>
+        <h4 class="errorText">Ha ocurrido un error</h4>
+    </div>
+
+    <!--------------------------------update info warehouse------------------------------------------>
+    
+    <div class="formUpdateFrame" id="formUpdateFrame">
+        <h4 class="btncloseUpdateFrame" id="btncloseUpdateFrame">X</h4>
+        <h1 class="UpdateTittle">Modificar Bodega</h1>
+        <form method="POST" class="updateWarehouseForm">
+
+            <input class="formUpdateFrame__name-input" id="nameUpdate" type="text" placeholder="Nombre">
+            <input class="formUpdateFrame__contactNumber-input" id="contactNumberUpdate" type="text" placeholder="Número de contacto">
+            <input class="formUpdateFrame__adress-input" id="adressUpdate" type="text" placeholder="Dirección">
+            <button  class="formsFrame__button" id="btnUpdateWarehouse">Modificar Bodega</button>
+      </form>
+    </div>
+              
+    <!--pop up warehouse updated succesfully-->
+
+    <div class="popUpWarehouseUpdated" id="popUpWarehouseUpdated">
+        <h4 class="btnClosePopUpWarehouseUpdated" id="btnClosePopUpWarehouseUpdated">X</h4>
+        <i class="fa-solid fa-circle-check"></i>
+        <h4 class="warehouseUpdatedText">La bodega se ha actualizado <br>satisfactoriamente</h4>
+    </div>
+
+    <!--------------------------delete warehouse--------------------------------->
+
+    <!--pop up warehouse deleted succesfully-->
+
+    <div class="popUpWarehouseDeleted" id="popUpWarehouseDeleted">
+        <h4 class="btnClosePopUpWarehouseDeleted" id="btnClosePopUpWarehouseDeleted">X</h4>
+        <i class="fa-solid fa-circle-check"></i>
+        <h4 class="warehouseDeletedText">El usuario se ha eliminado <br> satisfactoriamente</h4>
+    </div>
+
+
+    <!-----------------------------Scripts----------------------------------> 
+    <script type="module" src="JavaScript/warehousePetitions.js"></script>
+    <script type="module" src="JavaScript/warehouseOptions.js"></script>
+
+    <!-----------------------------Footer---------------------------------->      
+    <footer>
+        <h5 class="footer__copyright">Este sitio está protegido por reCAPTCHA. Se aplican los <a href="https://policies.google.com/terms">Términos del servicio</a> y la <a href="https://policies.google.com/privacy">Política de privacidad</a> de Google. ©AFPO MANAGMENT INVENTARY</h5>
+    </footer>
+    
+</body>
+</html>
