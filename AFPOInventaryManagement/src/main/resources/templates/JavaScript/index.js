@@ -24,8 +24,9 @@ btnShowTable.addEventListener("click", async (event) => {
 let searchUserByUserCode = async (userCode, password) => {
     const userService = new UserService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     let user= await userService.getUserByUserCode(userCode)
-    console.log(user);
     passwordVerification(user,password);
+    // Guardar en localStorage
+    sessionStorage.setItem("user", JSON.stringify(user));
 };
 
 function passwordVerification(user, password) {

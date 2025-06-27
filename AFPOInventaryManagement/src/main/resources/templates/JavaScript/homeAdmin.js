@@ -1,6 +1,5 @@
 import{RoleService} from "./rolePetitions.js";
 
-
 document.addEventListener("DOMContentLoaded", async() => {
     const user = JSON.parse(sessionStorage.getItem("user"));
 

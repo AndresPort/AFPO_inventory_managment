@@ -86,24 +86,25 @@ async function fillPaymentMethodCombobox() {
 
 //------------------llenar el nombre del vendedor----------------------------------------
 async function fillSellerName() {
-    const userService = new UserService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-    const user= await userService.getUserById(1); // Llamar al método de la clase
+    const user = JSON.parse(sessionStorage.getItem("user"));
 
-    const roleService = new RoleService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-    const role= await roleService.getRoleById(user.idRole); // Llamar al método de la clase
+    if (!user) {
+        alert("No hay sesión activa. Redirigiendo al login.");
+        window.location.href = "index.html";
+        return;
+    }
 
-    let sellerName= user.firstName + " " + user.lastName;
-   
-    let roleName= role.rolName;
-    console.log(roleName);
-    
-
-    
-    document.getElementById("sellerNameInput").value=sellerName;
-    document.querySelector("#header__nameText").textContent=sellerName;
-    document.querySelector("#header__roleText").textContent=roleName;
+    try {
+        const roleService = new RoleService('http://127.0.0.1:8080');
+        const role = await roleService.getRoleById(user.idRole);
+        console.log(role.rolName);
+        document.getElementById("sellerNameInput").value = user.firstName + " " + user.lastName;
+        document.querySelector("#header__nameText").textContent = user.firstName + " " + user.lastName;
+        document.querySelector("#header__roleText").textContent = role.rolName;
+    } catch (error) {
+        console.error("Error al cargar datos del usuario:", error);
+    }
 }
-
 
 
 //---------------------------contenido del combobox de los productos------------------------------
