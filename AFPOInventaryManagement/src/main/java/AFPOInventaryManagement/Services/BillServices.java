@@ -22,8 +22,9 @@ public class BillServices {
     }
 
     //create Bill
-    public void createBill(Bill bill){
-        repository.save(bill);
+    public Long createBill(Bill bill){
+       Bill billSaved = repository.save(bill);
+       return billSaved.getIdBill();
     }
 
     //update bill
@@ -54,4 +55,6 @@ public class BillServices {
         }
         return null;
     }
+
+
 }
