@@ -15,7 +15,6 @@ import{RoleService} from "./rolePetitions.js";
 window.onload = function() {
     getAllBills()
     getAllBillDetails()
-// fillBillCombobox()
 };
  
 document.addEventListener("DOMContentLoaded", async() => {
@@ -35,51 +34,62 @@ document.addEventListener("DOMContentLoaded", async() => {
 
 //---------------------------contenido del combobox de la factura------------------------------
 
-// async function fillBillCombobox() {
-//     const billService = new BillService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-//     const bills = await billService.getAllBills(); // Llamar al método de la clase
+async function fillBillCombobox() {
+    const billService = new BillService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    const bills = await billService.getAllBills(); // Llamar al método de la clase
 
-//     let comboboxContent= null;
+    let comboboxContent= "";
 
-//     for(let bill of bills){
-//         let optionContent= `<option value=${bill.idBill}>${bill.idBill}</option>`
-//         comboboxContent+=optionContent;
-//     }
-//     document.querySelector("#categoryUpdate").innerHTML=comboboxContent;
+    for(let bill of bills){
+        let optionContent= `<option value=${bill.idBill}>${bill.idBill}</option>`
+        comboboxContent+=optionContent;
+    }
+    document.querySelector("#searchProductByIdBill-selectInput").innerHTML=comboboxContent;
     
-// }
+}
 
 
 //----------------- btn show SearcKardexByProductName frame----------------------------------
-// let btnSearcKardexByProductNameFrame = document.getElementById("btnSearchKardexByProduct");
+let btnSearcKardexByProductNameFrame = document.getElementById("btnSearchProductsByBill");
 
-// btnSearcKardexByProductNameFrame.addEventListener("click", event => {
-//     event.preventDefault(); // Esto evita el envío automático de GET
-//     showSearcKardexByProductNameFrame();
-//     fillProductCombobox();
-//     fillCategoryCombobox();
-// });
+btnSearcKardexByProductNameFrame.addEventListener("click", event => {
+    event.preventDefault(); // Esto evita el envío automático de GET
+    showSearchProductByIdBillFrame();
+    fillBillCombobox()
+});
 
 //----------------- btn close SearcKardexByProductName frame----------------------------------
-// let btnCloseSearcKardexByProductNameFrame = document.getElementById("BtnCloseSearchKardexByIdProductForm");
+let btnSearchProductByIdBillForm = document.getElementById("BtnCloseSearchProductByIdBillForm");
 
-// btnCloseSearcKardexByProductNameFrame.addEventListener("click", event => {
-//     event.preventDefault(); // Esto evita el envío automático de GET
-//     closeSearcKardexByProductNameFrame();
-// });
+btnSearchProductByIdBillForm.addEventListener("click", event => {
+    event.preventDefault(); // Esto evita el envío automático de GET
+    closeSearchProductByIdBillFrame();
+});
 
 //----------------------show and close SearcKardexByProductName form-------------------------------------------
 
-// let searcKardexByProductNameFrame = document.getElementById("searchKardexByIdProductFrame");
+let searchProductByIdBill = document.getElementById("searchProductByIdBill");
 
-// function showSearcKardexByProductNameFrame(){
-//     searcKardexByProductNameFrame.style.visibility="visible";
+function showSearchProductByIdBillFrame(){
+    searchProductByIdBill.style.visibility="visible";
     
-// }
+}
 
-// function closeSearcKardexByProductNameFrame(){
-//     searcKardexByProductNameFrame.style.visibility="hidden";
-// }
+function closeSearchProductByIdBillFrame(){
+    searchProductByIdBill.style.visibility="hidden";
+}
+
+
+//---------------------- SearcProductByIdBill form-------------------------------------------
+
+let searchProductByIdBillForm = document.getElementById("btnSearchProductByIdBillForm");
+
+searchProductByIdBillForm.addEventListener("click", event => {
+    event.preventDefault(); // Esto evita el envío automático de GET
+    let idBill= parseInt(document.getElementById("searchProductByIdBill-selectInput").value,10);
+    getProductsByIdBill(idBill)
+});
+
 
 //----------------------------------------------------------------------
 //--------------------------Functions----------------------------------
@@ -151,6 +161,35 @@ async function getAllBillDetails() {
 
 }
 //-----------------------------SearchKardexByProduct--------------------------------
-// async function getKardexByProduct(idProduct) {
-//     
-// }
+async function getProductsByIdBill(idBill) {
+    
+     const billDetailsService = new BillDetailsService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    let billsDetails= await billDetailsService.getBillDetailsByIdBill(idBill)
+    console.log(billsDetails)
+    const productService = new ProductService('http://127.0.0.1:8080');
+
+    const kardexService = new KardexService('http://127.0.0.1:8080');
+   
+
+    let tableContent= "";
+    for(let billDetails of billsDetails){
+        
+
+        let kardex =  await kardexService.getKardexById(billDetails.idKardex)
+        let product =  await productService.getProductById(kardex.idProduct)
+        
+
+        let rowContent = `<tr>
+        <td>${billDetails.idBillDetails}</td>
+        <td>${billDetails.idBill}</td>
+        <td>${product.name}</td>
+        <td>${billDetails.productQuantity}</td>
+        <td>${billDetails.productsPrice}</td>
+
+        </tr>`
+
+        tableContent+=rowContent;
+    }
+
+    document.querySelector("#billDetailsTable tbody").innerHTML = tableContent;
+}

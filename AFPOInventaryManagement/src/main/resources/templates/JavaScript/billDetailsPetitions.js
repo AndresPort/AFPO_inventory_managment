@@ -32,7 +32,7 @@ export class BillDetailsService{
     }
 
     //getBillDetailsById
-    async getBillById(idBillDetails){
+    async getBillDetailsById(idBillDetails){
         try {
             const response = await fetch(`${this.baseURL}/api/getBillDetailsById/${idBillDetails}`, {
                 method: 'GET',
@@ -56,7 +56,8 @@ export class BillDetailsService{
     //getBillDetailsByIdBil
     async getBillDetailsByIdBill(idBill){
         try {
-            const peticion = await fetch("http://localhost:8080/api/getBillDetailsByIdBill/" + idBill, {
+            const peticion = await fetch(`${this.baseURL}/api/getBillDetailsByIdBill/${idBill}`, {
+
                 method: "GET",
                 headers: {
                     "Accept": "application/json",

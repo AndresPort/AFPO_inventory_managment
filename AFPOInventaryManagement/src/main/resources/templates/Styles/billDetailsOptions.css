@@ -158,6 +158,70 @@ main {
   font-size: 17px;
 }
 
+/* serachProductsByIdBill*/
+
+.searchProductByIdBill{
+  visibility: hidden;
+  position: absolute;
+  top: 300px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 350px;
+  height: 250px;
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+}
+
+.searchProductByIdBillForm{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.searchProductByIdBillTittle{
+  position:relative;
+  text-align: center;
+  top: 10px;
+}
+
+.BtnCloseSearchProductByIdBillForm{
+  color: rgb(220, 220, 220);
+  position: relative;
+  left: 160px;
+  top: -67px;
+  cursor: pointer;
+}
+
+.searchProductByIdBill-selectInput{
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  width: 300px;
+  height: 30px;
+}
+
+.btnSearchProductByIdBillForm{
+  margin-top: 20px;
+  width: 250px;
+  height: 45px;
+  border-radius: 20px;
+  border: 1px solid rgb(0,0,0,0.1);
+  background-color:rgb(0, 0,0) ;
+  color: rgb(250,250,250);
+  box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+  transition: background-color 0.6s ;
+}
+
+.btnSearchProductByIdBillForm:hover{
+  background-color:rgb(53, 252, 100) ;
+}
+
+
 /* bill table*/
 
 .tableFrame {
