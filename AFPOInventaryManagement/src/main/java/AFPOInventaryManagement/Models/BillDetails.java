@@ -14,9 +14,9 @@ public class BillDetails {
     @Column(name = "idKardex")
     private Long idKardex;
     @Column(name = "productsPrice")
-    private Float idProductsPrice;
+    private Float productsPrice;
     @Column(name = "productQuantity")
-    private Long idProductQuantity;
+    private Long productQuantity;
 
     //metods
     //empty constructor
@@ -25,12 +25,12 @@ public class BillDetails {
     }
 
     //full constructor
-    public BillDetails(Long idBillDetails, Long idBill, Long idKardex, Float idProductsPrice, Long idProductQuantity) {
+    public BillDetails(Long idBillDetails, Long idBill, Long idKardex, Float productsPrice, Long productQuantity) {
         this.idBillDetails = idBillDetails;
         this.idBill = idBill;
         this.idKardex = idKardex;
-        this.idProductsPrice = idProductsPrice;
-        this.idProductQuantity = idProductQuantity;
+        this.productsPrice = productsPrice;
+        this.productQuantity = productQuantity;
     }
 
     //getters and setters
@@ -59,19 +59,19 @@ public class BillDetails {
         this.idKardex = idKardex;
     }
 
-    public Float getIdProductsPrice() {
-        return idProductsPrice;
+    public Float getProductsPrice() {
+        return productsPrice;
     }
 
-    public void setIdProductsPrice(Float idProductsPrice) {
-        this.idProductsPrice = idProductsPrice;
+    public void setProductsPrice(Float productsPrice) {
+        this.productsPrice = productsPrice;
     }
 
-    public Long getIdProductQuantity() {
-        return idProductQuantity;
+    public Long getProductQuantity() {
+        return productQuantity;
     }
 
-    public void setIdProductQuantity(Long idProductQuantity) {
-        this.idProductQuantity = idProductQuantity;
+    public void setProductQuantity(Long productQuantity) {
+        this.productQuantity = productQuantity;
     }
 }

@@ -31,8 +31,9 @@ export class KardexService{
         }
     }
 
-    //getUserById
+    //getkardexById
     async getKardexById(idKardex){
+        
         try {
             const response = await fetch(`${this.baseURL}/api/getKardexById/${idKardex}`, {
                 method: 'GET',
@@ -46,6 +47,7 @@ export class KardexService{
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const kardex = await response.json();
+            console.log(kardex)
             return kardex;
         } catch (error) {
             console.error("Error fetching user:", error);

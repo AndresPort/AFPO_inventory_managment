@@ -323,7 +323,6 @@ const kardexService = new KardexService("http://127.0.0.1:8080"); // Crear una i
     const billDetails = {
       idBill: idBillRegistered,
       idKardex: kardex.idKardex,
-      idProduct: product.idProduct,
       productQuantity: quantity,
       productsPrice: price
     };

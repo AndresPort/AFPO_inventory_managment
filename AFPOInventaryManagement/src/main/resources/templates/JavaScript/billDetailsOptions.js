@@ -14,6 +14,7 @@ import{RoleService} from "./rolePetitions.js";
 
 window.onload = function() {
     getAllBills()
+    getAllBillDetails()
 // fillBillCombobox()
 };
  
@@ -88,7 +89,6 @@ document.addEventListener("DOMContentLoaded", async() => {
 async function getAllBills() {
     const billService = new BillService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     let bills= await billService.getAllBills()
-    console.log(bills)
     const clientService = new ClientService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     const salePointService = new SalePointService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     const typeOfMovementService = new TypeOfMovementService('http://127.0.0.1:8080'); // Crear una instancia de la clase
@@ -116,66 +116,41 @@ async function getAllBills() {
     document.querySelector("#billTable tbody").innerHTML = tableContent;
 
 }
+
+//-----------------------------Get all BillsDetails--------------------------------
+async function getAllBillDetails() {
+    const billDetailsService = new BillDetailsService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    let billsDetails= await billDetailsService.getAllBillDetails()
+
+    const productService = new ProductService('http://127.0.0.1:8080');
+
+    const kardexService = new KardexService('http://127.0.0.1:8080');
+   
+
+    let tableContent= "";
+    for(let billDetails of billsDetails){
+        console.log(billDetails)
+
+        let kardex =  await kardexService.getKardexById(billDetails.idKardex)
+        let product =  await productService.getProductById(kardex.idProduct)
+        
+
+        let rowContent = `<tr>
+        <td>${billDetails.idBillDetails}</td>
+        <td>${billDetails.idBill}</td>
+        <td>${product.name}</td>
+        <td>${billDetails.productQuantity}</td>
+        <td>${billDetails.productsPrice}</td>
+
+        </tr>`
+
+        tableContent+=rowContent;
+    }
+
+    document.querySelector("#billDetailsTable tbody").innerHTML = tableContent;
+
+}
 //-----------------------------SearchKardexByProduct--------------------------------
 // async function getKardexByProduct(idProduct) {
-//     const productService = new ProductService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-//     const categoryService = new CategoryService('http://127.0.0.1:8080');
-//     const kardexService = new KardexService('http://127.0.0.1:8080');
-//     let product= await productService.getProductById(idProduct);
-//     let kardex= await kardexService.getKardexByIdProduct(idProduct);
-//     let category= await categoryService.getCategoryById(kardex.idCategory);
-//     let rowContent = `<tr>
-//         <td>${kardex.idKardex}</td>
-//         <td>${product.name}</td>
-//         <td>${category.categoryName}</td>
-//         <td>${kardex.quantity}</td>
-//         <td>
-//             <i class="fa-solid fa-pen" data-id="${kardex.idKardex}" data-action="update"></i>
-//             <i class="fa-solid fa-trash" data-id="${kardex.idKardex}" data-action="delete"></i>
-//         </td>
-//         </tr>`
-
-//     document.querySelector("#table tbody").innerHTML = rowContent;
-
-//     // Asignar eventos dinámicamente
-//     document.querySelectorAll(".fa-trash").forEach((trashIcon) => {
-//         trashIcon.addEventListener("click", (event) => {
-//             const idKardex = event.target.getAttribute("data-id");
-//             deleteKardex(idKardex);
-//         });
-//     });
-
-//     document.querySelectorAll(".fa-pen").forEach((editIcon) => {
-//         editIcon.addEventListener("click", (event) => {
-//             const idKardex = event.target.getAttribute("data-id");
-//             const kardex = kardexList.find((r) => r.idKardex === parseInt(idKardex)); // Buscar el rol por id
-//             updateKardex(kardex)
-//         });
-//     });
-// }
-
-//-----------------------------SearchKardexByCategory--------------------------------
-// async function getKardexByCategory(idCategory) {
-//     const productService = new ProductService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-//     const categoryService = new CategoryService('http://127.0.0.1:8080');
-//     const kardexService = new KardexService('http://127.0.0.1:8080');
-//     let kardexList= await kardexService.getKardexByIdCategory(idCategory);
-
-//     let tableContent= "";
-//     for(let kardex of kardexList){
-//         let product= await productService.getProductById(kardex.idProduct);
-//         let category = await categoryService.getCategoryById(kardex.idCategory);
-//         let rowContent = `<tr>
-//         <td>${kardex.idKardex}</td>
-//         <td>${product.name}</td>
-//         <td>${category.categoryName}</td>
-//         <td>${kardex.quantity}</td>
-//         </tr>`
-
-//         tableContent+=rowContent;
-//     }
-
-//     document.querySelector("#table tbody").innerHTML = tableContent;
-
-    
+//     
 // }
