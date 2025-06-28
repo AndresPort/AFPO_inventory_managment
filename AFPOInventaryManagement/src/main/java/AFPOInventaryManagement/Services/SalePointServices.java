@@ -53,4 +53,13 @@ public class SalePointServices {
         }
         return null;
     }
+
+    //get salePoint by id
+    public SalePoint getSalePointById (Long idSalePoint){
+        if(idSalePoint != null){
+            Optional<SalePoint> salePoint= repository.findById(idSalePoint);
+            return salePoint.orElse(null);
+        }
+        return null;
+    }
 }

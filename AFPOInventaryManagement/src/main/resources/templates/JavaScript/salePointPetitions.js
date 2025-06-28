@@ -31,7 +31,7 @@ export class SalePointService{
         }
     }
 
-    //getSalePointByName
+    //getSalePointByIdUser
     async getSalePointByIdUser(idUser){
         try {
             const response = await fetch(`${this.baseURL}/api/getSalePointByIdUser/${idUser}`, {
@@ -45,8 +45,30 @@ export class SalePointService{
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            const product = await response.json();
-            return product;
+            const salePoint = await response.json();
+            return salePoint;
+        } catch (error) {
+            console.error("Error fetching SalePoint:", error);
+            throw error;
+        }
+    }
+
+    //getSalePointId
+    async getSalePointById(idSalePoint){
+        try {
+            const response = await fetch(`${this.baseURL}/api/getSalePointById/${idSalePoint}`, {
+                method: 'GET',
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const salePoint = await response.json();
+            return salePoint;
         } catch (error) {
             console.error("Error fetching SalePoint:", error);
             throw error;

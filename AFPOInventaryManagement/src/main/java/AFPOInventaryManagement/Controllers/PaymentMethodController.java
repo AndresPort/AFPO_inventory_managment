@@ -54,8 +54,8 @@ public class PaymentMethodController {
 
     //get paymentMethod by id
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @GetMapping("/api/getPaymentMethod/{idPaymentMethod}")
-    public void getPaymentMethodById(@PathVariable Long idPaymentMethod) {
-        PaymentMethod paymentMethod = services.getPaymentMethodById(idPaymentMethod);
+    @GetMapping("/api/getPaymentMethodById/{idPaymentMethod}")
+    public PaymentMethod getPaymentMethodById(@PathVariable Long idPaymentMethod) {
+        return services.getPaymentMethodById(idPaymentMethod);
     }
 }

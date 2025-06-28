@@ -33,6 +33,7 @@ export class PaymentMethodService{
 
     //get paymentMethod by id
     async getPaymentMethodById(idPaymentMethod) {
+        
         try {  
             const response = await fetch(`${this.baseURL}/api/getPaymentMethodById/${idPaymentMethod}`, {
                 method: 'GET',

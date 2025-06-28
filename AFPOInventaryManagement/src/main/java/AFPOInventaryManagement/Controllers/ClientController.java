@@ -54,7 +54,7 @@ public class ClientController {
 
     //get client by id
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @GetMapping("/api/getClient/{idClient}")
+    @GetMapping("/api/getClientById/{idClient}")
     public Client getClientById(@PathVariable Long idClient) {
         return services.getClientById(idClient);
     }

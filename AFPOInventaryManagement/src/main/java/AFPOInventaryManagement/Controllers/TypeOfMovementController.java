@@ -53,7 +53,8 @@ public class TypeOfMovementController {
     //get typeOfMovement by id
     @CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/api/getTypeOfMovementById/{idTypeOfMovement}")
-    public void getTypeOfMovementById(@PathVariable Long idTypeOfMovement) {
-        TypeOfMovement typeOfMovement = services.getTypeOfMovementById(idTypeOfMovement);
+    public TypeOfMovement getTypeOfMovementById(@PathVariable Long idTypeOfMovement) {
+        return services.getTypeOfMovementById(idTypeOfMovement);
+
     }
 }

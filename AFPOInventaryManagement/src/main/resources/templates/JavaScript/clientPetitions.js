@@ -54,6 +54,28 @@ export class ClientService{
         }
     }
 
+    //getClientById
+    async getClientById(idClient){
+        try {
+            const response = await fetch(`${this.baseURL}/api/getClientById/${idClient}`, {
+                method: 'GET',
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const client = await response.json();
+            return client;
+        } catch (error) {
+            console.error("Error fetching Client:", error);
+            throw error;
+        }
+    }
+
     //Create Client
     async createClient(client){
         try {

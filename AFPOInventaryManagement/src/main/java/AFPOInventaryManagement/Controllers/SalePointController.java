@@ -57,4 +57,11 @@ public class SalePointController {
     public SalePoint getSalePointByIdUser(@PathVariable Long idUser) {
         return services.getSalePointByIdUser(idUser);
     }
+
+    //get salePoint by id
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @GetMapping("/api/getSalePointById/{idSalePoint}")
+    public SalePoint getSalePointById(@PathVariable Long idSalePoint) {
+        return services.getSalePointById(idSalePoint);
+    }
 }
