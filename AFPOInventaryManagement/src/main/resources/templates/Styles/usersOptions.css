@@ -34,12 +34,12 @@ header{
 }
 
 .header__nameText{
-  font-size: 19px;
-  margin-top: 5px;
-  margin-left: 40px;
-}
+    font-size: 19px;
+    margin-top: 5px;
+    margin-left: 40px;
+  }
 
-.header__roleText{
+.header__rolText{
   font-size: 19px;
   margin-top: 5px;
   margin-left: 45px;
