@@ -1,15 +1,15 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    font-family: "Montserrat";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Montserrat";
 }
 
 /* header */
 
-header{
+header {
   width: 100%;
   height: 55px;
-  background-color:rgb(250, 250, 250);
+  background-color: rgb(250, 250, 250);
   display: flex;
   border-bottom: 1px solid rgb(220, 220, 220);
   z-index: 1;
@@ -17,35 +17,35 @@ header{
   margin-bottom: 50px;
 }
 
-.fa-bars{
+.fa-bars {
   margin-top: 5px;
   margin-left: 20px;
   margin-right: 20px;
   font-size: 24px;
   color: rgb(0, 0, 0);
-  cursor: pointer; 
+  cursor: pointer;
 }
 
-.fa-house{
+.fa-house {
   font-size: 24px;
   margin-top: 5px;
   margin-left: 30px;
   color: rgb(0, 0, 0);
 }
 
-.header__nameText{
+.header__nameText {
   font-size: 19px;
   margin-top: 5px;
   margin-left: 40px;
 }
 
-.header__rolText{
+.header__rolText {
   font-size: 19px;
   margin-top: 5px;
   margin-left: 45px;
 }
 
-.fa-gear{
+.fa-gear {
   font-size: 25px;
   color: rgb(0, 0, 0);
   margin-top: 5px;
@@ -56,114 +56,112 @@ header{
 
 /* Body */
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
-body{
-    background-color: rgb(250,250,250);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+body {
+  background-color: rgb(250, 250, 250);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-main{
-    flex: 1;
+main {
+  flex: 1;
 }
 
 /* nav dropdown menu */
-.nav__dropdownMenu{
+.nav__dropdownMenu {
   right: 0;
   top: -100px;
   position: absolute;
   transition: top 1s ease;
 }
 
-.dropdownMenuActive{
+.dropdownMenuActive {
   top: 55px;
 }
 
-.nav__dropdownMenu li{
+.nav__dropdownMenu li {
   background-color: rgb(100, 100, 200, 0.2);
   list-style-type: none;
   padding: 2px;
   border-radius: 2px;
 }
 
-.nav__dropdownMenu a{
+.nav__dropdownMenu a {
   text-decoration: none;
-  font-size:13px ;
+  font-size: 13px;
   color: rgb(0, 0, 0);
-  
 }
 
 /* slide menu*/
 
-.userOptionsMenuContainer{
+.userOptionsMenuContainer {
   top: 55px;
   left: -250px;
   position: absolute;
   transition: left 1s ease;
 }
 
-.activeUserOptionsMenuContainer{
+.activeUserOptionsMenuContainer {
   left: 0;
 }
 
-.userOptionsMenu{
+.userOptionsMenu {
   background-color: rgb(220, 220, 220);
   width: 250px;
   height: 89vh;
 }
 
-.userOptionsMenu li{
+.userOptionsMenu li {
   list-style-type: none;
   padding: 15px;
-  
 }
 
-.userOptionsMenu a{
+.userOptionsMenu a {
   text-decoration: none;
   color: rgb(0, 0, 0);
   font-size: 22px;
 }
 
-
 /* actions Buttons */
 
-.actionButtonsFrame{
+.actionButtonsFrame {
   display: flex;
   width: 350px;
   justify-self: center;
   justify-content: center;
 }
 
-.actionButtonsFrame__CreatePaymentMethod{
-    width: 300px;
-    height: 60px;
-    border-radius: 10px;
-    background-color: rgb(250, 250, 250);
-    box-shadow: 0px 0px 50px 1px rgba(0, 0, 0, 0.25);
-    border: 1px solid rgb(0,0,0,0.2);
-    font-size: 15px;
-  }
+.actionButtonsFrame__CreatePaymentMethod {
+  width: 300px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: rgb(250, 250, 250);
+  box-shadow: 0px 0px 50px 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgb(0, 0, 0, 0.2);
+  font-size: 15px;
+}
 
-.actionButtonsFrame__CreatePaymentMethod:hover{
+.actionButtonsFrame__CreatePaymentMethod:hover {
   width: 330px;
   height: 80px;
   position: relative;
   bottom: 10px;
   right: 10px;
-  background-color:rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
-  font-size: 17px;  
+  font-size: 17px;
 }
 
 /* create paymentMethode form */
 
-.formsCreateFrame{
+.formsCreateFrame {
   visibility: hidden;
   position: absolute;
   top: 200px;
@@ -177,7 +175,7 @@ main{
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnCloseCreate{
+.btnCloseCreate {
   color: rgb(220, 220, 220);
   position: relative;
   left: 160px;
@@ -185,11 +183,11 @@ main{
   cursor: pointer;
 }
 
-.createTittle{
+.createTittle {
   text-align: center;
 }
 
-input{
+input {
   border: none;
   border-bottom: 1px solid rgb(0, 0, 0);
   width: 250px;
@@ -200,35 +198,34 @@ input{
   margin-left: 10px;
 }
 
-.formsCreateFrame__button{
+.formsCreateFrame__button {
   margin-left: 10px;
   margin-top: 20px;
   width: 250px;
   height: 60px;
   border-radius: 20px;
-  border: 1px solid rgb(0,0,0,0.1);
-  background-color:rgb(0, 0,0) ;
-  color: rgb(250,250,250);
+  border: 1px solid rgb(0, 0, 0, 0.1);
+  background-color: rgb(0, 0, 0);
+  color: rgb(250, 250, 250);
   box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.4);
   font-size: 20px;
-  transition: background-color 0.6s ;
+  transition: background-color 0.6s;
 }
 
-.formsCreateFrame__button:hover{
-  background-color:rgb(53, 252, 100) ;
+.formsCreateFrame__button:hover {
+  background-color: rgb(53, 252, 100);
 }
 
-.formsCreateFrame__button:active{
+.formsCreateFrame__button:active {
   margin-top: 45px;
   width: 270px;
   height: 65px;
   border-radius: 50px;
-  
 }
 
 /* Pop up paymentMethod created */
 
-.popUpPaymentMethodCreated{
+.popUpPaymentMethodCreated {
   visibility: hidden;
   position: absolute;
   top: 200px;
@@ -242,7 +239,7 @@ input{
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnClosePopUpPaymentMethodCreated{
+.btnClosePopUpPaymentMethodCreated {
   color: rgb(220, 220, 220);
   position: relative;
   left: 160px;
@@ -250,21 +247,20 @@ input{
   cursor: pointer;
 }
 
-.fa-circle-check{
+.fa-circle-check {
   margin-top: 15px;
   font-size: 70px;
 }
 
-.paymentMethodCreatedText{
+.paymentMethodCreatedText {
   font-size: 25px;
   margin-top: 25px;
   margin-left: 5px;
 }
 
-
 /* Pop up paymentMethod deleted */
 
-.popUpPaymentMethodDeleted{
+.popUpPaymentMethodDeleted {
   visibility: hidden;
   position: absolute;
   top: 200px;
@@ -278,7 +274,7 @@ input{
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnClosePopUpPaymentMethodDeleted{
+.btnClosePopUpPaymentMethodDeleted {
   color: rgb(220, 220, 220);
   position: relative;
   left: 160px;
@@ -286,12 +282,12 @@ input{
   cursor: pointer;
 }
 
-.fa-circle-check{
+.fa-circle-check {
   margin-top: 15px;
   font-size: 70px;
 }
 
-.paymentMethodDeletedText{
+.paymentMethodDeletedText {
   font-size: 25px;
   margin-top: 25px;
   margin-left: 5px;
@@ -299,8 +295,8 @@ input{
 
 /* Pop up paymentMethod updated */
 
-.popUpPaymentMethodUpdated{
-  visibility:hidden;
+.popUpPaymentMethodUpdated {
+  visibility: hidden;
   position: absolute;
   top: 200px;
   padding-top: 15px;
@@ -313,7 +309,7 @@ input{
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnClosePopUpPaymentMethodUpdated{
+.btnClosePopUpPaymentMethodUpdated {
   color: rgb(220, 220, 220);
   position: relative;
   left: 160px;
@@ -321,12 +317,12 @@ input{
   cursor: pointer;
 }
 
-.fa-circle-check{
+.fa-circle-check {
   margin-top: 15px;
   font-size: 70px;
 }
 
-.paymentMethodUpdatedText{
+.paymentMethodUpdatedText {
   text-align: center;
   font-size: 25px;
   margin-top: 25px;
@@ -335,7 +331,7 @@ input{
 
 /* Pop up paymentMethod Error */
 
-.popUpError{
+.popUpError {
   visibility: hidden;
   position: absolute;
   top: 200px;
@@ -349,7 +345,7 @@ input{
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnClosePopUpError{
+.btnClosePopUpError {
   color: rgb(220, 220, 220);
   position: relative;
   left: 160px;
@@ -357,20 +353,20 @@ input{
   cursor: pointer;
 }
 
-.fa-circle-xmark{
+.fa-circle-xmark {
   margin-top: 15px;
   font-size: 70px;
 }
 
-.errorText{
+.errorText {
   font-size: 25px;
   margin-top: 25px;
   margin-left: 5px;
 }
 
-/* Update PaymentMethode form */  
+/* Update PaymentMethode form */
 
-.formUpdateFrame{
+.formUpdateFrame {
   visibility: hidden;
   position: absolute;
   top: 200px;
@@ -384,7 +380,7 @@ input{
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
 }
 
-.btnCloseUpdate{
+.btnCloseUpdate {
   color: rgb(220, 220, 220);
   position: relative;
   left: 160px;
@@ -392,7 +388,7 @@ input{
   cursor: pointer;
 }
 
-input{
+input {
   border: none;
   border-bottom: 1px solid rgb(0, 0, 0);
   width: 250px;
@@ -403,42 +399,40 @@ input{
   margin-left: 10px;
 }
 
-.formUpdateFrame__button{
+.formUpdateFrame__button {
   margin-left: 10px;
   margin-top: 50px;
   width: 250px;
   height: 45px;
   border-radius: 20px;
-  border: 1px solid rgb(0,0,0,0.1);
-  background-color:rgb(0, 0,0) ;
-  color: rgb(250,250,250);
+  border: 1px solid rgb(0, 0, 0, 0.1);
+  background-color: rgb(0, 0, 0);
+  color: rgb(250, 250, 250);
   box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.4);
   font-size: 20px;
-  transition: background-color 0.6s ;
+  transition: background-color 0.6s;
 }
 
-.formUpdateFrame__button:hover{
-  background-color:rgb(53, 252, 100) ;
+.formUpdateFrame__button:hover {
+  background-color: rgb(53, 252, 100);
 }
 
-.formUpdateFrame__button:active{
+.formUpdateFrame__button:active {
   margin-top: 45px;
   width: 270px;
   height: 65px;
   border-radius: 50px;
-  
 }
-
 
 /* table all products */
 
-.tableFrame{
+.tableFrame {
   visibility: visible;
   margin-top: 30px;
   width: 1220px;
 }
 
-.tableFrame h4{
+.tableFrame h4 {
   position: relative;
   left: 1185px;
   top: 70px;
@@ -447,85 +441,88 @@ input{
 }
 
 table {
-    text-align: center;
-    line-height: 20px;
-    border-collapse: separate;
-    border-spacing: 0;
-    border: 2px solid rgb(43, 43, 43);
-    width: 99%;
-    margin: 50px auto;
-    border-radius: .25rem;
-  }
-  
-  thead tr:first-child {
-    background: rgb(43, 43, 43);
-    border: none;
-  }
-  
-  th:first-child,
-  td:first-child {
-    padding: 0 15px 0 20px;
-  }
-  
-  th {
-    font-size: 15px;
-    padding-top: 10px;
-    padding-bottom:10px ;
-    font-weight: 500;
-    border-right: 0.1px solid rgb(43, 43, 43) ; 
-    color: rgb(255,255,255);
-  }
-  
-  thead tr:last-child th {
-    border-bottom: 3px solid rgb(43, 43, 43);
-  }
-  
-  tbody tr:hover {
-    background-color: rgb(242,242,242);
-    cursor: default;
-  }
-  
-  tbody tr:last-child td {
-    border: none;
-  }
-  
-  tbody td {
-    border-bottom: 1px solid rgb(43, 43, 43);
-  }
-  
-  td:last-child {
-    text-align: center;
-    padding-right: 10px;
-  }
-  
-  .button {
-    color: rgb(43, 43, 43);
-    cursor: pointer;
-    vertical-align: middle;
-    margin-top: -4px;
-  }
-  
-  .fa-pen{
-    margin-right: 25px;
-  }
+  text-align: center;
+  line-height: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid rgb(43, 43, 43);
+  width: 99%;
+  margin: 50px auto;
+  border-radius: 0.25rem;
+}
 
-  .fa-pen:hover {
-    color: #0a79df;
-  }
-  
-  .fa-trash:hover {
-    color: #dc2a2a;
-  }
+thead tr:first-child {
+  background: rgb(43, 43, 43);
 
+  border: none;
+}
+
+th:first-child {
+  padding: 0 15px 0 20px;
+}
+
+.td:first-child {
+  padding: 0 15px 0 20px;
+}
+
+th {
+  font-size: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 500;
+  border-right: 0.1px solid rgb(43, 43, 43);
+  color: rgb(0, 0, 0);
+}
+
+thead tr:last-child th {
+  border-bottom: 3px solid rgb(43, 43, 43);
+}
+
+tbody tr:hover {
+  background-color: rgb(242, 242, 242);
+  cursor: default;
+}
+
+tbody tr:last-child td {
+  border: none;
+}
+
+tbody td {
+  border-bottom: 1px solid rgb(43, 43, 43);
+}
+
+td:last-child {
+  text-align: center;
+  padding-right: 10px;
+}
+
+.button {
+  color: rgb(43, 43, 43);
+  cursor: pointer;
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+.fa-pen {
+  margin-right: 25px;
+}
+
+.fa-pen:hover {
+  color: #0a79df;
+}
+
+.fa-trash:hover {
+  color: #dc2a2a;
+}
 
 /* Footer */
 
-footer{
-    margin-top: auto;
-    margin-bottom: 10px;
-    z-index: 10;
+footer {
+  margin-top: auto;
+  margin-bottom: 10px;
+  z-index: 10;
 }
 
-.footer__copyright a{
-    color: rgb(0, 0, 0);
+.footer__copyright a {
+  color: rgb(0, 0, 0);
 }
