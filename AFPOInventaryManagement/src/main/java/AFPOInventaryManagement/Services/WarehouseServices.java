@@ -45,8 +45,13 @@ public class WarehouseServices {
         return repository.findAll();
     }
 
+    //get warehouse by id
+    public Warehouse getWarehouseById (Long idWarehouse){
+        if(idWarehouse != null){
+            Optional<Warehouse> warehouse= repository.findById(idWarehouse);
+            return warehouse.orElse(null);
+        }
+        return null;
+    }
 
-
-    
-    
 }

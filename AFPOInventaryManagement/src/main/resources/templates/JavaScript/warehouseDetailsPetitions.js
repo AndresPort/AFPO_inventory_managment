@@ -7,11 +7,11 @@ export class WarehouseDetailsService{
 
     //CRUD Metods
 
-    //getAllWarehouses
+    //getAllWarehouseDetails
 
-    async getAllWarehouse() {
+    async getAllWarehouseDetails() {
         try {
-            const response = await fetch(`${this.baseURL}/api/getAllWarehouses`, {
+            const response = await fetch(`${this.baseURL}/api/getAllWarehouseDetails`, {
                 method: 'GET',
                 headers: {
                     "Accept": "application/json",
@@ -23,18 +23,18 @@ export class WarehouseDetailsService{
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
-            const warehouses = await response.json();
-            return warehouses;
+            const warehouseDetails = await response.json();
+            return warehouseDetails;
         } catch (error) {
-            console.error("Error fetching warehouses:", error);
+            console.error("Error fetching warehouseDetails:", error);
             throw error;
         }
     }
 
-    //getWarehouseById
-    async getWarehouseById(idWarehouse){
+    //getWarehouseDetailsById
+    async getWarehouseDetailsById(idWarehouseDetails){
         try {
-            const response = await fetch(`${this.baseURL}/api/getWarehouseById/${idWarehouse}`, {
+            const response = await fetch(`${this.baseURL}/api/getWarehouseDetailsById/${idWarehouseDetails}`, {
                 method: 'GET',
                 headers: {
                     "Accept": "application/json",
@@ -45,25 +45,25 @@ export class WarehouseDetailsService{
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            const warehouse = await response.json();
-            return warehouse;
+            const warehousedetails = await response.json();
+            return warehousedetails;
         } catch (error) {
-            console.error("Error fetching warehouse:", error);
+            console.error("Error fetching warehousedetails:", error);
             throw error;
         }
     }
 
 
-    //Create warehouse
-    async createWarehouse(warehouse){
+    //Create warehousedetails
+    async createWarehouseDetails(warehousedetails){
         try {
-            const response = await fetch(`${this.baseURL}/api/createWarehouse`, {
+            const response = await fetch(`${this.baseURL}/api/createWarehouseDetails`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(warehouse)
+                body: JSON.stringify(warehousedetails)
             });
 
             if (!response.ok) {
@@ -72,21 +72,21 @@ export class WarehouseDetailsService{
             return (true);
             
         } catch (error) {
-            console.error("Error fetching warehouses:", error);
+            console.error("Error fetching warehousedetails:", error);
             throw error;
         }
     }
 
-    //Update warehouse
-    async updateWarehouse(warehouse){
+    //Update warehousedetails
+    async updateWarehouseDetails(warehousedetails){
         try {
-            const response = await fetch(`${this.baseURL}/api/updateWarehouse`, {
+            const response = await fetch(`${this.baseURL}/api/updateWarehouseDetails`, {
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(warehouse)
+                body: JSON.stringify(warehousedetails)
             });
 
             if (!response.ok) {
@@ -95,16 +95,16 @@ export class WarehouseDetailsService{
             return (true);
             
         } catch (error) {
-            console.error("Error fetching warehouses:", error);
+            console.error("Error fetching warehousedetails:", error);
             throw error;
         }
     }
 
 
-    //delete warehouse
-    async deleteWarehouse(idWarehouse){
+    //delete warehousedetails
+    async deleteWarehouseDetails(idWarehouseDetails){
         try {
-            const response = await fetch(`${this.baseURL}/api/deleteWarehouse/${idWarehouse}`, {
+            const response = await fetch(`${this.baseURL}/api/deleteWarehouseDetails/${idWarehouseDetails}`, {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
@@ -118,7 +118,7 @@ export class WarehouseDetailsService{
             return (true);
             
         } catch (error) {
-            console.error("Error fetching warehouses:", error);
+            console.error("Error fetching warehousedetails:", error);
             throw error;
         }
     

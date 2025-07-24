@@ -136,11 +136,13 @@ main{
 
 .actionButtonsFrame{
   display: flex;
-  justify-content:center;
-  width: 700px;
+  justify-content:space-between;
+  width: 75%;
 }
 
-.actionButtonsFrame__RegisterWarehouseDetails
+.actionButtonsFrame__RegisterProductAtWarehouse,
+.actionButtonsFrame__ListProductInSelectedWarehouse,
+.actionButtonsFrame__ListWarehousesWithSelectedProduct
 {
     width: 300px;
     height: 60px;
@@ -151,7 +153,9 @@ main{
     font-size: 15px;
   }
 
-.actionButtonsFrame__RegisterWarehouseDetails:hover
+.actionButtonsFrame__RegisterProductAtWarehouse:hover,
+.actionButtonsFrame__ListProductInSelectedWarehouse:hover,
+.actionButtonsFrame__ListWarehousesWithSelectedProduct:hover
 {
   width: 330px;
   height: 80px;
@@ -170,7 +174,7 @@ main{
   visibility: hidden;
   position: absolute;
   width: 450px;
-  height: 490px;
+  height: 380px;
   top: 150px;
   display: flex;
   flex-direction: column;
@@ -178,7 +182,9 @@ main{
   padding-top: 50px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.25);
+  text-align: center;
 }
+
 
 .btncloseRegister{
   position:absolute;
@@ -189,7 +195,7 @@ main{
   cursor: pointer;
 }
 
-.registerWarehouseForm{
+.registerProductInWarehouseForm{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -198,17 +204,20 @@ main{
 
 }
 
-.registerWarehouseForm input
+.formRegisterFrame__warehouse-selectInput,
+.formRegisterFrame__product-selectInput
 {
   border: none;
   border-bottom: 1px solid rgb(0, 0, 0);
   width: 300px;
   height: 30px;
+  margin-top: 20px;
 }
 
 .formRegisterFrame__button{
-  margin-left: 28px;
-  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
   width: 250px;
   height: 45px;
   border-radius: 20px;
@@ -461,7 +470,7 @@ table {
   visibility: hidden;
   position: absolute;
   width: 450px;
-  height: 490px;
+  height: 300px;
   top: 150px;
   display: flex;
   flex-direction: column;
@@ -489,20 +498,17 @@ table {
 
 }
 
-.updateWarehouseForm label{
-  font-size: 19px;
-}
-
-.updateWarehouseForm input,
-.formUpdateFrame__user-selectInput{
+.formUpdateFrame__warehouse-selectInput ,
+.formpdateFrame__product-selectInput{
   border: none;
   border-bottom: 1px solid rgb(0, 0, 0);
+  margin-top: 20px;
   width: 300px;
   height: 30px;
 }
 
 .formsFrame__button{
-  margin-top: 20px;
+  margin-top: 30px;
   width: 250px;
   height: 45px;
   border-radius: 20px;

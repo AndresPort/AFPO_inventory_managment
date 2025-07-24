@@ -47,7 +47,6 @@ export class KardexService{
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const kardex = await response.json();
-            console.log(kardex)
             return kardex;
         } catch (error) {
             console.error("Error fetching user:", error);

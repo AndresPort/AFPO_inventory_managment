@@ -7,8 +7,6 @@ import{PaymentMethodService} from "./PaymentMethodPetitions.js";
 import{BillDetailsService} from "./billDetailsPetitions.js";
 import{KardexService} from "./kardexPetitions.js";
 import{ProductService} from "./productPetitions.js";
-
-
 import{RoleService} from "./rolePetitions.js";
 
 

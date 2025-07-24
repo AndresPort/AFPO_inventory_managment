@@ -50,4 +50,10 @@ public class WarehouseController {
         return services.getAllWarehouses();
     }
 
+    //get warehouse by id
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @GetMapping("/api/getWarehouseById/{idWarehouse}")
+    public Warehouse getWarehouseById(@PathVariable Long idWarehouse) {
+        return services.getWarehouseById(idWarehouse);
+    }
 }

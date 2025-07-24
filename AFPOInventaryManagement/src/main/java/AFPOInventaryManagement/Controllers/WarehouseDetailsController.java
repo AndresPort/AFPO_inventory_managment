@@ -46,8 +46,8 @@ public class WarehouseDetailsController {
 
     // get all warehouseDetailss
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @GetMapping("/api/getAllWarehouseDetailss")
-    public List<WarehouseDetails> getAllWarehouseDetailss(){
+    @GetMapping("/api/getAllWarehouseDetails")
+    public List<WarehouseDetails> getAllWarehouseDetails(){
         return services.getAllWarehouseDetailss();
     }
 

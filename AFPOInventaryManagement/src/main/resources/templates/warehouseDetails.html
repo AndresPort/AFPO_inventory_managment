@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="Styles/warehouseOptions.css">
+    <link rel="stylesheet" type="text/css" href="Styles/warehouseDetails.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,11 +53,11 @@
 <!-------------------------action buttons--------------------------->
 
     <div class="actionButtonsFrame">
-        <button onclick="" class="actionButtonsFrame__RegisterWarehouseDetails" id="btnRegisterMenu"> Registrar Detalle</button>
+        <button onclick="" class="actionButtonsFrame__RegisterProductAtWarehouse" id="btnRegisterProductAtWarehouse"> Registrar Producto en la bodega</button>
 
-        <button onclick="" class="actionButtonsFrame__ListWarehouse" id="btnRegisterMenu"> Listar por Bodegas</button>
+        <button onclick="" class="actionButtonsFrame__ListProductInSelectedWarehouse" id="btnListProductsInSelectedWarehouse"> Buscar productos de una bodega</button>
 
-        <button onclick="" class="actionButtonsFrame__ListProducts" id="btnRegisterMenu"> Listar por Productos</button>
+        <button onclick="" class="actionButtonsFrame__ListWarehousesWithSelectedProduct" id="btnListWarehousesWithSelectedProduct"> Buscar bodegas que tengan cierto producto</button>
     </div>
 
     <!------------------------Table---------------------------->
@@ -66,12 +66,13 @@
         <h4 class="btncloseTable" id="btncloseTable">X</h4>
         <thead>
           <tr>
-            <th colspan="5">Detalle Bodega</th>
+            <th colspan="6">contenido Bodega</th>
           </tr>
           <tr>
             <th>Id</th>
-            <th>Nombre de Bodega</th>
+            <th>Nombre de la Bodega</th>
             <th>Nombre del Producto</th>
+            <th>Categoría</th>
             <th>Cantidad</th>
             <th>Acciones</th>
           </tr>
@@ -82,18 +83,20 @@
     </div>
       
 
-
-     <!----------------------------Register warehouse--------------------------------->
+     <!----------------------------Register product at warehouse--------------------------------->
 
     <div class="formRegisterFrame" id="formRegisterFrame">
         <h4 class="btncloseRegister" id="btncloseRegister">X</h4>
-        <h1 class="RegisterTittle">Registrar Bodega</h1>
-        <form method="POST" class="registerWarehouseForm">
+        <h1 class="RegisterTittle">Registrar Producto en la Bodega</h1>
+        <form method="POST" class="registerProductInWarehouseForm">
           
-            <input class="formRegisterFrame__name-input" id="nameRegister" type="text" placeholder="Nombre">
-            <input class="formRegisterFrame__contactNumber-input" id="contactNumberRegister" type="text" placeholder="Número de contacto">
-            <input class="formRegisterFrame__adress-input" id="adressRegister" type="text" placeholder="Dirección">
+            <select class="formRegisterFrame__warehouse-selectInput" id="warehouseRegister">
+            </select>
+            <select class="formRegisterFrame__product-selectInput" id="productRegister">
+            </select>
+
             <button onclick="" class="formRegisterFrame__button" id="btnRegisterWarehouse"> Registrar Bodega</button>
+
       </form>
     </div>
 
@@ -122,10 +125,12 @@
         <h1 class="UpdateTittle">Modificar Bodega</h1>
         <form method="POST" class="updateWarehouseForm">
 
-            <input class="formUpdateFrame__name-input" id="nameUpdate" type="text" placeholder="Nombre">
-            <input class="formUpdateFrame__contactNumber-input" id="contactNumberUpdate" type="text" placeholder="Número de contacto">
-            <input class="formUpdateFrame__adress-input" id="adressUpdate" type="text" placeholder="Dirección">
-            <button  class="formsFrame__button" id="btnUpdateWarehouse">Modificar Bodega</button>
+            <select class="formUpdateFrame__warehouse-selectInput" id="warehouseUpdate">
+            </select>
+            <select class="formpdateFrame__product-selectInput" id="productUpdate">
+            </select>
+            
+            <button  class="formsFrame__button" id="btnUpdateWarehouseDetails">Modificar Bodega</button>
       </form>
     </div>
               
@@ -144,7 +149,7 @@
     <div class="popUpWarehouseDeleted" id="popUpWarehouseDeleted">
         <h4 class="btnClosePopUpWarehouseDeleted" id="btnClosePopUpWarehouseDeleted">X</h4>
         <i class="fa-solid fa-circle-check"></i>
-        <h4 class="warehouseDeletedText">El usuario se ha eliminado <br> satisfactoriamente</h4>
+        <h4 class="warehouseDeletedText">El producto se ha eliminado de la bodega <br> satisfactoriamente</h4>
     </div>
 
 
