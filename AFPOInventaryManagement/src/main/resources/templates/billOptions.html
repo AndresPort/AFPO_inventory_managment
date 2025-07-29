@@ -81,6 +81,20 @@
 
     <button onclick="" class="btnShowAddProductToBillForm" id="btnShowAddProductToBillForm">Agregar Producto a la cuenta</button>
 
+    <!------------------------------------select warehouse form-------------------------------------->  
+
+    <div class="selectWarehouseFrame" id="selectWarehouseFrame">
+        <h1 class="selectWarehouseTittle">Selecciona la bodega de donde saldrán los productos</h1>
+        <form method="POST" class="addProductToBillForm">
+            
+            <select class="warehouseNameCombobox" id="warehouseNameCombobox">
+            </select>
+        
+            <button onclick="" class="btnSelectWarehouseDetails" id="btnSelectWarehouseDetails"> Seleccionar Bodega</button>
+      </form>
+    </div>
+
+
     <!------------------------Table---------------------------->
 
     <div class="line"></div>
@@ -126,21 +140,6 @@
             <button onclick="" class="btnAddProductToBill" id="btnAddProductToBill"> Agregar</button>
       </form>
     </div>
-
-
-<!----------------------------------Select warehouse Form--------------------------------->
-    <div class="selectWarehouseFrame" id="selectWarehouseFrame">
-        <h1 class="selectWarehouseTittle">Seleccionar Bodega
-        </h1>
-        <form method="POST" class="selectWarehouseForm">
-            
-            <select class="warehouseNameCombobox" id="warehouseNameCombobox">
-            </select>
-        
-            <button onclick="" class="btnSelectWarehouse" id="btnSelectWarehouse"> Seleccionar Bodega</button>
-      </form>
-    </div>
-
 
      <!--pop up product added succesfully-->
 

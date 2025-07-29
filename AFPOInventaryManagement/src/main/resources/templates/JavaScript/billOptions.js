@@ -1,4 +1,6 @@
 import { BillService } from "./billPetitions.js";
+import { WarehouseDetailsService } from "./warehouseDetailsPetitions.js";
+import { WarehouseService } from "./warehousePetitions.js";
 import { TypeOfMovementService } from "./typeOfMovementPetitions.js";
 import { PaymentMethodService } from "./PaymentMethodPetitions.js";
 import { SalePointService } from "./salePointPetitions.js";
@@ -13,15 +15,15 @@ window.onload = function () {
   fillSellerName();
   fillTypeOfMovementCombobox();
   fillPaymentMethodCombobox();
-  fillProductCombobox();
   fillClientsCombobox();
+  showSelectWarehouseDetailsForm();
 };
 
 //------------------llenar los datos de la empresa----------------------------------------
 async function fillCorporativeInformation() {
   const salePointService = new SalePointService("http://127.0.0.1:8080"); // Crear una instancia de la clase
   const salePoint = await salePointService.getSalePointByIdUser(1); // Llamar al método de la clase
-  console.log(salePoint);
+
   let address = salePoint.address;
   let salePointNumber = salePoint.idSalePoint;
   let contactNumber = salePoint.contactNumber;
@@ -36,6 +38,50 @@ function cleanKardexFormInputs() {
   let quantity = document.getElementById("quantity-input");
   quantity.value = null;
 }
+
+//----------------- btn show and closeselectWarehousedetails form----------------------------------
+let selectWarehouseDetailsFrame = document.getElementById("selectWarehouseFrame");
+
+function showSelectWarehouseDetailsForm() {
+  selectWarehouseDetailsFrame.style.visibility = "visible";
+  fillWarehouseDetailsCombobox()
+}
+
+function closeSelectWarehouseDetailsForm() {
+  selectWarehouseDetailsFrame.style.visibility = "hidden";
+}
+
+
+//---------------------------contenido del combobox del warehouse details------------------------------
+async function fillWarehouseDetailsCombobox() {
+    const warehouseService = new WarehouseService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    const warehouses = await warehouseService.getAllWarehouse(); // Llamar al método de la clase
+
+    let comboboxContent= "";
+
+    for(let warehouse of warehouses){
+
+        let optionContent= `<option value=${warehouse.idWarehouse}>${warehouse.name}</option>`
+        comboboxContent+=optionContent;
+    }
+    document.querySelector("#warehouseNameCombobox").innerHTML=comboboxContent;
+}
+
+//----------------- btn selectWarehouseDetails form----------------------------------
+let btnSelectWarehouseDetails = document.getElementById(
+  "btnSelectWarehouseDetails"
+);
+
+let currentWarehouseSelected = null;
+
+btnSelectWarehouseDetails.addEventListener("click", (event) => {
+  event.preventDefault(); // Esto evita el envío automático de GET
+ currentWarehouseSelected = parseInt(document.getElementById("warehouseNameCombobox").value, 10);
+  fillProductCombobox(currentWarehouseSelected);
+  closeSelectWarehouseDetailsForm()
+});
+
+
 
 //---------------------------contenido del combobox de los tipos de movimientos------------------------------
 
@@ -111,15 +157,28 @@ async function fillSellerName() {
 
 //---------------------------contenido del combobox de los productos------------------------------
 
-async function fillProductCombobox() {
+async function fillProductCombobox(currentWarehouseSelected) {
+
+  const warehouseDetailsService = new WarehouseDetailsService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+  const warehouseDetails = await warehouseDetailsService.getAllWarehouseDetails(); // Llamar al método de la clase
+
+  const warehouseService = new WarehouseService("http://127.0.0.1:8080"); // Crear una instancia de la clase
+  const kardexService = new KardexService("http://127.0.0.1:8080"); // Crear una instancia de la clase
   const productService = new ProductService("http://127.0.0.1:8080"); // Crear una instancia de la clase
-  const products = await productService.getAllProducts(); // Llamar al método de la clase
 
   let comboboxContent = "";
 
-  for (let product of products) {
-    let optionContent = `<option value=${product.idProduct}>${product.name}</option>`;
-    comboboxContent += optionContent;
+  for (let warehouseDetail of warehouseDetails ) {
+
+    const warehouse = await warehouseService.getWarehouseById(warehouseDetail.idWarehouse); // Llamar al método de la clase
+    const kardex = await kardexService.getKardexById(warehouseDetail.idKardex); // Llamar al método de la clase
+    const product = await productService.getProductById(kardex.idProduct); // Llamar al método de la clase
+
+    if(warehouse.idWarehouse === currentWarehouseSelected) {
+      let optionContent = `<option value=${product.idProduct}>${product.name}</option>`;
+      comboboxContent += optionContent;
+    }
+    
   }
   document.querySelector("#productNameCombobox").innerHTML = comboboxContent;
 }
@@ -273,7 +332,7 @@ async function registerBill() {
 
   bill.idSalePoint = salePoint.idSalePoint;
   bill.idTypeOfMovement = idTypeOfMovement;
-  bill.idWarehouseDetails = 1;
+  bill.idWarehouse = currentWarehouseSelected;
   bill.idPaymentMethod = idPaymentMethod;
   bill.totalPrice = await calculatePartialAndTotalPrice(true);
 
@@ -323,6 +382,7 @@ const kardexService = new KardexService("http://127.0.0.1:8080"); // Crear una i
     const billDetails = {
       idBill: idBillRegistered,
       idKardex: kardex.idKardex,
+      idWarehouse: currentWarehouseSelected,
       productQuantity: quantity,
       productsPrice: price
     };

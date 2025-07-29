@@ -28,6 +28,9 @@ document.addEventListener("DOMContentLoaded", async() => {
 
 //---------------------------contenido del combobox de la factura------------------------------
 
+
+//---------------------------contenido del combobox de la bodega------------------------------
+
 async function fillWarehouseCombobox() {
     const warehouseService = new WarehouseService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     const warehouses = await warehouseService.getAllWarehouse(); // Llamar al método de la clase
@@ -42,6 +45,9 @@ async function fillWarehouseCombobox() {
     document.querySelector("#warehouseRegister").innerHTML=comboboxContent;
     document.querySelector("#warehouseUpdate").innerHTML=comboboxContent;
 }
+
+
+//---------------------------contenido del combobox del kardex------------------------------
 
 async function fillKardexCombobox() {
     const kardexService = new KardexService('http://127.0.0.1:8080'); // Crear una instancia de la clas

@@ -15,8 +15,8 @@ public class Bill {
     private Long idSalePoint;
     @Column(name = "idTypeOfMovement")
     private Long idTypeOfMovement;
-    @Column(name = "idWarehouseDetails")
-    private Long idWarehouseDetails;
+    @Column(name = "idWarehouse")
+    private Long idWarehouse;
     @Column(name = "idPaymentMethod")
     private Long idPaymentMethod;
     @Column(name = "totalPrice")
@@ -30,12 +30,12 @@ public class Bill {
 
     //full methods
 
-    public Bill(Long idBill, Long idClient, Long idSalePoint, Long idTypeOfMovement, Long idWarehouseDetails, Long idPaymentMethod, Float totalPrice) {
+    public Bill(Long idBill, Long idClient, Long idSalePoint, Long idTypeOfMovement, Long idWarehouse, Long idPaymentMethod, Float totalPrice) {
         this.idBill = idBill;
         this.idClient = idClient;
         this.idSalePoint = idSalePoint;
         this.idTypeOfMovement = idTypeOfMovement;
-        this.idWarehouseDetails = idWarehouseDetails;
+        this.idWarehouse = idWarehouse;
         this.idPaymentMethod = idPaymentMethod;
         this.totalPrice = totalPrice;
     }
@@ -74,12 +74,12 @@ public class Bill {
         this.idTypeOfMovement = idTypeOfMovement;
     }
 
-    public Long getIdWarehouseDetails() {
-        return idWarehouseDetails;
+    public Long getIdWarehouse() {
+        return idWarehouse;
     }
 
-    public void setIdWarehouseDetails(Long idWarehouseDetails) {
-        this.idWarehouseDetails = idWarehouseDetails;
+    public void setIdWarehouse(Long idWarehouse) {
+        this.idWarehouse = idWarehouse;
     }
 
     public Long getIdPaymentMethod() {

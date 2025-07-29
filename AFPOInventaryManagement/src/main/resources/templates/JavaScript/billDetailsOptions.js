@@ -3,7 +3,7 @@ import{ClientService} from "./clientPetitions.js";
 import{SalePointService} from "./salePointPetitions.js";
 import{ TypeOfMovementService} from "./typeOfMovementPetitions.js";
 import{PaymentMethodService} from "./PaymentMethodPetitions.js";
-
+import{WarehouseService} from "./warehousePetitions.js";
 import{BillDetailsService} from "./billDetailsPetitions.js";
 import{KardexService} from "./kardexPetitions.js";
 import{ProductService} from "./productPetitions.js";
@@ -99,6 +99,7 @@ async function getAllBills() {
     let bills= await billService.getAllBills()
     const clientService = new ClientService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     const salePointService = new SalePointService('http://127.0.0.1:8080'); // Crear una instancia de la clase
+    const warehouseService = new WarehouseService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     const typeOfMovementService = new TypeOfMovementService('http://127.0.0.1:8080'); // Crear una instancia de la clase
     const paymentMethodService = new PaymentMethodService('http://127.0.0.1:8080'); // Crear una instancia de la clase
 
@@ -106,6 +107,7 @@ async function getAllBills() {
     for(let bill of bills){
         let client =  await clientService.getClientById(bill.idClient)
         let salePoint =  await salePointService.getSalePointById(bill.idClient)
+        let warehouse =  await warehouseService.getWarehouseById(bill.idWarehouse)
         let typeOfMovement = await typeOfMovementService.getTypeOfMovementById(bill.idTypeOfMovement)
         let paymentMethod = await paymentMethodService.getPaymentMethodById(bill.idPaymentMethod)
 
@@ -113,6 +115,7 @@ async function getAllBills() {
         <td>${bill.idBill}</td>
         <td>${client.cedula}</td>
         <td>${salePoint.idSalePoint}</td>
+        <td>${warehouse.name}</td>
         <td>${typeOfMovement.movementName}</td>
         <td>${paymentMethod.methodName}</td>
         <td>${bill.totalPrice}</td>
@@ -137,11 +140,9 @@ async function getAllBillDetails() {
 
     let tableContent= "";
     for(let billDetails of billsDetails){
-        console.log(billDetails)
 
         let kardex =  await kardexService.getKardexById(billDetails.idKardex)
         let product =  await productService.getProductById(kardex.idProduct)
-        
 
         let rowContent = `<tr>
         <td>${billDetails.idBillDetails}</td>
@@ -154,7 +155,7 @@ async function getAllBillDetails() {
 
         tableContent+=rowContent;
     }
-
+    
     document.querySelector("#billDetailsTable tbody").innerHTML = tableContent;
 
 }

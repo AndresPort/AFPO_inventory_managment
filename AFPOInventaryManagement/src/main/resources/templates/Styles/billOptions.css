@@ -137,7 +137,7 @@ main {
   visibility: hidden;
   position: absolute;
   width: 450px;
-  height: 280px;
+  height: 330px;
   top: 250px;
   border-radius: 20px;
   display: flex;
@@ -169,7 +169,7 @@ main {
   margin-bottom: 15px;
 }
 
-.btnSelectWarehouse {
+.btnSelectWarehouseDetails{
   width: 300px;
   height: 50px;
   border-radius: 30px;
@@ -183,7 +183,7 @@ main {
   transition: background-color 0.6s;
 }
 
-.btnSelectWarehouse:hover {
+.btnSelectWarehouseDetails:hover {
   background-color: rgb(53, 252, 100);
 }
 

@@ -13,6 +13,8 @@ public class BillDetails {
     private Long idBill;
     @Column(name = "idKardex")
     private Long idKardex;
+    @Column(name = "idWarehouse")
+    private Long idWarehouse;
     @Column(name = "productsPrice")
     private Float productsPrice;
     @Column(name = "productQuantity")
@@ -25,10 +27,11 @@ public class BillDetails {
     }
 
     //full constructor
-    public BillDetails(Long idBillDetails, Long idBill, Long idKardex, Float productsPrice, Long productQuantity) {
+    public BillDetails(Long idBillDetails, Long idBill, Long idKardex, Long idWarehouse,  Float productsPrice, Long productQuantity) {
         this.idBillDetails = idBillDetails;
         this.idBill = idBill;
         this.idKardex = idKardex;
+        this.idWarehouse = idWarehouse;
         this.productsPrice = productsPrice;
         this.productQuantity = productQuantity;
     }
@@ -57,6 +60,14 @@ public class BillDetails {
 
     public void setIdKardex(Long idKardex) {
         this.idKardex = idKardex;
+    }
+
+    public Long getIdWarehouse() {
+        return idWarehouse;
+    }
+
+    public void setIdWarehouse(Long idWarehouse) {
+        this.idWarehouse= idWarehouse;
     }
 
     public Float getProductsPrice() {
