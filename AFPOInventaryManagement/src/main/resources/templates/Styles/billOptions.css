@@ -308,7 +308,7 @@ main {
   border-bottom: 1px solid rgb(0, 0, 0);
 }
 
-/* add products button */
+/* add products to bill */
 
 .btnShowAddProductToBillForm {
   width: 500px;
@@ -495,6 +495,28 @@ td:last-child {
   height: 30px;
   margin-bottom: 15px;
 }
+.PopUpOverlyQuantity{
+  visibility: hidden;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: rgb(252, 252, 252);
+  width: 300px;
+  height: 80px;
+  background-color:rgb(241, 67, 67);
+}
+
+.btnCloseOverlyPopUp{
+  position: absolute;
+  left: 285px;
+  top: 1px;
+  cursor: pointer;
+  padding-top: 1px;
+  font-size: 12px;
+}
+
 
 .btnAddProductToBill {
   width: 300px;

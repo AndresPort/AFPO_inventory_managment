@@ -1,7 +1,7 @@
 import{BillService} from "./billPetitions.js";
 import{ClientService} from "./clientPetitions.js";
 import{SalePointService} from "./salePointPetitions.js";
-import{ TypeOfMovementService} from "./typeOfMovementPetitions.js";
+import{TypeOfMovementService} from "./typeOfMovementPetitions.js";
 import{PaymentMethodService} from "./PaymentMethodPetitions.js";
 import{WarehouseService} from "./warehousePetitions.js";
 import{BillDetailsService} from "./billDetailsPetitions.js";
@@ -123,9 +123,7 @@ async function getAllBills() {
 
         tableContent+=rowContent;
     }
-
     document.querySelector("#billTable tbody").innerHTML = tableContent;
-
 }
 
 //-----------------------------Get all BillsDetails--------------------------------

@@ -40,31 +40,31 @@ function cleanKardexFormInputs() {
 }
 
 //----------------- btn show and closeselectWarehousedetails form----------------------------------
-let selectWarehouseDetailsFrame = document.getElementById("selectWarehouseFrame");
+let selectWarehouseDetailsFrame = document.getElementById(
+  "selectWarehouseFrame"
+);
 
 function showSelectWarehouseDetailsForm() {
   selectWarehouseDetailsFrame.style.visibility = "visible";
-  fillWarehouseDetailsCombobox()
+  fillWarehouseDetailsCombobox();
 }
 
 function closeSelectWarehouseDetailsForm() {
   selectWarehouseDetailsFrame.style.visibility = "hidden";
 }
 
-
 //---------------------------contenido del combobox del warehouse details------------------------------
 async function fillWarehouseDetailsCombobox() {
-    const warehouseService = new WarehouseService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-    const warehouses = await warehouseService.getAllWarehouse(); // Llamar al método de la clase
+  const warehouseService = new WarehouseService("http://127.0.0.1:8080"); // Crear una instancia de la clase
+  const warehouses = await warehouseService.getAllWarehouse(); // Llamar al método de la clase
 
-    let comboboxContent= "";
+  let comboboxContent = "";
 
-    for(let warehouse of warehouses){
-
-        let optionContent= `<option value=${warehouse.idWarehouse}>${warehouse.name}</option>`
-        comboboxContent+=optionContent;
-    }
-    document.querySelector("#warehouseNameCombobox").innerHTML=comboboxContent;
+  for (let warehouse of warehouses) {
+    let optionContent = `<option value=${warehouse.idWarehouse}>${warehouse.name}</option>`;
+    comboboxContent += optionContent;
+  }
+  document.querySelector("#warehouseNameCombobox").innerHTML = comboboxContent;
 }
 
 //----------------- btn selectWarehouseDetails form----------------------------------
@@ -76,12 +76,13 @@ let currentWarehouseSelected = null;
 
 btnSelectWarehouseDetails.addEventListener("click", (event) => {
   event.preventDefault(); // Esto evita el envío automático de GET
- currentWarehouseSelected = parseInt(document.getElementById("warehouseNameCombobox").value, 10);
+  currentWarehouseSelected = parseInt(
+    document.getElementById("warehouseNameCombobox").value,
+    10
+  );
   fillProductCombobox(currentWarehouseSelected);
-  closeSelectWarehouseDetailsForm()
+  closeSelectWarehouseDetailsForm();
 });
-
-
 
 //---------------------------contenido del combobox de los tipos de movimientos------------------------------
 
@@ -158,9 +159,11 @@ async function fillSellerName() {
 //---------------------------contenido del combobox de los productos------------------------------
 
 async function fillProductCombobox(currentWarehouseSelected) {
-
-  const warehouseDetailsService = new WarehouseDetailsService('http://127.0.0.1:8080'); // Crear una instancia de la clase
-  const warehouseDetails = await warehouseDetailsService.getAllWarehouseDetails(); // Llamar al método de la clase
+  const warehouseDetailsService = new WarehouseDetailsService(
+    "http://127.0.0.1:8080"
+  ); // Crear una instancia de la clase
+  const warehouseDetails =
+    await warehouseDetailsService.getAllWarehouseDetails(); // Llamar al método de la clase
 
   const warehouseService = new WarehouseService("http://127.0.0.1:8080"); // Crear una instancia de la clase
   const kardexService = new KardexService("http://127.0.0.1:8080"); // Crear una instancia de la clase
@@ -168,17 +171,20 @@ async function fillProductCombobox(currentWarehouseSelected) {
 
   let comboboxContent = "";
 
-  for (let warehouseDetail of warehouseDetails ) {
-
-    const warehouse = await warehouseService.getWarehouseById(warehouseDetail.idWarehouse); // Llamar al método de la clase
+  for (let warehouseDetail of warehouseDetails) {
+    const warehouse = await warehouseService.getWarehouseById(
+      warehouseDetail.idWarehouse
+    ); // Llamar al método de la clase
     const kardex = await kardexService.getKardexById(warehouseDetail.idKardex); // Llamar al método de la clase
     const product = await productService.getProductById(kardex.idProduct); // Llamar al método de la clase
 
-    if(warehouse.idWarehouse === currentWarehouseSelected) {
+    if (
+      warehouse.idWarehouse === currentWarehouseSelected &&
+      kardex.quantity > 0
+    ) {
       let optionContent = `<option value=${product.idProduct}>${product.name}</option>`;
       comboboxContent += optionContent;
     }
-    
   }
   document.querySelector("#productNameCombobox").innerHTML = comboboxContent;
 }
@@ -238,19 +244,73 @@ async function addProductToBillRow(quantity, idProduct) {
   const productService = new ProductService("http://127.0.0.1:8080"); // Crear una instancia de la clase
   const product = await productService.getProductById(idProduct); // Llamar al método de la clase
 
-  let productsPrice = await calculateProductsPrice(quantity, product);
+  if (await comprobeProductExistence(quantity, parseInt(idProduct))) {
+    let productsPrice = await calculateProductsPrice(quantity, product);
+    let productName = product.name;
 
-  let productName = product.name;
-
-  let rowContent = `<tr>
+    let rowContent = `<tr>
         <td>${productName}</td>
         <td>${quantity}</td>
         <td>${productsPrice}</td>
         </tr>`;
 
-  document
-    .querySelector("#table tbody")
-    .insertAdjacentHTML("beforeend", rowContent);
+    document
+      .querySelector("#table tbody")
+      .insertAdjacentHTML("beforeend", rowContent);
+  }
+  else {
+    showPopUpOverly();
+    setTimeout(() => {
+      closePopUpOverly();
+    }, 3000); // Cierra el pop-up después de 3 segundos
+  }
+  
+}
+
+//-----------------------------ComprobeProductExistence--------------------------------
+
+async function comprobeProductExistence(quantity, idProduct) {
+  const warehouseService = new WarehouseService("http://127.0.0.1:8080"); // Crear una instancia de la clase
+  const warehouseDetailsService = new WarehouseDetailsService(
+    "http://127.0.0.1:8080"
+  ); // Crear una instancia de la clase
+  const kardexService = new KardexService("http://127.0.0.1:8080"); // Crear una instancia de la clase
+
+  let warehouseDetails = await warehouseDetailsService.getAllWarehouseDetails();
+
+  for (let warehouseDetail of warehouseDetails) {
+    let kardex = await kardexService.getKardexById(warehouseDetail.idKardex); // Llamar al método de la clase
+    if (kardex.idProduct === idProduct) {
+      if (warehouseDetail.idWarehouse === currentWarehouseSelected) {
+        if (kardex.quantity>= quantity) {
+          console.log("hay suficiente")
+          return true; //  hay suficiente cantidad del producto en el inventario
+        }
+      }
+    }
+  }
+  console.log("no hay suficiente")
+  return false; // no hay suficiente cantidad del producto
+}
+
+//-------------------pop up Overly---------------------------------------------------
+let popUpOverly = document.getElementById("PopUpOverlyQuantity");
+
+let btnClosePopUpOverly = document.getElementById(
+  "btnCloseOverlyPopUp"
+);
+
+btnClosePopUpOverly.addEventListener("click", (event) => {
+  event.preventDefault(); // Esto evita el envío automático de GET
+  closePopUpOverly();
+});
+
+function showPopUpOverly() {
+  popUpOverly.style.visibility = "visible";
+}
+
+function closePopUpOverly() {
+  popUpOverly.style.visibility = "hidden";
 }
 
 //-------------------pop up bill registered---------------------------------------------------
@@ -310,7 +370,7 @@ btnRegisterBill.addEventListener("click", (event) => {
 //--------------------------Register Bill-----------------------------------
 async function registerBill() {
   const billService = new BillService("http://127.0.0.1:8080"); // Crear una instancia de la clase
-  console.log(document.getElementById("ComboBoxCedulaClient").value)
+  console.log(document.getElementById("ComboBoxCedulaClient").value);
   let clientCedula = document.getElementById("ComboBoxCedulaClient").value;
   let idTypeOfMovement = parseInt(
     document.getElementById("ComboBoxTypeOfMovement").value,
@@ -329,7 +389,6 @@ async function registerBill() {
 
   let bill = {};
   bill.idClient = client.idClient;
-
   bill.idSalePoint = salePoint.idSalePoint;
   bill.idTypeOfMovement = idTypeOfMovement;
   bill.idWarehouse = currentWarehouseSelected;
@@ -341,65 +400,63 @@ async function registerBill() {
 
   registerBillDetailsProducts(idBillRegistered);
 
-  closeRegisterForm();  
+  closeRegisterForm();
   showPopUpBillRegistered();
 
-   
-//--------------------------Register BillDetails Products-----------------------------------
-async function registerBillDetailsProducts(idBillRegistered) {
-  const billDetailsService = new BillDetailsService("http://127.0.0.1:8080"); // Crear una instancia de la clase
+  //--------------------------Register BillDetails Products-----------------------------------
+  async function registerBillDetailsProducts(idBillRegistered) {
+    const billDetailsService = new BillDetailsService("http://127.0.0.1:8080"); // Crear una instancia de la clase
 
- const productService = new ProductService("http://127.0.0.1:8080"); // Crear una instancia de la clase
+    const productService = new ProductService("http://127.0.0.1:8080"); // Crear una instancia de la clase
 
-const kardexService = new KardexService("http://127.0.0.1:8080"); // Crear una instancia de la clase
-  
-  const tabla = document.getElementById("table");
+    const kardexService = new KardexService("http://127.0.0.1:8080"); // Crear una instancia de la clase
 
-  // Obtener todas las filas del tbody
-  const filas = tabla
-    .getElementsByTagName("tbody")[0]
-    .getElementsByTagName("tr");
+    const tabla = document.getElementById("table");
 
-  // Contar filas
-  const numeroFilas = filas.length;
+    // Obtener todas las filas del tbody
+    const filas = tabla
+      .getElementsByTagName("tbody")[0]
+      .getElementsByTagName("tr");
 
-  // Contar columnas (usamos la primera fila para saber cuántas columnas tiene)
-  const numeroColumnas = filas[0].getElementsByTagName("td").length;
-  console.log("Número de columnas:", numeroColumnas);
+    // Contar filas
+    const numeroFilas = filas.length;
 
-  // Recorrer cada fila y cada celda
-  for (let i = 0; i < filas.length; i++) {
-    
-    const celdas = filas[i].getElementsByTagName("td");
+    // Contar columnas (usamos la primera fila para saber cuántas columnas tiene)
+    const numeroColumnas = filas[0].getElementsByTagName("td").length;
+    console.log("Número de columnas:", numeroColumnas);
 
-    const productName = celdas[0].textContent.trim();
-    const quantity = parseInt(celdas[1].textContent.trim());
-    const price = parseFloat(celdas[2].textContent.trim());
+    // Recorrer cada fila y cada celda
+    for (let i = 0; i < filas.length; i++) {
+      const celdas = filas[i].getElementsByTagName("td");
 
-    const product = await productService.getProductByName(productName); // Llamar al método de la clase
-    const kardex = await kardexService.getKardexByIdProduct(product.idProduct); // Llamar al método de la clase
+      const productName = celdas[0].textContent.trim();
+      const quantity = parseInt(celdas[1].textContent.trim());
+      const price = parseFloat(celdas[2].textContent.trim());
 
-    const billDetails = {
-      idBill: idBillRegistered,
-      idKardex: kardex.idKardex,
-      idWarehouse: currentWarehouseSelected,
-      productQuantity: quantity,
-      productsPrice: price
-    };
+      const product = await productService.getProductByName(productName); // Llamar al método de la clase
+      const kardex = await kardexService.getKardexByIdProduct(
+        product.idProduct
+      ); // Llamar al método de la clase
 
-    console.log("Registrando detalle:", billDetails);
+      const billDetails = {
+        idBill: idBillRegistered,
+        idKardex: kardex.idKardex,
+        idWarehouse: currentWarehouseSelected,
+        productQuantity: quantity,
+        productsPrice: price,
+      };
 
-     let outcome = await billDetailsService.createBillDetails(billDetails);
+      console.log("Registrando detalle:", billDetails);
+
+      let outcome = await billDetailsService.createBillDetails(billDetails);
+    }
+
+    //  Limpiar tabla
+    const tbody = tabla.getElementsByTagName("tbody")[0];
+    tbody.innerHTML = ""; // Elimina todas las filas
+
+    //  Reiniciar precios
+    document.getElementById("partialPriceInput").value = "0";
+    document.getElementById("totalPriceInput").value = "0";
   }
-
-  //  Limpiar tabla
-  const tbody = tabla.getElementsByTagName("tbody")[0];
-  tbody.innerHTML = ""; // Elimina todas las filas
-
-  //  Reiniciar precios
-  document.getElementById("partialPriceInput").value = "0";
-  document.getElementById("totalPriceInput").value = "0";
-}
-
- 
 }
